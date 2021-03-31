@@ -1,1 +1,2 @@
-# Toepassingsopdracht Inte, Jonas, Dzhem, Maksim
+# Toepassingsopdracht: 
+Inte, Jonas, Dzhem, Maksim
