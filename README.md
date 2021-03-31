@@ -1,1 +1,1 @@
-# Jonas-De-Meayer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
+# Toepassingsopdracht Inte, Jonas, Dzhem, Maksim
