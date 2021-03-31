@@ -3,7 +3,7 @@ Groep: Inte, Jonas, Dzhem, Maksim
 
 Ideeën:
 - Regex-herkenning in teksten
-- Treinspoor verdeling/richting switcher 
+- Treinspoor verdeling / richting switcher 
 - Kweken van een plant
 - Email spam filter
 - Autocorrectie
