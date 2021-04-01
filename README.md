@@ -18,5 +18,8 @@ Ideeën:
   
   Veiligheidsalarmen, vooral aan de metrorails enz bv metro niet aan peron, mensen komen over een bepaalde grens wordt op een of andere reden gealarmeerd, handig voor blinden       mensen... kan dan ook gedaan worden met FA, final state wordt bereikt door geen metro aan station + wordt over grens gegaan. 
   
-
+  lichten bijvoorbeeld voor de metro zelf, mag doorrijden of niet doorrijden enz...
+  
+  Liften kunnen gebruikt worden voor mensen die niet beschikbaar zijn voor de trap te nemen.
+  
 Features:
