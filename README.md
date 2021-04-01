@@ -21,5 +21,9 @@ Ideeën:
   lichten bijvoorbeeld voor de metro zelf, mag doorrijden of niet doorrijden enz...
   
   Liften kunnen gebruikt worden voor mensen die niet beschikbaar zijn voor de trap te nemen.
-  
+- Het herkennen van vleigtuig- en sattelietsignalen. Vliegtuigen (en allerlei spaceflight vehicles) en sattelieten zenden signalen in een bepaalde vorm die dan een code bevatten, 
+  en d.m.v. FSM kan je bepalen waar ze vandaan komen (van welk land het vliegtuig is,...), xD je kan ook spion dingen opsporen (als je de signaalcode niet kent). (dit allemaal is voor uitbreiding vatbaar btw). 
+  Je kan zelfs miss een databank opstellen met bepaalde gegevens en in die gegevens zoeken op die code.
+- het zeven (ik weet niet of dit het juiste woord is) van allerlei stenen, aarde, zand. D.m.v. FSM (kijken naar kleur, dikte, massadichtheid,...) dan bepalen wat het is (gebruik in geologie, afvalverwerking,...). 
+  De zeef zelf fungeert dan eigenlijk deels ook als een FSM. (voor uitbreiding vatbaar)
 Features:
