@@ -28,4 +28,5 @@ Ideeën:
   
 - het zeven (ik weet niet of dit het juiste woord is) van allerlei stenen, aarde, zand. D.m.v. FSM (kijken naar kleur, dikte, massadichtheid,...) dan bepalen wat het is (gebruik in geologie, afvalverwerking,...). 
   De zeef zelf fungeert dan eigenlijk deels ook als een FSM. (voor uitbreiding vatbaar)
+  
 Features:
