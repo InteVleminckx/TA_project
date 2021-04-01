@@ -10,5 +10,6 @@ Ideeën:
 - Sorteer systemen
 - Herkenning chemische elementen in materialen
 - Simulatie groep organismen / opwarming van aarde
+- Barcode converter tot passwoord/iets anders...
 
 Features:
