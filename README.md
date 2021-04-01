@@ -10,6 +10,6 @@ Ideeën:
 - Sorteer systemen
 - Herkenning chemische elementen in materialen
 - Simulatie groep organismen / opwarming van aarde
-- Barcode converter tot passwoord/iets anders...
+- Barcode converter tot passwoord/iets anders..., kan misschien samengehangen worden met sorteersysteem.
 
 Features:
