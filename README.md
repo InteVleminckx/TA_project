@@ -37,3 +37,19 @@ We herkennen chemische elementen mbv DFA's. We kunnen voor elk chemisch element 
   - Herkenning van "valse" chemische elementen die niet bestaan.
   - Meerdere stoffen tegelijk inlezen in hetzelfde xml-bestand en overzicht hiervan wegschrijven.
   - NOG ANDERE SUGGESTIES
+
+2) Voorstel winkel
+
+Barcode scannen
+
+Alarmdetectie
+Kwaliteitscontrole
+
+Productinformatie
+	Bestand met alle producten, soort van grep functie aan de hand van barcode product terug vinden in bestand
+
+Locatie van een product aan de hand van barcode vinden in de winkel
+
+Sorteren van producten in het magazijn
+	Lijst van alle producten die beschikbaar zijn in het magazijn
+
