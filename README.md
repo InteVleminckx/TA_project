@@ -1,7 +1,7 @@
 # Toepassingsopdracht Talen en Automaten
 Groep: Inte, Jonas, Dzhem, Maksim
 
-Ideeën:
+## Ideeën:
 - Regex-herkenning in teksten
 - Treinspoor verdeling / richting switcher 
 - Kweken van een plant
@@ -29,7 +29,7 @@ Ideeën:
 - het zeven (ik weet niet of dit het juiste woord is) van allerlei stenen, aarde, zand. D.m.v. FSM (kijken naar kleur, dikte, massadichtheid,...) dan bepalen wat het is (gebruik in geologie, afvalverwerking,...). 
   De zeef zelf fungeert dan eigenlijk deels ook als een FSM. (voor uitbreiding vatbaar)
   
-# Voorstellen
+## Voorstellen
 1) Herkenning chemische elementen: (Inte en Jonas)
 We herkennen chemische elementen mbv DFA's. We kunnen voor elk chemisch element zijn eigen accepting state te maken of slechts voor de meeste basis-elementen één maken. We kunnen dan stoffen mbv xml-bestanden meegeven waarbij elke stof verschillende node's heeft met daarin de naam. Enkele features hiervan zijn:
   - Een overzicht geven van alle chemische elementen die aanwezig zijn met hoeveel procent ze voorkomen (wegschrijven naar een bestand of cout).
