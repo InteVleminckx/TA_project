@@ -40,16 +40,16 @@ We herkennen chemische elementen mbv DFA's. We kunnen voor elk chemisch element 
 
 2) Voorstel winkel
 
-Barcode scannen
+-Barcode scannen
 
-Alarmdetectie
-Kwaliteitscontrole
+-Alarmdetectie
+-Kwaliteitscontrole
 
-Productinformatie
-	Bestand met alle producten, soort van grep functie aan de hand van barcode product terug vinden in bestand
+-Productinformatie
+-Bestand met alle producten, soort van grep functie aan de hand van barcode product terug vinden in bestand
 
-Locatie van een product aan de hand van barcode vinden in de winkel
+-Locatie van een product aan de hand van barcode vinden in de winkel
 
-Sorteren van producten in het magazijn
-	Lijst van alle producten die beschikbaar zijn in het magazijn
+-Sorteren van producten in het magazijn
+-	Lijst van alle producten die beschikbaar zijn in het magazijn
 
