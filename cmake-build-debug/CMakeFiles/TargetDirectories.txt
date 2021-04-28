@@ -1,0 +1,3 @@
+C:/Users/intev/CLionProjects/Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/intev/CLionProjects/Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx/cmake-build-debug/CMakeFiles/projectTA.dir
+C:/Users/intev/CLionProjects/Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx/cmake-build-debug/CMakeFiles/edit_cache.dir
