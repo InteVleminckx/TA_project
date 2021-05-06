@@ -3,4 +3,18 @@ project(projectTA)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(projectTA main.cpp)
+add_executable(projectTA
+        main.cpp
+        Datastructuur.cpp
+        Datastructuur.h
+        Maksim.h
+        Maksim.cpp
+        Importer.cpp
+        Importer.h
+        txml/tinyxml.h
+        txml/tinystr.h
+        txml/tinyxmlparser.cpp
+        txml/tinyxmlerror.cpp
+        Bestemming.cpp
+        Bestemming.h
+        )
