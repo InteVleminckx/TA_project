@@ -6,21 +6,24 @@
 #define PROJECTTA_DATASTRUCTUUR_H
 
 #include <iostream>
-
+#include "Bestemming.h"
 
 using  namespace  std;
 
 class Node
 {
 
-    int fKey;
+    string fKey;
     string fValue;
+    Bestemming fObject;
+
 
 public:
 
-    Node(int key, const string &value);
-    int getKey();
+    Node(Bestemming &bestemming);
+    string getKey();
     string getValue();
+    Bestemming getObject();
 };
 
 
@@ -31,9 +34,9 @@ class Datastructuur {
     Datastructuur* fLeftChild = nullptr;
     Datastructuur* fRightChild = nullptr;
 
-    void setParent(Datastructuur * parent);
-    void setLeftChild(Datastructuur * left);
-    void setRightChild(Datastructuur * right);
+    void setParent(Datastructuur* parent);
+    void setLeftChild(Datastructuur* left);
+    void setRightChild(Datastructuur* right);
 
     Datastructuur* getParent();
     Datastructuur* getLeftChild();
@@ -49,9 +52,9 @@ public:
 
     bool insert(Node* object);
 
-    bool deleteNode(int key);
+    bool deleteNode(Bestemming &bestemming);
 
-    pair<bool, string> getValue(int key);
+    pair<bool, string> getValue(Bestemming bestemming);
 
 
 };

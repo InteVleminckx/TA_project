@@ -4,14 +4,19 @@
 
 #include "Datastructuur.h"
 
-Node::Node(int key, const string &value) {
-    fKey = key;
-    fValue = value;
+Node::Node(Bestemming &bestemming) {
+    fKey = bestemming.getName();
+    fValue = bestemming.getRegex();
+    fObject = bestemming;
 }
 
-int Node::getKey() {return fKey;}
+string Node::getKey() {return fKey;}
 
 string Node::getValue() {return fValue;}
+
+Bestemming Node::getObject() {
+    return fObject;
+}
 
 
 Datastructuur::Datastructuur() = default;
@@ -53,7 +58,7 @@ bool Datastructuur::insert(Node* object) {
     }
 
     //er bestaat al een node met deze key
-    else if (this->getValue(object->getKey()).first)
+    else if (this->getValue(object->getObject()).first)
     {
         return false;
     }
@@ -114,7 +119,7 @@ Datastructuur *Datastructuur::getInorderSuccessor() {
     }
 }
 
-bool Datastructuur::deleteNode(int key)
+bool Datastructuur::deleteNode(Bestemming &bestemming)
 {
 
     if (this == nullptr)
@@ -122,14 +127,14 @@ bool Datastructuur::deleteNode(int key)
         return false;
     }
 
-    else if (key > this->fRoot->getKey())
+    else if (bestemming.getName() > this->fRoot->getKey())
     {
-        return this->getRightChild()->deleteNode(key);
+        return this->getRightChild()->deleteNode(bestemming);
     }
 
-    else if (key < this->fRoot->getKey())
+    else if (bestemming.getName() < this->fRoot->getKey())
     {
-        return this->getLeftChild()->deleteNode(key);
+        return this->getLeftChild()->deleteNode(bestemming);
     }
 
     else
@@ -186,27 +191,27 @@ bool Datastructuur::deleteNode(int key)
         else if (this->getLeftChild() != nullptr && this->getRightChild() != nullptr)
         {
             Node* succesor = this->getRightChild()->getInorderSuccessor()->fRoot;
-            this->deleteNode(succesor->getKey());
+            this->deleteNode(bestemming);
             this->fRoot = succesor;
         }
     }
 }
 
-pair<bool, string> Datastructuur::getValue(int key) {
+pair<bool, string> Datastructuur::getValue(Bestemming bestemming) {
 
-    if (key > this->fRoot->getKey())
+    if (bestemming.getName() > this->fRoot->getKey())
     {
-        if (this->getRightChild() != nullptr) this->getRightChild()->getValue(key);
+        if (this->getRightChild() != nullptr) this->getRightChild()->getValue(bestemming);
         else return make_pair(false, "");
     }
 
-    else if (key < this->fRoot->getKey())
+    else if (bestemming.getName() < this->fRoot->getKey())
     {
-        if (this->getLeftChild() != nullptr) this->getLeftChild()->getValue(key);
+        if (this->getLeftChild() != nullptr) this->getLeftChild()->getValue(bestemming);
         else return make_pair(false, "");
     }
 
-    else if (key == this->fRoot->getKey()) return make_pair(true, this->fRoot->getValue());
+    else if (bestemming.getName() == this->fRoot->getKey()) return make_pair(true, this->fRoot->getValue());
 
     return make_pair(false, "");
 }
