@@ -14,29 +14,17 @@ string Node::getKey() {return fKey;}
 
 string Node::getValue() {return fValue;}
 
-Bestemming Node::getObject() {
-    return fObject;
-}
-
+Bestemming Node::getObject() {return fObject;}
 
 Datastructuur::Datastructuur() = default;
 
 Datastructuur::Datastructuur(Node *root){ this->fRoot = root;}
 
-void Datastructuur::setParent(Datastructuur *parent)
-{
-    fParent = parent;
-}
+void Datastructuur::setParent(Datastructuur *parent){fParent = parent;}
 
-void Datastructuur::setLeftChild(Datastructuur *left)
-{
-    fLeftChild = left;
-}
+void Datastructuur::setLeftChild(Datastructuur *left){fLeftChild = left;}
 
-void Datastructuur::setRightChild(Datastructuur *right)
-{
-    fRightChild = right;
-}
+void Datastructuur::setRightChild(Datastructuur *right){fRightChild = right;}
 
 Datastructuur *Datastructuur::getParent() {return fParent;}
 
@@ -47,7 +35,7 @@ Datastructuur *Datastructuur::getRightChild() {return fRightChild;}
 bool Datastructuur::insert(Node* object) {
 
 
-    //bst is leeg
+    //Als de datastructuur nog geen waardes bevat.
     if (this->fRoot == nullptr)
     {
         this->fRoot = object;
@@ -57,19 +45,16 @@ bool Datastructuur::insert(Node* object) {
         return true;
     }
 
-    //er bestaat al een node met deze key
-    else if (this->getValue(object->getObject()).first)
-    {
-        return false;
-    }
+    //Er bestaat al een node met dezelfde zoeksleutel in de datastructuur.
+    else if (this->getBestemming(object->getObject()).first) return false;
 
-    //geen root en key bestaat nog niet
+    //De datastructuur is niet leeg en de zoeksleutel zit er nog niet in.
     else
     {
-        //rechterkant
+        //De nieuwe node komt rechts van de root.
         if (object->getKey() > this->fRoot->getKey())
         {
-            //nog geen rechterkind nieuwe bst aanmaken
+            //De huidige node heeft nog geen rechterdeelboom, de nieuwe node wordt dan de rechterdeelboom.
             if (this->getRightChild() == nullptr)
             {
                 this->setRightChild(new Datastructuur(object));
@@ -77,17 +62,14 @@ bool Datastructuur::insert(Node* object) {
                 return true;
             }
 
-            //opnieuw inserten in rechternode
-            else
-            {
-                return this->getRightChild()->insert(object);
-            }
+            //De huidige node heeft al wel een rechterdeelboom we gaan hierverder zoeken naar een lege plaats.
+            else return this->getRightChild()->insert(object);
         }
 
-        //linkerkant
+        //De nieuwe node komt links van de root.
         else
         {
-            //nog geen rechterkind nieuwe bst aanmaken
+            //De huidige node heeft nog geen linkerdeelboom, de nieuwe node wordt dan de linkerdeelboom.
             if (this->getLeftChild() == nullptr)
             {
                 this->setLeftChild(new Datastructuur(object));
@@ -95,69 +77,55 @@ bool Datastructuur::insert(Node* object) {
                 return true;
             }
 
-                //opnieuw inserten in rechternode
-            else
-            {
-                return this->getLeftChild()->insert(object);
-            }
+           //De huidige node heeft al wel een linkerdeelboom we gaan hierverder zoeken naar een lege plaats.
+            else return this->getLeftChild()->insert(object);
         }
     }
 }
 
 Datastructuur *Datastructuur::getInorderSuccessor() {
 
-    //inorder bevindt zich in de rechterdeelboom
-    if (this->getLeftChild() != nullptr)
-    {
-        return this->getLeftChild()->getInorderSuccessor();
-    }
+    //Er is nog een linkerdeelboom, dus de inorder is nog niet gevonden.
+    if (this->getLeftChild() != nullptr) return this->getLeftChild()->getInorderSuccessor();
 
-    //parent is inorder
-    else
-    {
-        return this;
-    }
+    //Er is geen linkerdeelboom meer dus we hebben de inordersuccessor gevonden.
+    else return this;
 }
 
 bool Datastructuur::deleteNode(Bestemming &bestemming)
 {
 
-    if (this == nullptr)
-    {
-        return false;
-    }
+    //Als op de huidige positie nog geen deelboom aangemaakt is, dan betekent dat er nog geen node is toegevoegd
+    //op de locatie waar we willen verwijderen dus dit object bestaat niet.
+    if (this == nullptr) return false;
 
-    else if (bestemming.getName() > this->fRoot->getKey())
-    {
-        return this->getRightChild()->deleteNode(bestemming);
-    }
+    //Als de zoeksleutel van de node die verwijderd moet worden groter is, moeten we verder gaan zoeken in de rechterdeelboom.
+    else if (bestemming.getName() > this->fRoot->getKey()) return this->getRightChild()->deleteNode(bestemming);
 
-    else if (bestemming.getName() < this->fRoot->getKey())
-    {
-        return this->getLeftChild()->deleteNode(bestemming);
-    }
+    //Als de zoeksleutel van de node die verwijderd moet worden kleiner is, moeten we verder gaan zoeken in de linkerdeelboom.
+    else if (bestemming.getName() < this->fRoot->getKey()) return this->getLeftChild()->deleteNode(bestemming);
 
+    //Als het geen van deze bovenstaande is, betekent dat we de node hebben gevonden met de opgeven bestemming en kunnen we deze gaan verwijderen.
     else
     {
-
-        //geval geen kinderen enkel root en geen parent
+        //Geval geen kinderen enkel root en geen parent.
         if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() == nullptr)
         {
             this->fRoot = nullptr;
             return true;
         }
 
-        //geval geen kinderen enkel root en met parent
+        //Geval geen kinderen enkel root en met parent.
         else if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() != nullptr)
         {
 
-            //linkerkind
+            //Linkerdeelboom
             if (this->getParent()->getLeftChild() == this)
             {
                 this->getParent()->setLeftChild(nullptr);
                 return true;
             }
-            //rechterkind
+            //Rechterdeelboom
             else if (this->getParent()->getRightChild() == this)
             {
                 this->getParent()->setRightChild(nullptr);
@@ -165,8 +133,8 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             }
         }
 
-        //Geval root met 1 kind
-        //enkel rechterkind
+        //Geval root met 1 kind.
+        //Er is enkel een rechterdeelboom.
         else if (this->getLeftChild() == nullptr)
         {
             this->fRoot = this->getRightChild()->fRoot;
@@ -175,7 +143,7 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             return true;
         }
 
-        //enkel linkerkind
+        //Er is enkel een linkerdeelboom.
         else if (this->getRightChild() == nullptr)
         {
             this->fRoot = this->getLeftChild()->fRoot;
@@ -184,10 +152,10 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             return true;
         }
 
-        //geval root met 2 kinderen
-        //zoek inorder succesor. -> kleinste waarde in de rechterdeelboom
-        //Wissel de root de met de inordersuccesor en delete dan de inordersuccessor
+        //Geval root met 2 kinderen.
 
+        //Zoek inorder succesor. -> kleinste waarde in de rechterdeelboom
+        //Wissel de root de met de inordersuccesor en delete dan de inordersuccessor
         else if (this->getLeftChild() != nullptr && this->getRightChild() != nullptr)
         {
             Node* succesor = this->getRightChild()->getInorderSuccessor()->fRoot;
@@ -195,24 +163,36 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             this->fRoot = succesor;
         }
     }
+
+    return true;
 }
 
-pair<bool, string> Datastructuur::getValue(Bestemming bestemming) {
+pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
 
+    //Als de zoeksleutel groter is, zoeken we verder in de rechterdeelboom (Als deze bestaat).
     if (bestemming.getName() > this->fRoot->getKey())
     {
-        if (this->getRightChild() != nullptr) this->getRightChild()->getValue(bestemming);
+        //Rechterdeelboom bestaat.
+        if (this->getRightChild() != nullptr) this->getRightChild()->getBestemming(bestemming);
+
+        //Rechterdeelboom bestaat niet, dus gezochte node ook niet en returnen we false.
         else return make_pair(false, "");
     }
 
+    //Als de zoeksleutel kleiner is, zoeken we verder in de linkerdeelboom (Als deze bestaat).
     else if (bestemming.getName() < this->fRoot->getKey())
     {
-        if (this->getLeftChild() != nullptr) this->getLeftChild()->getValue(bestemming);
+        //Linkerdeelboom bestaat.
+        if (this->getLeftChild() != nullptr) this->getLeftChild()->getBestemming(bestemming);
+
+        //Linkerdeelboom bestaat niet, dus gezochte node ook niet en returnen we false.
         else return make_pair(false, "");
     }
 
+    //Als de zoeksleutel gelijk is, dan is de bestemming gevonden in de datastructuur en returnen we true + de value van de bestemming.
     else if (bestemming.getName() == this->fRoot->getKey()) return make_pair(true, this->fRoot->getValue());
 
+    //Als zoeksleutel niet gevonden is, dan returnen we ook false. (Hier gaat het programma normaal gezien niet komen.)
     return make_pair(false, "");
 }
 
