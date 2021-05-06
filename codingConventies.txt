@@ -1,0 +1,19 @@
+#Coding conventies
+
+Groep: Inte, Jonas, Dzhem, Maksim
+
+- Klasse variable
+	- beginnend met een f
+
+- Functie Docs
+	 /**
+	 *
+	 *			
+	 */
+
+- Booleans
+	- isBoolNaam
+
+- Functies
+	-beginnend met kleine letter, volgende tegenhangend woord beginnend met hoofdletter
+	bv: maakFunctie
