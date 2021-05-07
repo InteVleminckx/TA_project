@@ -1,4 +1,4 @@
-/*
+/**
  * Dit is de importerklasse. Het heeft als voornamelijke functie het uitlezen van xml-bestanden en deze in onze
  * eigen gemaakte datastructuur steken.
  * @date: 02/05/2021
@@ -12,6 +12,7 @@
 #include "txml/tinyxml.h"
 #include <string>
 #include <iostream>
+#include "Datastructuur.h"
 
 using namespace std;
 

@@ -6,7 +6,6 @@
  * directory omhoog gaan voordat we aan onze functies en mappen kunnen
  */
 
-
 int main() {
 
     Importer::readXMLFile("../xmlfiles/test1.xml");

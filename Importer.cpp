@@ -1,6 +1,6 @@
 #include "Importer.h"
 
-/*
+/**
  * Functie die een xml-file gaat uitlezen en opslaan in onze eigen datastructuur
  * @param filename : naam van de xml-file die we willen uitlezen (type = string)
  * @return none (voorlopig)

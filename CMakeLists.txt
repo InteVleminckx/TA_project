@@ -15,6 +15,8 @@ add_executable(projectTA
         txml/tinystr.h
         txml/tinyxmlparser.cpp
         txml/tinyxmlerror.cpp
+        txml/tinyxml.cpp
+        txml/tinystr.cpp
         Bestemming.cpp
         Bestemming.h
         )
