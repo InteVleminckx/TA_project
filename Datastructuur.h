@@ -148,7 +148,11 @@ public:
      */
     pair<bool, string> getBestemming(Bestemming bestemming);
 
-
+    /**
+     * @functie: inorderTraversal
+     * Deze functie toont alle bestemming in gesorteerde volgorde.
+     */
+    void inorderTraversal();
 };
 
 

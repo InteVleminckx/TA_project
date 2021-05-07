@@ -100,10 +100,10 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
     if (this == nullptr) return false;
 
     //Als de zoeksleutel van de node die verwijderd moet worden groter is, moeten we verder gaan zoeken in de rechterdeelboom.
-    else if (bestemming.getName() > this->fRoot->getKey()) return this->getRightChild()->deleteNode(bestemming);
+    else if (bestemming.getName() > this->fRoot->getKey()) this->getRightChild()->deleteNode(bestemming);
 
     //Als de zoeksleutel van de node die verwijderd moet worden kleiner is, moeten we verder gaan zoeken in de linkerdeelboom.
-    else if (bestemming.getName() < this->fRoot->getKey()) return this->getLeftChild()->deleteNode(bestemming);
+    else if (bestemming.getName() < this->fRoot->getKey()) this->getLeftChild()->deleteNode(bestemming);
 
     //Als het geen van deze bovenstaande is, betekent dat we de node hebben gevonden met de opgeven bestemming en kunnen we deze gaan verwijderen.
     else
@@ -118,19 +118,11 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
         //Geval geen kinderen enkel root en met parent.
         else if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() != nullptr)
         {
-
             //Linkerdeelboom
-            if (this->getParent()->getLeftChild() == this)
-            {
-                this->getParent()->setLeftChild(nullptr);
-                return true;
-            }
+            if (this->getParent()->getLeftChild() == this) this->getParent()->setLeftChild(nullptr);
+
             //Rechterdeelboom
-            else if (this->getParent()->getRightChild() == this)
-            {
-                this->getParent()->setRightChild(nullptr);
-                return true;
-            }
+            else if (this->getParent()->getRightChild() == this) this->getParent()->setRightChild(nullptr);
         }
 
         //Geval root met 1 kind.
@@ -140,7 +132,8 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             this->fRoot = this->getRightChild()->fRoot;
             this->setLeftChild(this->getRightChild()->getLeftChild());
             this->setRightChild(this->getRightChild()->getRightChild());
-            return true;
+            if (this->getLeftChild() != nullptr) this->getLeftChild()->setParent(this);
+            if (this->getRightChild() != nullptr) this->getRightChild()->setParent(this);
         }
 
         //Er is enkel een linkerdeelboom.
@@ -149,7 +142,8 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
             this->fRoot = this->getLeftChild()->fRoot;
             this->setRightChild(this->getLeftChild()->getRightChild());
             this->setLeftChild(this->getLeftChild()->getLeftChild());
-            return true;
+            if (this->getLeftChild() != nullptr) this->getLeftChild()->setParent(this);
+            if (this->getRightChild() != nullptr) this->getRightChild()->setParent(this);
         }
 
         //Geval root met 2 kinderen.
@@ -194,5 +188,22 @@ pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
 
     //Als zoeksleutel niet gevonden is, dan returnen we ook false. (Hier gaat het programma normaal gezien niet komen.)
     return make_pair(false, "");
+}
+
+void Datastructuur::inorderTraversal() {
+
+    if (fRoot != nullptr){
+        if (this->getLeftChild() != nullptr)
+        {
+            this->getLeftChild()->inorderTraversal();
+        }
+
+        cout << this->fRoot->getKey() << endl;
+
+        if (this->getRightChild() != nullptr)
+        {
+            this->getRightChild()->inorderTraversal();
+        }
+    }
 }
 
