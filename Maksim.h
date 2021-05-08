@@ -4,7 +4,11 @@
 
 #ifndef PROJECTTA_MAKSIM_H
 #define PROJECTTA_MAKSIM_H
+#include <string>
+#include <fstream>
+#include "vector"
 
+using namespace std;
 
 // Zaken die moeten gedaan worden:
 // - Omzetten van string geaccepteerd door een RE naar barcode
@@ -16,8 +20,11 @@
 // - feature9: We kunnen een functie toevoegen die een overzicht van alle bestemmingen en RE’s weergeeft in een html bestand.
 
 class Maksim {
+public:
 
+    void stringToBarcode(string &str);
 
+    string generateRE();
 };
 
 
