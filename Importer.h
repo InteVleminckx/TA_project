@@ -13,12 +13,13 @@
 #include <string>
 #include <iostream>
 #include "Datastructuur.h"
+#include "Bestemming.h"
 
 using namespace std;
 
 class Importer {
 public:
-    static void readXMLFile(const string &filename);
+    static void readXMLFile(const string &filename, Datastructuur &datastructure);Datastructuur
 };
 
 

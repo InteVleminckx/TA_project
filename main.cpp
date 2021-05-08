@@ -8,7 +8,8 @@
 
 int main() {
 
-    Importer::readXMLFile("../xmlfiles/test1.xml");
+    Datastructuur datastructuur;
+    Importer::readXMLFile("../xmlfiles/test1.xml", datastructuur);
     return 0;
 
 }
