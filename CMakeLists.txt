@@ -17,4 +17,24 @@ add_executable(projectTA
         txml/tinyxmlerror.cpp
         Bestemming.cpp
         Bestemming.h
+
+        engine/easy_image.cc
+        engine/engine.cc
+        engine/ini_configuration.cc
+        engine/Lsysteem.cpp
+        engine/Lsysteem.h
+        engine/Hulpfuncties.cpp
+        engine/Hulpfuncties.h
+        engine/l_parser.cc
+        engine/l_parser.h
+        engine/L2Dsysteem.cpp
+        engine/L2Dsysteem.h
+        engine/L3Dsysteem.cpp
+        engine/L3Dsysteem.h
+        engine/vector3d.cc
+        engine/vector3d.h
+        engine/ZBuffer.cpp
+        engine/ZBuffer.h
+        engine/drawTriangles.cpp
+        engine/drawTriangles.h
         )
