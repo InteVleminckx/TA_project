@@ -39,4 +39,4 @@ add_executable(projectTA
         engine/ZBuffer.h
         engine/drawTriangles.cpp
         engine/drawTriangles.h
-        )
+        Brzozowski.cpp Brzozowski.h)
