@@ -94,6 +94,7 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
 
     // doorsnede checken => controlesysteem
     bool doorsnede = false;
+
     if (doorsnede) {
         return generateRE(numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }

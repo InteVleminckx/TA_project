@@ -25,6 +25,7 @@ using namespace std;
 class Maksim {
 public:
 
+
     void stringToBarcode(string &str);
 
     string generateRE(int numberOfIterations = 0);
