@@ -1,12 +1,16 @@
 #include "Importer.h"
 
-/*
+/**
  * Functie die een xml-file gaat uitlezen en opslaan in onze eigen datastructuur
- * @param filename : naam van de xml-file die we willen uitlezen (type = string)
+ * @param filename = naam van de xml-file die we willen uitlezen (type = string)
  * @return none (voorlopig)
  * @exceptions none
+ *
+ * OPM: datastructure wordt bij & doorgegeven, dit wil zeggen dat we zowel een lege structuur kunnen
+ * toevoegen als het zogezegd de eerste keer is dat we een datastructuur maken of een reeds bestaande
+ * structuur meegeven om bij deze structuur extra bestemmingen toe te voegen
  */
-void Importer::readXMLFile(const string &filename) {
+void Importer::readXMLFile(const string &filename, Datastructuur &datastructure) {
     TiXmlDocument doc;
 
     // Niet inleesbaar ==> error wegsturen via cerr
@@ -42,8 +46,14 @@ void Importer::readXMLFile(const string &filename) {
         // Info tussen twee tags halen
         else {
             string info = elem->FirstChild()->ToText()->Value();
-            cout << info << endl;
-            // TODO: deze info opslagen in eigen datastructuur
+            Bestemming destination;
+            destination.setName(info);
+
+            // TODO: hier RE toevoegen gegenereerd door code van Maksim
+            destination.setRegex("101010");
+
+            Node* node = new Node(destination);
+            datastructure.insert(node);
         }
     }
 }
