@@ -148,6 +148,7 @@ string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie 
             deelRegex = "(" + to_string(symbool1) + deelRegex1 + ")"; // 01 of 10
         }
         else if (randConcat == 1) {
+
             deelRegex = "(" + deelRegex1 + to_string(symbool1) + ")"; // 00 of 11
         }
     }
