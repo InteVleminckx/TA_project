@@ -28,6 +28,12 @@ public:
     void stringToBarcode(string &str);
 
     string generateRE(int numberOfIterations = 0);
+
+    string chooseOperationFirstTime();
+
+    string chooseOperation(string &deelRegex);
+
+    string getRandomString(int nr_iterations);
 };
 
 

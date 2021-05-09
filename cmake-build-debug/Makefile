@@ -58,19 +58,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
+CMAKE_SOURCE_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
+CMAKE_BINARY_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Ma
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -89,7 +89,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,411 @@ projectTA/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/build
 .PHONY : projectTA/fast
 
+Bestemming.obj: Bestemming.cpp.obj
+
+.PHONY : Bestemming.obj
+
+# target to build an object file
+Bestemming.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Bestemming.cpp.obj
+.PHONY : Bestemming.cpp.obj
+
+Bestemming.i: Bestemming.cpp.i
+
+.PHONY : Bestemming.i
+
+# target to preprocess a source file
+Bestemming.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Bestemming.cpp.i
+.PHONY : Bestemming.cpp.i
+
+Bestemming.s: Bestemming.cpp.s
+
+.PHONY : Bestemming.s
+
+# target to generate assembly for a file
+Bestemming.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Bestemming.cpp.s
+.PHONY : Bestemming.cpp.s
+
+Datastructuur.obj: Datastructuur.cpp.obj
+
+.PHONY : Datastructuur.obj
+
+# target to build an object file
+Datastructuur.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Datastructuur.cpp.obj
+.PHONY : Datastructuur.cpp.obj
+
+Datastructuur.i: Datastructuur.cpp.i
+
+.PHONY : Datastructuur.i
+
+# target to preprocess a source file
+Datastructuur.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Datastructuur.cpp.i
+.PHONY : Datastructuur.cpp.i
+
+Datastructuur.s: Datastructuur.cpp.s
+
+.PHONY : Datastructuur.s
+
+# target to generate assembly for a file
+Datastructuur.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Datastructuur.cpp.s
+.PHONY : Datastructuur.cpp.s
+
+Importer.obj: Importer.cpp.obj
+
+.PHONY : Importer.obj
+
+# target to build an object file
+Importer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Importer.cpp.obj
+.PHONY : Importer.cpp.obj
+
+Importer.i: Importer.cpp.i
+
+.PHONY : Importer.i
+
+# target to preprocess a source file
+Importer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Importer.cpp.i
+.PHONY : Importer.cpp.i
+
+Importer.s: Importer.cpp.s
+
+.PHONY : Importer.s
+
+# target to generate assembly for a file
+Importer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Importer.cpp.s
+.PHONY : Importer.cpp.s
+
+Maksim.obj: Maksim.cpp.obj
+
+.PHONY : Maksim.obj
+
+# target to build an object file
+Maksim.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Maksim.cpp.obj
+.PHONY : Maksim.cpp.obj
+
+Maksim.i: Maksim.cpp.i
+
+.PHONY : Maksim.i
+
+# target to preprocess a source file
+Maksim.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Maksim.cpp.i
+.PHONY : Maksim.cpp.i
+
+Maksim.s: Maksim.cpp.s
+
+.PHONY : Maksim.s
+
+# target to generate assembly for a file
+Maksim.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/Maksim.cpp.s
+.PHONY : Maksim.cpp.s
+
+engine/Hulpfuncties.obj: engine/Hulpfuncties.cpp.obj
+
+.PHONY : engine/Hulpfuncties.obj
+
+# target to build an object file
+engine/Hulpfuncties.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj
+.PHONY : engine/Hulpfuncties.cpp.obj
+
+engine/Hulpfuncties.i: engine/Hulpfuncties.cpp.i
+
+.PHONY : engine/Hulpfuncties.i
+
+# target to preprocess a source file
+engine/Hulpfuncties.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.i
+.PHONY : engine/Hulpfuncties.cpp.i
+
+engine/Hulpfuncties.s: engine/Hulpfuncties.cpp.s
+
+.PHONY : engine/Hulpfuncties.s
+
+# target to generate assembly for a file
+engine/Hulpfuncties.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.s
+.PHONY : engine/Hulpfuncties.cpp.s
+
+engine/L2Dsysteem.obj: engine/L2Dsysteem.cpp.obj
+
+.PHONY : engine/L2Dsysteem.obj
+
+# target to build an object file
+engine/L2Dsysteem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj
+.PHONY : engine/L2Dsysteem.cpp.obj
+
+engine/L2Dsysteem.i: engine/L2Dsysteem.cpp.i
+
+.PHONY : engine/L2Dsysteem.i
+
+# target to preprocess a source file
+engine/L2Dsysteem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.i
+.PHONY : engine/L2Dsysteem.cpp.i
+
+engine/L2Dsysteem.s: engine/L2Dsysteem.cpp.s
+
+.PHONY : engine/L2Dsysteem.s
+
+# target to generate assembly for a file
+engine/L2Dsysteem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.s
+.PHONY : engine/L2Dsysteem.cpp.s
+
+engine/L3Dsysteem.obj: engine/L3Dsysteem.cpp.obj
+
+.PHONY : engine/L3Dsysteem.obj
+
+# target to build an object file
+engine/L3Dsysteem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj
+.PHONY : engine/L3Dsysteem.cpp.obj
+
+engine/L3Dsysteem.i: engine/L3Dsysteem.cpp.i
+
+.PHONY : engine/L3Dsysteem.i
+
+# target to preprocess a source file
+engine/L3Dsysteem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.i
+.PHONY : engine/L3Dsysteem.cpp.i
+
+engine/L3Dsysteem.s: engine/L3Dsysteem.cpp.s
+
+.PHONY : engine/L3Dsysteem.s
+
+# target to generate assembly for a file
+engine/L3Dsysteem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.s
+.PHONY : engine/L3Dsysteem.cpp.s
+
+engine/Lsysteem.obj: engine/Lsysteem.cpp.obj
+
+.PHONY : engine/Lsysteem.obj
+
+# target to build an object file
+engine/Lsysteem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj
+.PHONY : engine/Lsysteem.cpp.obj
+
+engine/Lsysteem.i: engine/Lsysteem.cpp.i
+
+.PHONY : engine/Lsysteem.i
+
+# target to preprocess a source file
+engine/Lsysteem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.i
+.PHONY : engine/Lsysteem.cpp.i
+
+engine/Lsysteem.s: engine/Lsysteem.cpp.s
+
+.PHONY : engine/Lsysteem.s
+
+# target to generate assembly for a file
+engine/Lsysteem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.s
+.PHONY : engine/Lsysteem.cpp.s
+
+engine/ZBuffer.obj: engine/ZBuffer.cpp.obj
+
+.PHONY : engine/ZBuffer.obj
+
+# target to build an object file
+engine/ZBuffer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj
+.PHONY : engine/ZBuffer.cpp.obj
+
+engine/ZBuffer.i: engine/ZBuffer.cpp.i
+
+.PHONY : engine/ZBuffer.i
+
+# target to preprocess a source file
+engine/ZBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.i
+.PHONY : engine/ZBuffer.cpp.i
+
+engine/ZBuffer.s: engine/ZBuffer.cpp.s
+
+.PHONY : engine/ZBuffer.s
+
+# target to generate assembly for a file
+engine/ZBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.s
+.PHONY : engine/ZBuffer.cpp.s
+
+engine/drawTriangles.obj: engine/drawTriangles.cpp.obj
+
+.PHONY : engine/drawTriangles.obj
+
+# target to build an object file
+engine/drawTriangles.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj
+.PHONY : engine/drawTriangles.cpp.obj
+
+engine/drawTriangles.i: engine/drawTriangles.cpp.i
+
+.PHONY : engine/drawTriangles.i
+
+# target to preprocess a source file
+engine/drawTriangles.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.i
+.PHONY : engine/drawTriangles.cpp.i
+
+engine/drawTriangles.s: engine/drawTriangles.cpp.s
+
+.PHONY : engine/drawTriangles.s
+
+# target to generate assembly for a file
+engine/drawTriangles.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.s
+.PHONY : engine/drawTriangles.cpp.s
+
+engine/easy_image.obj: engine/easy_image.cc.obj
+
+.PHONY : engine/easy_image.obj
+
+# target to build an object file
+engine/easy_image.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/easy_image.cc.obj
+.PHONY : engine/easy_image.cc.obj
+
+engine/easy_image.i: engine/easy_image.cc.i
+
+.PHONY : engine/easy_image.i
+
+# target to preprocess a source file
+engine/easy_image.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/easy_image.cc.i
+.PHONY : engine/easy_image.cc.i
+
+engine/easy_image.s: engine/easy_image.cc.s
+
+.PHONY : engine/easy_image.s
+
+# target to generate assembly for a file
+engine/easy_image.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/easy_image.cc.s
+.PHONY : engine/easy_image.cc.s
+
+engine/engine.obj: engine/engine.cc.obj
+
+.PHONY : engine/engine.obj
+
+# target to build an object file
+engine/engine.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/engine.cc.obj
+.PHONY : engine/engine.cc.obj
+
+engine/engine.i: engine/engine.cc.i
+
+.PHONY : engine/engine.i
+
+# target to preprocess a source file
+engine/engine.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/engine.cc.i
+.PHONY : engine/engine.cc.i
+
+engine/engine.s: engine/engine.cc.s
+
+.PHONY : engine/engine.s
+
+# target to generate assembly for a file
+engine/engine.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/engine.cc.s
+.PHONY : engine/engine.cc.s
+
+engine/ini_configuration.obj: engine/ini_configuration.cc.obj
+
+.PHONY : engine/ini_configuration.obj
+
+# target to build an object file
+engine/ini_configuration.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj
+.PHONY : engine/ini_configuration.cc.obj
+
+engine/ini_configuration.i: engine/ini_configuration.cc.i
+
+.PHONY : engine/ini_configuration.i
+
+# target to preprocess a source file
+engine/ini_configuration.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ini_configuration.cc.i
+.PHONY : engine/ini_configuration.cc.i
+
+engine/ini_configuration.s: engine/ini_configuration.cc.s
+
+.PHONY : engine/ini_configuration.s
+
+# target to generate assembly for a file
+engine/ini_configuration.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/ini_configuration.cc.s
+.PHONY : engine/ini_configuration.cc.s
+
+engine/l_parser.obj: engine/l_parser.cc.obj
+
+.PHONY : engine/l_parser.obj
+
+# target to build an object file
+engine/l_parser.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/l_parser.cc.obj
+.PHONY : engine/l_parser.cc.obj
+
+engine/l_parser.i: engine/l_parser.cc.i
+
+.PHONY : engine/l_parser.i
+
+# target to preprocess a source file
+engine/l_parser.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/l_parser.cc.i
+.PHONY : engine/l_parser.cc.i
+
+engine/l_parser.s: engine/l_parser.cc.s
+
+.PHONY : engine/l_parser.s
+
+# target to generate assembly for a file
+engine/l_parser.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/l_parser.cc.s
+.PHONY : engine/l_parser.cc.s
+
+engine/vector3d.obj: engine/vector3d.cc.obj
+
+.PHONY : engine/vector3d.obj
+
+# target to build an object file
+engine/vector3d.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/vector3d.cc.obj
+.PHONY : engine/vector3d.cc.obj
+
+engine/vector3d.i: engine/vector3d.cc.i
+
+.PHONY : engine/vector3d.i
+
+# target to preprocess a source file
+engine/vector3d.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/vector3d.cc.i
+.PHONY : engine/vector3d.cc.i
+
+engine/vector3d.s: engine/vector3d.cc.s
+
+.PHONY : engine/vector3d.s
+
+# target to generate assembly for a file
+engine/vector3d.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/engine/vector3d.cc.s
+.PHONY : engine/vector3d.cc.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -169,6 +574,114 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+txml/tinystr.obj: txml/tinystr.cpp.obj
+
+.PHONY : txml/tinystr.obj
+
+# target to build an object file
+txml/tinystr.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj
+.PHONY : txml/tinystr.cpp.obj
+
+txml/tinystr.i: txml/tinystr.cpp.i
+
+.PHONY : txml/tinystr.i
+
+# target to preprocess a source file
+txml/tinystr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinystr.cpp.i
+.PHONY : txml/tinystr.cpp.i
+
+txml/tinystr.s: txml/tinystr.cpp.s
+
+.PHONY : txml/tinystr.s
+
+# target to generate assembly for a file
+txml/tinystr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinystr.cpp.s
+.PHONY : txml/tinystr.cpp.s
+
+txml/tinyxml.obj: txml/tinyxml.cpp.obj
+
+.PHONY : txml/tinyxml.obj
+
+# target to build an object file
+txml/tinyxml.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj
+.PHONY : txml/tinyxml.cpp.obj
+
+txml/tinyxml.i: txml/tinyxml.cpp.i
+
+.PHONY : txml/tinyxml.i
+
+# target to preprocess a source file
+txml/tinyxml.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxml.cpp.i
+.PHONY : txml/tinyxml.cpp.i
+
+txml/tinyxml.s: txml/tinyxml.cpp.s
+
+.PHONY : txml/tinyxml.s
+
+# target to generate assembly for a file
+txml/tinyxml.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxml.cpp.s
+.PHONY : txml/tinyxml.cpp.s
+
+txml/tinyxmlerror.obj: txml/tinyxmlerror.cpp.obj
+
+.PHONY : txml/tinyxmlerror.obj
+
+# target to build an object file
+txml/tinyxmlerror.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj
+.PHONY : txml/tinyxmlerror.cpp.obj
+
+txml/tinyxmlerror.i: txml/tinyxmlerror.cpp.i
+
+.PHONY : txml/tinyxmlerror.i
+
+# target to preprocess a source file
+txml/tinyxmlerror.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.i
+.PHONY : txml/tinyxmlerror.cpp.i
+
+txml/tinyxmlerror.s: txml/tinyxmlerror.cpp.s
+
+.PHONY : txml/tinyxmlerror.s
+
+# target to generate assembly for a file
+txml/tinyxmlerror.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.s
+.PHONY : txml/tinyxmlerror.cpp.s
+
+txml/tinyxmlparser.obj: txml/tinyxmlparser.cpp.obj
+
+.PHONY : txml/tinyxmlparser.obj
+
+# target to build an object file
+txml/tinyxmlparser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj
+.PHONY : txml/tinyxmlparser.cpp.obj
+
+txml/tinyxmlparser.i: txml/tinyxmlparser.cpp.i
+
+.PHONY : txml/tinyxmlparser.i
+
+# target to preprocess a source file
+txml/tinyxmlparser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.i
+.PHONY : txml/tinyxmlparser.cpp.i
+
+txml/tinyxmlparser.s: txml/tinyxmlparser.cpp.s
+
+.PHONY : txml/tinyxmlparser.s
+
+# target to generate assembly for a file
+txml/tinyxmlparser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.s
+.PHONY : txml/tinyxmlparser.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -178,9 +691,66 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... projectTA
+	@echo ... Bestemming.obj
+	@echo ... Bestemming.i
+	@echo ... Bestemming.s
+	@echo ... Datastructuur.obj
+	@echo ... Datastructuur.i
+	@echo ... Datastructuur.s
+	@echo ... Importer.obj
+	@echo ... Importer.i
+	@echo ... Importer.s
+	@echo ... Maksim.obj
+	@echo ... Maksim.i
+	@echo ... Maksim.s
+	@echo ... engine/Hulpfuncties.obj
+	@echo ... engine/Hulpfuncties.i
+	@echo ... engine/Hulpfuncties.s
+	@echo ... engine/L2Dsysteem.obj
+	@echo ... engine/L2Dsysteem.i
+	@echo ... engine/L2Dsysteem.s
+	@echo ... engine/L3Dsysteem.obj
+	@echo ... engine/L3Dsysteem.i
+	@echo ... engine/L3Dsysteem.s
+	@echo ... engine/Lsysteem.obj
+	@echo ... engine/Lsysteem.i
+	@echo ... engine/Lsysteem.s
+	@echo ... engine/ZBuffer.obj
+	@echo ... engine/ZBuffer.i
+	@echo ... engine/ZBuffer.s
+	@echo ... engine/drawTriangles.obj
+	@echo ... engine/drawTriangles.i
+	@echo ... engine/drawTriangles.s
+	@echo ... engine/easy_image.obj
+	@echo ... engine/easy_image.i
+	@echo ... engine/easy_image.s
+	@echo ... engine/engine.obj
+	@echo ... engine/engine.i
+	@echo ... engine/engine.s
+	@echo ... engine/ini_configuration.obj
+	@echo ... engine/ini_configuration.i
+	@echo ... engine/ini_configuration.s
+	@echo ... engine/l_parser.obj
+	@echo ... engine/l_parser.i
+	@echo ... engine/l_parser.s
+	@echo ... engine/vector3d.obj
+	@echo ... engine/vector3d.i
+	@echo ... engine/vector3d.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... txml/tinystr.obj
+	@echo ... txml/tinystr.i
+	@echo ... txml/tinystr.s
+	@echo ... txml/tinyxml.obj
+	@echo ... txml/tinyxml.i
+	@echo ... txml/tinyxml.s
+	@echo ... txml/tinyxmlerror.obj
+	@echo ... txml/tinyxmlerror.i
+	@echo ... txml/tinyxmlerror.s
+	@echo ... txml/tinyxmlparser.obj
+	@echo ... txml/tinyxmlparser.i
+	@echo ... txml/tinyxmlparser.s
 .PHONY : help
 
 

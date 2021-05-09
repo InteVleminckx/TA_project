@@ -53,19 +53,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
+CMAKE_SOURCE_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
+CMAKE_BINARY_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/projectTA.dir/depend.make
@@ -78,30 +78,315 @@ include CMakeFiles/projectTA.dir/flags.make
 
 CMakeFiles/projectTA.dir/main.cpp.obj: CMakeFiles/projectTA.dir/flags.make
 CMakeFiles/projectTA.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/projectTA.dir/main.cpp.obj"
-	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\main.cpp.obj -c C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/projectTA.dir/main.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\main.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp
 
 CMakeFiles/projectTA.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/main.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp > CMakeFiles\projectTA.dir\main.cpp.i
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp > CMakeFiles\projectTA.dir\main.cpp.i
 
 CMakeFiles/projectTA.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/main.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp -o CMakeFiles\projectTA.dir\main.cpp.s
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\main.cpp -o CMakeFiles\projectTA.dir\main.cpp.s
+
+CMakeFiles/projectTA.dir/Datastructuur.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/Datastructuur.cpp.obj: ../Datastructuur.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/projectTA.dir/Datastructuur.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\Datastructuur.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Datastructuur.cpp
+
+CMakeFiles/projectTA.dir/Datastructuur.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/Datastructuur.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Datastructuur.cpp > CMakeFiles\projectTA.dir\Datastructuur.cpp.i
+
+CMakeFiles/projectTA.dir/Datastructuur.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/Datastructuur.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Datastructuur.cpp -o CMakeFiles\projectTA.dir\Datastructuur.cpp.s
+
+CMakeFiles/projectTA.dir/Maksim.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/Maksim.cpp.obj: ../Maksim.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/projectTA.dir/Maksim.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\Maksim.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Maksim.cpp
+
+CMakeFiles/projectTA.dir/Maksim.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/Maksim.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Maksim.cpp > CMakeFiles\projectTA.dir\Maksim.cpp.i
+
+CMakeFiles/projectTA.dir/Maksim.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/Maksim.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Maksim.cpp -o CMakeFiles\projectTA.dir\Maksim.cpp.s
+
+CMakeFiles/projectTA.dir/Importer.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/Importer.cpp.obj: ../Importer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/projectTA.dir/Importer.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\Importer.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Importer.cpp
+
+CMakeFiles/projectTA.dir/Importer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/Importer.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Importer.cpp > CMakeFiles\projectTA.dir\Importer.cpp.i
+
+CMakeFiles/projectTA.dir/Importer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/Importer.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Importer.cpp -o CMakeFiles\projectTA.dir\Importer.cpp.s
+
+CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj: ../txml/tinyxml.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\txml\tinyxml.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxml.cpp
+
+CMakeFiles/projectTA.dir/txml/tinyxml.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/txml/tinyxml.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxml.cpp > CMakeFiles\projectTA.dir\txml\tinyxml.cpp.i
+
+CMakeFiles/projectTA.dir/txml/tinyxml.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/txml/tinyxml.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxml.cpp -o CMakeFiles\projectTA.dir\txml\tinyxml.cpp.s
+
+CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj: ../txml/tinystr.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\txml\tinystr.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinystr.cpp
+
+CMakeFiles/projectTA.dir/txml/tinystr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/txml/tinystr.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinystr.cpp > CMakeFiles\projectTA.dir\txml\tinystr.cpp.i
+
+CMakeFiles/projectTA.dir/txml/tinystr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/txml/tinystr.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinystr.cpp -o CMakeFiles\projectTA.dir\txml\tinystr.cpp.s
+
+CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj: ../txml/tinyxmlparser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\txml\tinyxmlparser.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlparser.cpp
+
+CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlparser.cpp > CMakeFiles\projectTA.dir\txml\tinyxmlparser.cpp.i
+
+CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlparser.cpp -o CMakeFiles\projectTA.dir\txml\tinyxmlparser.cpp.s
+
+CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj: ../txml/tinyxmlerror.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\txml\tinyxmlerror.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlerror.cpp
+
+CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlerror.cpp > CMakeFiles\projectTA.dir\txml\tinyxmlerror.cpp.i
+
+CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\txml\tinyxmlerror.cpp -o CMakeFiles\projectTA.dir\txml\tinyxmlerror.cpp.s
+
+CMakeFiles/projectTA.dir/Bestemming.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/Bestemming.cpp.obj: ../Bestemming.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/projectTA.dir/Bestemming.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\Bestemming.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Bestemming.cpp
+
+CMakeFiles/projectTA.dir/Bestemming.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/Bestemming.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Bestemming.cpp > CMakeFiles\projectTA.dir\Bestemming.cpp.i
+
+CMakeFiles/projectTA.dir/Bestemming.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/Bestemming.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\Bestemming.cpp -o CMakeFiles\projectTA.dir\Bestemming.cpp.s
+
+CMakeFiles/projectTA.dir/engine/easy_image.cc.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/easy_image.cc.obj: ../engine/easy_image.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/projectTA.dir/engine/easy_image.cc.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\easy_image.cc.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\easy_image.cc
+
+CMakeFiles/projectTA.dir/engine/easy_image.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/easy_image.cc.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\easy_image.cc > CMakeFiles\projectTA.dir\engine\easy_image.cc.i
+
+CMakeFiles/projectTA.dir/engine/easy_image.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/easy_image.cc.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\easy_image.cc -o CMakeFiles\projectTA.dir\engine\easy_image.cc.s
+
+CMakeFiles/projectTA.dir/engine/engine.cc.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/engine.cc.obj: ../engine/engine.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/projectTA.dir/engine/engine.cc.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\engine.cc.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\engine.cc
+
+CMakeFiles/projectTA.dir/engine/engine.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/engine.cc.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\engine.cc > CMakeFiles\projectTA.dir\engine\engine.cc.i
+
+CMakeFiles/projectTA.dir/engine/engine.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/engine.cc.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\engine.cc -o CMakeFiles\projectTA.dir\engine\engine.cc.s
+
+CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj: ../engine/ini_configuration.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\ini_configuration.cc.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ini_configuration.cc
+
+CMakeFiles/projectTA.dir/engine/ini_configuration.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/ini_configuration.cc.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ini_configuration.cc > CMakeFiles\projectTA.dir\engine\ini_configuration.cc.i
+
+CMakeFiles/projectTA.dir/engine/ini_configuration.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/ini_configuration.cc.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ini_configuration.cc -o CMakeFiles\projectTA.dir\engine\ini_configuration.cc.s
+
+CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj: ../engine/Lsysteem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\Lsysteem.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Lsysteem.cpp
+
+CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Lsysteem.cpp > CMakeFiles\projectTA.dir\engine\Lsysteem.cpp.i
+
+CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Lsysteem.cpp -o CMakeFiles\projectTA.dir\engine\Lsysteem.cpp.s
+
+CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj: ../engine/Hulpfuncties.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\Hulpfuncties.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Hulpfuncties.cpp
+
+CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Hulpfuncties.cpp > CMakeFiles\projectTA.dir\engine\Hulpfuncties.cpp.i
+
+CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\Hulpfuncties.cpp -o CMakeFiles\projectTA.dir\engine\Hulpfuncties.cpp.s
+
+CMakeFiles/projectTA.dir/engine/l_parser.cc.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/l_parser.cc.obj: ../engine/l_parser.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/projectTA.dir/engine/l_parser.cc.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\l_parser.cc.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\l_parser.cc
+
+CMakeFiles/projectTA.dir/engine/l_parser.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/l_parser.cc.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\l_parser.cc > CMakeFiles\projectTA.dir\engine\l_parser.cc.i
+
+CMakeFiles/projectTA.dir/engine/l_parser.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/l_parser.cc.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\l_parser.cc -o CMakeFiles\projectTA.dir\engine\l_parser.cc.s
+
+CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj: ../engine/L2Dsysteem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\L2Dsysteem.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L2Dsysteem.cpp
+
+CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L2Dsysteem.cpp > CMakeFiles\projectTA.dir\engine\L2Dsysteem.cpp.i
+
+CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L2Dsysteem.cpp -o CMakeFiles\projectTA.dir\engine\L2Dsysteem.cpp.s
+
+CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj: ../engine/L3Dsysteem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\L3Dsysteem.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L3Dsysteem.cpp
+
+CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L3Dsysteem.cpp > CMakeFiles\projectTA.dir\engine\L3Dsysteem.cpp.i
+
+CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\L3Dsysteem.cpp -o CMakeFiles\projectTA.dir\engine\L3Dsysteem.cpp.s
+
+CMakeFiles/projectTA.dir/engine/vector3d.cc.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/vector3d.cc.obj: ../engine/vector3d.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/projectTA.dir/engine/vector3d.cc.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\vector3d.cc.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\vector3d.cc
+
+CMakeFiles/projectTA.dir/engine/vector3d.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/vector3d.cc.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\vector3d.cc > CMakeFiles\projectTA.dir\engine\vector3d.cc.i
+
+CMakeFiles/projectTA.dir/engine/vector3d.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/vector3d.cc.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\vector3d.cc -o CMakeFiles\projectTA.dir\engine\vector3d.cc.s
+
+CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj: ../engine/ZBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\ZBuffer.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ZBuffer.cpp
+
+CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ZBuffer.cpp > CMakeFiles\projectTA.dir\engine\ZBuffer.cpp.i
+
+CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\ZBuffer.cpp -o CMakeFiles\projectTA.dir\engine\ZBuffer.cpp.s
+
+CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj: CMakeFiles/projectTA.dir/flags.make
+CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj: ../engine/drawTriangles.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj"
+	F:\mingw-w64\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\projectTA.dir\engine\drawTriangles.cpp.obj -c F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\drawTriangles.cpp
+
+CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.i"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\drawTriangles.cpp > CMakeFiles\projectTA.dir\engine\drawTriangles.cpp.i
+
+CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.s"
+	F:\mingw-w64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\engine\drawTriangles.cpp -o CMakeFiles\projectTA.dir\engine\drawTriangles.cpp.s
 
 # Object files for target projectTA
 projectTA_OBJECTS = \
-"CMakeFiles/projectTA.dir/main.cpp.obj"
+"CMakeFiles/projectTA.dir/main.cpp.obj" \
+"CMakeFiles/projectTA.dir/Datastructuur.cpp.obj" \
+"CMakeFiles/projectTA.dir/Maksim.cpp.obj" \
+"CMakeFiles/projectTA.dir/Importer.cpp.obj" \
+"CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj" \
+"CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj" \
+"CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj" \
+"CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj" \
+"CMakeFiles/projectTA.dir/Bestemming.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/easy_image.cc.obj" \
+"CMakeFiles/projectTA.dir/engine/engine.cc.obj" \
+"CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj" \
+"CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/l_parser.cc.obj" \
+"CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/vector3d.cc.obj" \
+"CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj" \
+"CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj"
 
 # External object files for target projectTA
 projectTA_EXTERNAL_OBJECTS =
 
 projectTA.exe: CMakeFiles/projectTA.dir/main.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/Datastructuur.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/Maksim.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/Importer.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/txml/tinyxml.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/txml/tinystr.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/txml/tinyxmlparser.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/txml/tinyxmlerror.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/Bestemming.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/easy_image.cc.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/engine.cc.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/ini_configuration.cc.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/Lsysteem.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/Hulpfuncties.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/l_parser.cc.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/L2Dsysteem.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/L3Dsysteem.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/vector3d.cc.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/ZBuffer.cpp.obj
+projectTA.exe: CMakeFiles/projectTA.dir/engine/drawTriangles.cpp.obj
 projectTA.exe: CMakeFiles/projectTA.dir/build.make
 projectTA.exe: CMakeFiles/projectTA.dir/linklibs.rsp
 projectTA.exe: CMakeFiles/projectTA.dir/objects1.rsp
 projectTA.exe: CMakeFiles/projectTA.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable projectTA.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable projectTA.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\projectTA.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -114,6 +399,6 @@ CMakeFiles/projectTA.dir/clean:
 .PHONY : CMakeFiles/projectTA.dir/clean
 
 CMakeFiles/projectTA.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles\projectTA.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles\projectTA.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/projectTA.dir/depend
 

@@ -12,12 +12,13 @@ add_executable(projectTA
         Importer.cpp
         Importer.h
         txml/tinyxml.h
+        txml/tinyxml.cpp
         txml/tinystr.h
+        txml/tinystr.cpp
         txml/tinyxmlparser.cpp
         txml/tinyxmlerror.cpp
         Bestemming.cpp
         Bestemming.h
-
         engine/easy_image.cc
         engine/engine.cc
         engine/ini_configuration.cc

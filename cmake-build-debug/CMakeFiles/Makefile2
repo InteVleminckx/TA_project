@@ -54,19 +54,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.2.5\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Users\Maksim Karnaukh\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.7660.37\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
+CMAKE_SOURCE_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
+CMAKE_BINARY_DIR = F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/projectTA.dir/clean
 CMakeFiles/projectTA.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\projectTA.dir\build.make CMakeFiles/projectTA.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target projectTA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target projectTA"
 .PHONY : CMakeFiles/projectTA.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/projectTA.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/projectTA.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\intev\CLionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start F:\ClionProjects\Jonas-De-Maeyer-Dzhem-Myumyun-Maksim-Karnaukh-Inte-Vleminckx\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/projectTA.dir/rule
 
 # Convenience name for target.
