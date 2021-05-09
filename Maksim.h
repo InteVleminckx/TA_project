@@ -4,9 +4,12 @@
 
 #ifndef PROJECTTA_MAKSIM_H
 #define PROJECTTA_MAKSIM_H
+#include <iostream>
 #include <string>
 #include <fstream>
 #include "vector"
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -24,7 +27,13 @@ public:
 
     void stringToBarcode(string &str);
 
-    string generateRE();
+    string generateRE(int numberOfIterations = 0);
+
+    string chooseOperationFirstTime();
+
+    string chooseOperation(string &deelRegex);
+
+    string getRandomString(int nr_iterations);
 };
 
 
