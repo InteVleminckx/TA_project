@@ -137,7 +137,6 @@ string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie 
     else {
         randomBewerking = rand() % 2; // kleene star zit hier niet bij de mogelijke bewerkingen
     }
-
     string deelRegex;
     if (randomBewerking == 0) { // unie
         deelRegex = "(" + to_string(symbool1) + "+" + deelRegex1 + ")"; // (0+1)
