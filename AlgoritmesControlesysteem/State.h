@@ -185,6 +185,14 @@ public:
      * @param degree_map: map voor het tellen voor staten van verschillende graad.
      */
     void countUpTransitions(map<char,int>& counter_map, map<int,int>& degree_map);
+
+
+    /**
+     * Getter voor de transities van een state
+     * @return map<char, set<State_NFA*>>
+     */
+    const map<char, set<State_NFA*>> &getTTo() const;
+
 };
 
 
