@@ -97,6 +97,12 @@ public:
      */
     void changeName(string n);
 
+    /**
+     * Getter voor de transities van een state
+     * @return map<char, State *>
+     */
+    const map<char, State *> &getTTo() const;
+
 };
 
 /**

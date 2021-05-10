@@ -11,6 +11,7 @@
 
 using namespace std;
 
+ENFA::ENFA() = default;
 
 ENFA::ENFA(const string &input) {
     ifstream input_json(input);

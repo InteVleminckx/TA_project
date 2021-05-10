@@ -145,6 +145,19 @@ public:
      * @param d: tegen te vergelijken DFA
      */
     bool operator ==(const DFA& d);
+
+    /**
+     * Getter voor de states
+     * @return map<string, State *>
+     */
+    const map<string, State *> &getStates() const;
+
+    /**
+     * Setter voor het aanpassen van de states na het bekijken of er unreachable states zijn.
+     * @param newStates : de nieuwe states.
+     */
+    void setStates(map<string, State *> &newStates);
+
 };
 
 

@@ -13,9 +13,26 @@ class DFA;
 
 class Brzozowski {
 public:
+    /**
+     * Functie die een automaat gaat minimaliseren met Brzozowski-algoritme
+     * @param productAutomaat = automaat die we willen minimaliseren
+     */
     static void brzozowskiAlgorithm(DFA &productAutomaat);
-    static void reversal(DFA &productAutomaat);
-    // Extra functie van NFA naar DFA = subsetconstruction toevoegen
+
+    /**
+     * Hulpfunctie die de reversal van een DFA gaat nemen
+     * @param productAutomaat = automaat waarvan we de reversal willen nemen
+     */
+    static void reversal(DFA &productAutomaat, ENFA &e_nfa);
+
+    /**
+     * Functie die alle niet-bereikbare states gaat elemineren
+     * @param productautomaat = automaat waarop we dit willen toepassen
+     */
+    static void elemNonReachableStates(DFA &productautomaat);
+
+
+    // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };
 
 
