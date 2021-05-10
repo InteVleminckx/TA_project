@@ -10,6 +10,7 @@ int main() {
 
     Datastructuur datastructuur;
     Importer::readXMLFile("../xmlfiles/test1.xml", datastructuur);
+    datastructuur.inorderTraversal();
     return 0;
 
 }
