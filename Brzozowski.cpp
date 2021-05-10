@@ -44,8 +44,6 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
     State_NFA* new_accepting_state = new State_NFA(state->isStarting(), state->getName(), true, e_nfa.getEpsilon());
     e_nfa.addToStates(new_accepting_state);
 
-    e_nfa.setStartState(const_cast<string &>(name_start_state));
-
     // Accepting states bepalen
     vector<State*> accepting_states = productAutomaat.getAcceptingStates();
 
@@ -56,6 +54,8 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
                                               accepting_states[0]->getName(),
                                               false,
                                               e_nfa.getEpsilon());
+        string temp_name = accepting_states[0]->getName();
+        e_nfa.setStartState(temp_name);
         e_nfa.addToStates(new_starting_state);
         e_nfa.addToStartingStates(new_starting_state->getName());
         e_nfa.addToCurrentStates(new_starting_state->getName());
@@ -65,7 +65,7 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
     else if (accepting_states.size() > 1)
     {
         State_NFA* new_starting_state = new State_NFA(true,
-                                                      "S",
+                                                      "q0",
                                                       false,
                                                       e_nfa.getEpsilon());
         // Voor elke accepting state een transitie van new_starting_state naar accepting state
@@ -78,8 +78,6 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
         e_nfa.addToStates(new_starting_state);
 
     }
-    // Hier functie maken die alle overige states uit de productAutomaat omzet naar State_NFA* en deze toevoegd
-    // Aan de e_nfa
 
     for (const auto &stateDFA : productAutomaat.getStates())
     {

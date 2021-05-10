@@ -13,9 +13,11 @@ int main() {
 //    Importer::readXMLFile("../xmlfiles/test1.xml", datastructuur);
 //    datastructuur.inorderTraversal();
 
-    DFA dfa = DFA("../DFA.json");
+    DFA dfa = DFA("../Test1.json");
     Brzozowski::brzozowskiAlgorithm(dfa);
 
-    return 0;
+    DFA dfa2 = DFA("../Test2.json");
+    Brzozowski::brzozowskiAlgorithm(dfa2);
 
+    return 0;
 }
