@@ -39,4 +39,15 @@ add_executable(projectTA
         engine/ZBuffer.h
         engine/drawTriangles.cpp
         engine/drawTriangles.h
-        Brzozowski.cpp Brzozowski.h)
+        
+        Brzozowski.cpp 
+        Brzozowski.h
+
+        AlgoritmesControlesysteem/DFA.cpp
+        AlgoritmesControlesysteem/ENFA.cpp
+        AlgoritmesControlesysteem/json.hpp
+        AlgoritmesControlesysteem/RE.cpp
+        AlgoritmesControlesysteem/State.cpp
+        Dzhem.cpp 
+        Dzhem.h
+        )
