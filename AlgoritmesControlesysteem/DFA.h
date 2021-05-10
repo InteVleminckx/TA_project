@@ -158,6 +158,17 @@ public:
      */
     void setStates(map<string, State *> &newStates);
 
+    /**
+     * Getter voor de startstate
+     * @return startstate (type = string)
+     */
+    const string &getStartState() const;
+
+    /**
+     * Functie die alle accepting states van een DFA teruggeeft met een vector
+     * @return vector<State*>
+     */
+    vector<State*> getAcceptingStates() const;
 };
 
 
