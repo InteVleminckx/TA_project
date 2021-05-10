@@ -213,4 +213,37 @@ void ENFA::printStats() {
     }
 }
 
+void ENFA::addToStates(State_NFA *state) {
+    states[state->getName()] = state;
+}
 
+char ENFA::getEpsilon() const {
+    return eps;
+}
+
+void ENFA::addToStartingStates(const string &name) {
+    starting.insert(name);
+}
+
+void ENFA::addToCurrentStates(const string &name) {
+    current_states.insert(name);
+}
+
+const map<string, State_NFA *> &ENFA::getStates() const {
+    return states;
+}
+
+vector<State_NFA *> ENFA::getAcceptingStates() const {
+    vector<State_NFA*> accepting_states = {};
+
+    // Over alle states loopen
+    for (const auto &pair : getStates())
+    {
+        // Als state accepting is ==> toevoegen aan vector
+        if (pair.second->is_accepting())
+        {
+            accepting_states.push_back(pair.second);
+        }
+    }
+    return accepting_states;
+}

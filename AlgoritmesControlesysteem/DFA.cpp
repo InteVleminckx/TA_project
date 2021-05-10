@@ -500,3 +500,22 @@ void DFA::setStates(map<string, State *> &newStates) {
     states = newStates;
 }
 
+const string &DFA::getStartState() const {
+    return start_state;
+}
+
+vector<State *> DFA::getAcceptingStates() const {
+    vector<State*> accepting_states = {};
+
+    // Over alle states loopen
+    for (const auto &pair : getStates())
+    {
+        // Als state accepting is ==> toevoegen aan vector
+        if (pair.second->is_accept())
+        {
+            accepting_states.push_back(pair.second);
+        }
+    }
+    return accepting_states;
+}
+

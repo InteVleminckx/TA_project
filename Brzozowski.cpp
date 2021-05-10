@@ -15,18 +15,70 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
      * Stap 6 : states die niet bereikbaar zijn elimineren
      */
 
+    // ENFA die we zullen gebruiken doorheen de functies
     ENFA enfa = ENFA();
 
-    reversal(productAutomaat, enfa);
-    productAutomaat = enfa.toDFA();
-    elemNonReachableStates(productAutomaat);
-    reversal(productAutomaat, enfa);
-    productAutomaat = enfa.toDFA();
-    elemNonReachableStates(productAutomaat);
+    reversal(productAutomaat, enfa);             // Stap 1
+    productAutomaat = enfa.toDFA();                    // Stap 2
+    elemNonReachableStates(productAutomaat);        // Stap 3
+    reversal(productAutomaat, enfa);             // Stap 4
+    productAutomaat = enfa.toDFA();                    // Stap 5
+    elemNonReachableStates(productAutomaat);        // Stap 6
 }
 
 void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
+    /*
+     * Stappenplan:
+     * 1) Starting state wordt enigste accepting state ==> direct toevoegen
+     * 2) Accepting states worden start state
+     *      1 Accepting state ==> normale start state
+     *      Meerdere accepting states ==> nieuwe start state met eps-trans naar deze accepting states
+     * 3) Alle andere states toevoegen die nog niet werden toegevoegd
+     * 4) Alle transities omkeren ==> to_state wordt this + transitie toevoegen aan to_state
+     */
 
+    // Starting state wordt enigste accepting state + toevoegen aan e_nfa
+    const string& name_start_state = productAutomaat.getStartState();
+    State* state = productAutomaat.getStates().at(name_start_state);
+    State_NFA* new_accepting_state = new State_NFA(state->isStarting(), state->getName(), true, e_nfa.getEpsilon());
+    e_nfa.addToStates(new_accepting_state);
+
+    // Accepting states bepalen
+    vector<State*> accepting_states = productAutomaat.getAcceptingStates();
+
+    // Als er slechts 1 accepting state is ==> maken en toevoegen aan e_nfa
+    if (accepting_states.size() == 1)
+    {
+        State_NFA* new_starting_state = new State_NFA(true,
+                                              accepting_states[0]->getName(),
+                                              false,
+                                              e_nfa.getEpsilon());
+        e_nfa.addToStates(new_starting_state);
+        e_nfa.addToStartingStates(new_starting_state->getName());
+        e_nfa.addToCurrentStates(new_starting_state->getName());
+    }
+
+    // Meerdere states
+    else if (accepting_states.size() > 1)
+    {
+        State_NFA* new_starting_state = new State_NFA(true,
+                                                      "S",
+                                                      false,
+                                                      e_nfa.getEpsilon());
+        // Voor elke accepting state een transitie van new_starting_state naar accepting state
+        for (State* state1 : accepting_states)
+        {
+            State_NFA* new_state = new State_NFA(false, state1->getName(), false, e_nfa.getEpsilon());
+            e_nfa.addToStates(new_state);
+            new_starting_state->addTransition(e_nfa.getEpsilon(), new_state);
+        }
+        e_nfa.addToStates(new_starting_state);
+
+        // Hier functie maken die alle overige states uit de productAutomaat omzet naar State_NFA* en deze toevoegd
+        // Aan de e_nfa
+    }
+
+    // Hier nog alle transities omdraaien + toevoegen aan e_nfa
 }
 
 void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
