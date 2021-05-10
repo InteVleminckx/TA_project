@@ -6,6 +6,9 @@
 #define PROJECTTA_BRZOZOWSKI_H
 
 #include "Datastructuur.h"
+#include "AlgoritmesControlesysteem/DFA.h"
+#include "AlgoritmesControlesysteem/ENFA.h"
+#include "AlgoritmesControlesysteem/State.h"
 
 using namespace std;
 
