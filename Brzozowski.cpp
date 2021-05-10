@@ -17,6 +17,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
 
     // ENFA die we zullen gebruiken doorheen de functies
     ENFA enfa = ENFA();
+    enfa.setEpsilon('e');
 
     reversal(productAutomaat, enfa);             // Stap 1
     productAutomaat = enfa.toDFA();                    // Stap 2
@@ -42,6 +43,8 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
     State* state = productAutomaat.getStates().at(name_start_state);
     State_NFA* new_accepting_state = new State_NFA(state->isStarting(), state->getName(), true, e_nfa.getEpsilon());
     e_nfa.addToStates(new_accepting_state);
+
+    e_nfa.setStartState(const_cast<string &>(name_start_state));
 
     // Accepting states bepalen
     vector<State*> accepting_states = productAutomaat.getAcceptingStates();

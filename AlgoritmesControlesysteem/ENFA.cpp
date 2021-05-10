@@ -247,3 +247,11 @@ vector<State_NFA *> ENFA::getAcceptingStates() const {
     }
     return accepting_states;
 }
+
+void ENFA::setStartState(string &startState) {
+    q0 = startState;
+}
+
+void ENFA::setEpsilon(char epsilon) {
+    eps = epsilon;
+}
