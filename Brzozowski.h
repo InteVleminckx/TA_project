@@ -15,6 +15,15 @@ using namespace std;
 class DFA;
 
 class Brzozowski {
+
+    /**
+     * Deze functie keert de transities om en kent ze toe aan de juiste state
+     * @param stateDFA: De state naar waar de transitie naar toe moet gaan
+     * @param e_nfa: De ENFA
+     * @param from: De state waaruit de transities vertrekken
+     */
+    static void setTransitions(pair<const char, State*> &stateDFA, ENFA &e_nfa, State_NFA* from);
+
 public:
     /**
      * Functie die een automaat gaat minimaliseren met Brzozowski-algoritme
@@ -34,13 +43,7 @@ public:
      */
     static void elemNonReachableStates(DFA &productautomaat);
 
-    /**
-     *
-     * @param stateDFA =
-     * @param e_nfa =
-     * @param from =
-     */
-    static void setTransitions(pair<const char, State*> &stateDFA, ENFA &e_nfa, State_NFA* from);
+
     // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };
 

@@ -135,6 +135,19 @@ public:
      * @return map<string, State_NFA *>
      */
     const map<string, State_NFA *> &getStates() const;
+
+    /**
+     * Initialisseerd q0
+     * @param startState: string, naam van de start state
+     */
+    void setStartState(string &startState);
+
+    /**
+     * Initialisseerd eps
+     * @param epsilon: char, zegt welke char epsilon moet voorstellen
+     */
+    void setEpsilon(char epsilon);
+
 };
 
 
