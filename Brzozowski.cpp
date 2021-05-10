@@ -20,6 +20,9 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
     enfa.setEpsilon('e');
 
     reversal(productAutomaat, enfa);             // Stap 1
+
+    enfa.printStats();
+
     productAutomaat = enfa.toDFA();                    // Stap 2
     elemNonReachableStates(productAutomaat);        // Stap 3
     reversal(productAutomaat, enfa);             // Stap 4
@@ -41,7 +44,7 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
     // Starting state wordt enigste accepting state + toevoegen aan e_nfa
     const string& name_start_state = productAutomaat.getStartState();
     State* state = productAutomaat.getStates().at(name_start_state);
-    State_NFA* new_accepting_state = new State_NFA(state->isStarting(), state->getName(), true, e_nfa.getEpsilon());
+    State_NFA* new_accepting_state = new State_NFA(false, state->getName(), true, e_nfa.getEpsilon());
     e_nfa.addToStates(new_accepting_state);
 
     // Accepting states bepalen
@@ -68,6 +71,10 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
                                                       "q0",
                                                       false,
                                                       e_nfa.getEpsilon());
+
+        string tempString = "q0";
+        e_nfa.setStartState(tempString);
+
         // Voor elke accepting state een transitie van new_starting_state naar accepting state
         for (State* state1 : accepting_states)
         {
@@ -124,8 +131,11 @@ void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
         // Voor elke transitie in deze state
         for (auto it : state.second->getTTo())
         {
+
+            cout << it.second->getName() << " " << state.second->getName() << endl;
+
             // Naam van TO state toevoegen aan namen
-            namen.insert(it.second->getName());
+            if (it.second->getName() != state.second->getName()) namen.insert(it.second->getName());
         }
     }
 
