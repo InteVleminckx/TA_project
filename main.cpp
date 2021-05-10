@@ -14,9 +14,7 @@ int main() {
 //    datastructuur.inorderTraversal();
 
     DFA dfa = DFA("../DFA.json");
-    dfa.print();
-    Brzozowski::elemNonReachableStates(dfa);
-    dfa.print();
+    Brzozowski::brzozowskiAlgorithm(dfa);
 
     return 0;
 

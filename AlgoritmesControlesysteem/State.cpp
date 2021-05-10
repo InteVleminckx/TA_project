@@ -194,3 +194,7 @@ void State_NFA::countUpTransitions(map<char, int>& counter_map, map<int, int>& d
     }
 }
 
+const map<char, set<State_NFA *>>& State_NFA::getTTo() const {
+    return t_to;
+}
+

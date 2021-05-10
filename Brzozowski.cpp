@@ -74,11 +74,43 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
         }
         e_nfa.addToStates(new_starting_state);
 
-        // Hier functie maken die alle overige states uit de productAutomaat omzet naar State_NFA* en deze toevoegd
-        // Aan de e_nfa
+    }
+    // Hier functie maken die alle overige states uit de productAutomaat omzet naar State_NFA* en deze toevoegd
+    // Aan de e_nfa
+
+    for (const auto &stateDFA : productAutomaat.getStates())
+    {
+        //De overige states moeten nog worden toegevoegd, we controlleren dus eerst of de state er al in zit of niet
+        //als dit niet het geval is maken we een nieuwe state aan en voegen we deze toe.
+        if (!e_nfa.getStates().count(stateDFA.second->getName()))
+        {
+            State_NFA* new_NFA_state = new State_NFA(false,
+                                                     stateDFA.second->getName(),
+                                                     false,
+                                                     e_nfa.getEpsilon());
+
+            e_nfa.addToStates(new_NFA_state);
+        }
     }
 
-    // Hier nog alle transities omdraaien + toevoegen aan e_nfa
+
+    //nu moeten we enkel nog de transities toevoegen aan de states.
+    for (const auto &stateDFA : productAutomaat.getStates())
+    {
+        string fromDFA = stateDFA.first;
+        State_NFA* from;
+
+        for (auto &fromState : e_nfa.getStates())
+        {
+            if (fromDFA == fromState.second->getName())
+            {
+                from = fromState.second;
+                break;
+            }
+        }
+
+        for (auto to : stateDFA.second->getTTo()) setTransitions(to, e_nfa, from);
+    }
 }
 
 void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
@@ -108,4 +140,20 @@ void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
 
     // productautomaat zijn states aanpassen zodat enkel bereikbare states erin zitten
     productautomaat.setStates(nieuwe_states);
+}
+
+void Brzozowski::setTransitions(pair<const char, State *> &stateDFA, ENFA &e_nfa, State_NFA* from)
+{
+    const char transitie = stateDFA.first;
+
+    for (auto &state : e_nfa.getStates())
+    {
+        //Als de state nog geen transities heeft moeten we deze nog toevoegen
+        //En we hebben de juiste state gevonden
+        if (stateDFA.second->getName() == state.second->getName())
+        {
+            state.second->addTransition(transitie, from);
+            break;
+        }
+    }
 }

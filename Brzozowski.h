@@ -15,6 +15,10 @@ using namespace std;
 class DFA;
 
 class Brzozowski {
+
+
+    static void setTransitions(pair<const char, State*> &stateDFA, ENFA &e_nfa, State_NFA* from);
+
 public:
     /**
      * Functie die een automaat gaat minimaliseren met Brzozowski-algoritme
