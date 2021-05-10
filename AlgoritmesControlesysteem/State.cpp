@@ -91,6 +91,10 @@ void State::changeName(string n) {
     name = n;
 }
 
+const map<char, State *> &State::getTTo() const {
+    return t_to;
+}
+
 
 void State_NFA::setState(bool s) {
     state = s;

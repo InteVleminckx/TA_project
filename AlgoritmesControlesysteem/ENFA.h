@@ -28,6 +28,12 @@ private:
     vector<char> alphabet;
 
 public:
+
+    /**
+     * Default constructor.
+     */
+    ENFA();
+
     /**
      * Constructor die gebruikt wordt door de klasse RE na de omzetting van regex naar een eNFA om de ENFA te initialiseren.
      * @param s: de map met alle staten van de ENFA.

@@ -57,7 +57,7 @@ DFA::DFA(const string& input) {
         string name = s["name"];
         bool acc = s["accepting"];
         bool start = s["starting"];
-        if (start){
+        if (start) {
             current = name;
             start_state = name; //start state van de DFA(veranderd niet);
         }
@@ -492,4 +492,11 @@ void DFA::printTable() {
     tablePrinter(TFA_table, states);
 }
 
+const map<string, State *> &DFA::getStates() const {
+    return states;
+}
+
+void DFA::setStates(map<string, State *> &newStates) {
+    states = newStates;
+}
 
