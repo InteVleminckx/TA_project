@@ -30,13 +30,8 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
 }
 
 void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
-
-    /*
-     * Lopen over alle states uit de DFA en de TO van elke transitie toevoegen in die namen
-     *
-     */
-
     set<string> namen = {};
+    map<string, State*> nieuwe_states = {};
 
     // Voor elke state in de productautomaat
     for(auto &state : productautomaat.getStates())
@@ -45,18 +40,20 @@ void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
         for (auto it : state.second->getTTo())
         {
             // Naam van TO state toevoegen aan namen
-            string name_to_state = it.second->getName();
-            namen.insert(name_to_state);
+            namen.insert(it.second->getName());
         }
     }
 
     // Over alle states loopen
     for (const auto& naam : productautomaat.allStates())
     {
-        //Als er geen transitie is naar deze state dan mag deze verwijdert worden
-        if (!namen.count(naam))
+        //Als er wel transities zijn, voegen we deze toe aan de
+        if (namen.count(naam) || productautomaat.getStates().at(naam)->isStarting())
         {
-
+            nieuwe_states[naam] = productautomaat.getStates().at(naam);
         }
     }
+
+    // productautomaat zijn states aanpassen zodat enkel bereikbare states erin zitten
+    productautomaat.setStates(nieuwe_states);
 }
