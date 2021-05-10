@@ -75,8 +75,6 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
         e_nfa.addToStates(new_starting_state);
 
     }
-    // Hier functie maken die alle overige states uit de productAutomaat omzet naar State_NFA* en deze toevoegd
-    // Aan de e_nfa
 
     for (const auto &stateDFA : productAutomaat.getStates())
     {
