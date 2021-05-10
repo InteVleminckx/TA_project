@@ -16,7 +16,12 @@ class DFA;
 
 class Brzozowski {
 
-
+    /**
+     * Deze functie keert de transities om en kent ze toe aan de juiste state
+     * @param stateDFA: De state naar waar de transitie naar toe moet gaan
+     * @param e_nfa: De ENFA
+     * @param from: De state waaruit de transities vertrekken
+     */
     static void setTransitions(pair<const char, State*> &stateDFA, ENFA &e_nfa, State_NFA* from);
 
 public:
