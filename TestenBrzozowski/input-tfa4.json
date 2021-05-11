@@ -13,7 +13,7 @@
     {
       "name": "Q",
       "starting": false,
-      "accepting": false
+      "accepting": true
     },
     {
       "name": "R",
@@ -24,12 +24,12 @@
   "transitions": [
     {
       "from": "P",
-      "to": "P",
+      "to": "Q",
       "input": "0"
     },
     {
       "from": "P",
-      "to": "Q",
+      "to": "R",
       "input": "1"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "from": "Q",
-      "to": "Q",
+      "to": "R",
       "input": "1"
     },
     {

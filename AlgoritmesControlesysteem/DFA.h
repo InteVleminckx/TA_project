@@ -21,7 +21,6 @@ using namespace std::chrono;
  */
 int sommatie(int i);
 
-
 class DFA {
 private:
     string start_state; //string die gebruikt wordt bij het resetten van de DFA
@@ -67,7 +66,7 @@ public:
     /**
     * Deze functie maakt een nlholman::json object aan van de DFA en print deze vervolgens uit.
     */
-    void print();
+    void print(ostream &os_stream);
 
     /**
      * Geeft de alfabet van de automaat terug.

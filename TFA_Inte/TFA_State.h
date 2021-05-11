@@ -15,7 +15,7 @@
 using namespace nlohmann;
 using namespace std;
 
-class State {
+class TFA_State{
 public:
     string name;
     bool starting;

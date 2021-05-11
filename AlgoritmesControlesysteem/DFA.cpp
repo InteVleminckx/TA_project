@@ -76,7 +76,7 @@ DFA::DFA(const string& input) {
 }
 
 
-void DFA::print() {
+void DFA::print(ostream &os_stream) {
     nlohmann::json j;
     j["type"] = "DFA";
     vector<string> alfabet;
@@ -554,6 +554,10 @@ void DFA::renameStates() {
     }
     states.clear();
     states = newNameStates;
+}
+
+const string &DFA::getCurrentState() const {
+    return current;
 }
 
 int DFA::getMemory() const {
