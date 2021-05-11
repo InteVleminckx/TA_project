@@ -29,6 +29,13 @@ class Plotter
      */
     void createCoordinates(vector<double> &points);
 
+    /**
+     * Deze functie maakt de table aan met alle tijden
+     * @param TFA: de snelheidswaardes van het Table filling algorithm
+     * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
+     */
+    void createTable(vector<double> &TFA, vector<double> &BRZ);
+
 public:
 
     /**

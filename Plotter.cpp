@@ -133,6 +133,62 @@ void Plotter::createHTML(vector<double> &TFA, vector<double> &BRZ)
     //Einde van het script
     plot << "\t</script>\n";
     plot << "</head>\n";
+
+    //table style
+    plot << "<style> \n";
+    plot << "\t" << ".styled-table\n";
+    plot << "\t" << "{\n";
+    plot << "\t\t" << "border-collapse: collapse;";
+    plot << "\t\t" << "margin: 25px 0;";
+    plot << "\t\t" << "font-size: 0.9em;";
+    plot << "\t\t" << "font-family: sans-serif;";
+    plot << "\t\t" << "min-width: 99vw;";
+    plot << "\t\t" << "background-color: #32373a;";
+    plot << "\t\t" << "color: white;";
+    plot << "\t\t" << "text-align: center;";
+    plot << "\t\t" << "border-radius: 10px 10px 10px 10px;";
+    plot << "\t\t" << "overflow: hidden;";
+    plot << "\t\t" << "box-shadow: 0 0 20px rgba(0,0,0,0.25);";
+    plot << "\t" << "}\n";
+
+    plot << "\t" << ".styled-table thead tr\n";
+    plot << "\t" << "{\n";
+    plot << "\t\t" << "background-color: #32373a;";
+    plot << "\t\t" << "color: white;";
+    plot << "\t\t" << "text-align: center;";
+    plot << "\t\t" << "font-weight: bold;";
+    plot << "\t\t" << "font-size: 18px;";
+    plot << "\t" << "}\n";
+
+    plot << "\t" << ".styled-table th,\n";
+    plot << "\t" << ".styled-table td\n";
+    plot << "\t" << "{\n";
+    plot << "\t\t" << "padding: 12px 15px;";
+    plot << "\t" << "}\n";
+
+    plot << "\t" << ".styled-table tbody tr\n";
+    plot << "\t" << "{\n";
+    plot << "\t\t" << "border-bottom: 1px solid white;";
+    plot << "\t" << "}\n";
+
+    plot << "</style> \n";
+
+    //table
+    plot << "<table class=\"styled-table\">\n";
+    plot << "\t" << "<thead>\n";
+    plot << "\t" << "<tr>\n";
+    plot << "\t\t" << "<th>Aantal minimalisaties</th>\n";
+    plot << "\t\t" << "<th>Table filling algoritme</th>\n";
+    plot << "\t\t" << "<th>Brzozowski algoritme</th>\n";
+    plot << "\t" << "</tr>\n";
+    plot << "\t" << "</thead>\n";
+    plot << "\t" << "<tbody>\n";
+
+    createTable(TFA, BRZ);
+
+    plot << "\t" << "</tbody>\n";
+    plot << "</table>\n";
+
     plot << "<body>\n";
     plot << "<div id=\"chartContainer\" style=\"height: 370px; width: 100%;\"></div>\n";
     plot << "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n";
@@ -158,3 +214,25 @@ void Plotter::createCoordinates(vector<double> &points)
         }
     }
 }
+
+void Plotter::createTable(vector<double> &TFA, vector<double> &BRZ)
+{
+
+    int maxLength = max(TFA.size(), BRZ.size());
+
+    for (int i = 0; i < maxLength; ++i)
+    {
+        plot << "\t" << "<tr>\n";
+
+        plot << "\t\t" << "<td>" << i << "</td>\n";
+
+        if (i < TFA.size()) plot << "\t\t" << "<td>" << TFA[i] << "</td>\n";
+        else plot << "\t\t" << "<td>" << " " << "</td>\n";
+
+        if (i < BRZ.size()) plot << "\t\t" << "<td>" << BRZ[i] << "</td>\n";
+        else plot << "\t\t" << "<td>" << " " << "</td>\n";
+        plot << "\t" << "</tr>\n";
+    }
+
+}
+
