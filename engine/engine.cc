@@ -132,6 +132,7 @@ img::EasyImage generate_image(const ini::Configuration &configuration)
 //        return retVal;
 //}
 
+
 void save_image(std::string iniFilename) {
     ini::Configuration conf;
     std::ifstream fin(iniFilename);

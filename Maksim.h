@@ -12,6 +12,7 @@
 #include <time.h>
 
 
+
 using namespace std;
 
 // Zaken die moeten gedaan worden:
