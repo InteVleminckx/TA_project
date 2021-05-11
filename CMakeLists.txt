@@ -22,6 +22,7 @@ add_executable(projectTA
 
         engine/easy_image.cc
         engine/engine.cc
+        engine/engine.h
         engine/ini_configuration.cc
         engine/Lsysteem.cpp
         engine/Lsysteem.h
