@@ -95,6 +95,10 @@ const map<char, State *> &State::getTTo() const {
     return t_to;
 }
 
+void State::setName(string Name) {
+    name = Name;
+}
+
 
 void State_NFA::setState(bool s) {
     state = s;
@@ -196,5 +200,9 @@ void State_NFA::countUpTransitions(map<char, int>& counter_map, map<int, int>& d
 
 const map<char, set<State_NFA *>>& State_NFA::getTTo() const {
     return t_to;
+}
+
+void State_NFA::setName(string Name) {
+    name = Name;
 }
 

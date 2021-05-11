@@ -169,6 +169,11 @@ public:
      * @return vector<State*>
      */
     vector<State*> getAcceptingStates() const;
+
+    /**
+     * Deze functie veranderd de namen van de staten naar simpele namen.
+     */
+    void renameStates();
 };
 
 
