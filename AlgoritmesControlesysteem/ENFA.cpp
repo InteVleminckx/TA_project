@@ -131,6 +131,8 @@ string ENFA::setToString(set<State_NFA*> states){
 
 
 DFA ENFA::toDFA() {
+    State_NFA* temp = states[q0];
+
     vector<set<State_NFA*>> subsets = {states[q0]->ECLOSE()};   //vector met de subsets gevormd door Lazy evaluation.
     map<string, State*> DFA_states; //map met staten voor de te cosntrueren DFA.
 

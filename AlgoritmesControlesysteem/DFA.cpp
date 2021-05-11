@@ -556,6 +556,10 @@ void DFA::renameStates() {
     states = newNameStates;
 }
 
+const string &DFA::getCurrentState() const {
+    return current;
+}
+
 int DFA::getMemory() const {
     int aantal_bytes = 0;
     aantal_bytes += sizeof(getStartState());

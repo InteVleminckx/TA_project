@@ -24,7 +24,7 @@
   "transitions": [
     {
       "from": "P",
-      "to": "P",
+      "to": "Q",
       "input": "0"
     },
     {

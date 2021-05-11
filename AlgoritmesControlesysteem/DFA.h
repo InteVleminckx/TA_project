@@ -21,7 +21,6 @@ using namespace std::chrono;
  */
 int sommatie(int i);
 
-
 class DFA {
 private:
     string start_state; //string die gebruikt wordt bij het resetten van de DFA

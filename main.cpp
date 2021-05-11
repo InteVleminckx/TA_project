@@ -63,5 +63,14 @@ int main() {
 //    kaas.stringToBarcode(barcode8);
 //    kaas.stringToBarcode(barcode9);
 //    kaas.stringToBarcode(barcode10);
+
+    long time;
+    DFA dfa1 = DFA("../TestenBrzozowski/input-tfa4.json");
+    Brzozowski::brzozowskiAlgorithm(dfa1, time);
+    dfa1.print();
+
+    DFA dfa2("../TestenBrzozowski/input-tfa4.json");
+    dfa2.minimize(time);
+    dfa2.print();
     return 0;
 }
