@@ -38,14 +38,34 @@
       "input": "d"
     },
     {
+      "from": "1",
+      "to": "0",
+      "input": "f"
+    },
+    {
+      "from": "1",
+      "to": "3",
+      "input": "d"
+    },
+    {
       "from": "3",
       "to": "2",
       "input": "f"
     },
     {
+      "from": "3",
+      "to": "0",
+      "input": "d"
+    },
+    {
       "from": "2",
       "to": "2",
       "input": "d"
+    },
+    {
+      "from": "2",
+      "to": "0",
+      "input": "f"
     }
   ]
 }

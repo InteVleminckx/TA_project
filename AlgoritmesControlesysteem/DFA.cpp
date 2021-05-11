@@ -233,7 +233,10 @@ string DFA::stateGoesTo(string name, char input) {
     return states[name]->goesTo(input);
 }
 
-DFA DFA::minimize() {
+DFA DFA::minimize(long &time) {
+
+    // Voor de tijd te meten van de functie
+    auto start = high_resolution_clock::now();
 
     map<string ,map<string ,char>> table;
 
@@ -328,6 +331,11 @@ DFA DFA::minimize() {
 
 
     DFA minimized(minimizedStates,alphabet);
+
+    // Voor tijd te bepalen
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    time = duration.count();
 
     return minimized;
 

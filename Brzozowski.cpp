@@ -4,7 +4,7 @@
 
 #include "Brzozowski.h"
 
-void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
+void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
 
     /*
      * Stap 1 : reversal
@@ -15,19 +15,26 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
      * Stap 6 : states die niet bereikbaar zijn elimineren
      */
 
+    // Voor de duur van de functie te bepalen
+    auto start = high_resolution_clock::now();
+
     // ENFA die we zullen gebruiken doorheen de functies
     ENFA enfa = ENFA();
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
     reversal(productAutomaat, enfa);             // Stap 1
-    enfa.printStats();
+//    enfa.printStats();
     productAutomaat = enfa.toDFA();                    // Stap 2
     elemNonReachableStates(productAutomaat);        // Stap 3
     reversal(productAutomaat, enfa);             // Stap 4
     productAutomaat = enfa.toDFA();                    // Stap 5
     productAutomaat.renameStates();                     //Stap 6
     elemNonReachableStates(productAutomaat);        // Stap 7
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    time = duration.count();
 }
 
 void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {

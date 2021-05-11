@@ -21,13 +21,22 @@ int main() {
 //    }
 
 
-
-
+    long time;
     DFA dfa = DFA("../TestenBrzozowski/OorspronkelijkeFile.json");
-    Brzozowski::brzozowskiAlgorithm(dfa);
+    Brzozowski::brzozowskiAlgorithm(dfa, time);
+    cout << "Eerste tijd: " << time << " microseconden" << endl;
 
     DFA dfa2 = DFA("../TestenBrzozowski/Test2.json");
-    Brzozowski::brzozowskiAlgorithm(dfa2);
+    Brzozowski::brzozowskiAlgorithm(dfa2, time);
+    cout << "Tweede tijd: " << time << " microseconden" << endl;
+
+    DFA dfa3 = DFA("../TestenBrzozowski/Test3.json");
+    dfa3.minimize(time);
+    cout << "Derde tijd: " << time << " microseconden" << endl;
+
+    DFA dfa4 = DFA("../TestenBrzozowski/Test4.json");
+    dfa4.minimize(time);
+    cout << "Vierde tijd: " << time << " microseconden" << endl;
 
     return 0;
 }
