@@ -5,11 +5,14 @@
 
 #include "Maksim.h"
 
-//    Maksim maksim;
-//    string a = "010100";
-//    maksim.stringToBarcode(a);
+//Maksim maksim;
+//string a = "010100";
+//maksim.stringToBarcode(a);
+//save_image("../iniFile.ini");
+
 
 void Maksim::stringToBarcode(string &str) {
+
 
     ofstream fIniFile;
     fIniFile.open("../iniFile.ini"); // plaats van ini file
@@ -18,11 +21,11 @@ void Maksim::stringToBarcode(string &str) {
     int figures = stringLength; // aantal "rechthoeken" (eigenlijk cylinders) die naast elkaar gaan komen
 
     fIniFile << "[General]" << endl;
-    fIniFile<< "size = 1024" << endl;
-    fIniFile<< "backgroundcolor = (0.41, 0.41, 0.41)" << endl; // grijze achtergrond (zodat beide kleuren (zwart en wit) onderscheidbaar zijn van de achtergrond)
-    fIniFile<< "type = \"ZBuffering\"" << endl; // we doen zbuffering met driehoeken, omdat we de vlakken dan kunnen inkleuren.
-    fIniFile<< "eye = (200, 0, 0)" << endl;
-    fIniFile<< "nrFigures = " << figures << "\n"; // het aantal figuren wordt bepaald door het aantal bits in onze string.
+    fIniFile << "size = 1024" << endl;
+    fIniFile << "backgroundcolor = (0.41, 0.41, 0.41)" << endl; // grijze achtergrond (zodat beide kleuren (zwart en wit) onderscheidbaar zijn van de achtergrond)
+    fIniFile << "type = \"ZBuffering\"" << endl; // we doen zbuffering met driehoeken, omdat we de vlakken dan kunnen inkleuren.
+    fIniFile << "eye = (200, 0, 0)" << endl;
+    fIniFile << "nrFigures = " << figures << "\n"; // het aantal figuren wordt bepaald door het aantal bits in onze string.
 
     // vanaf 16 bits met verhoudingen werken
 
