@@ -519,3 +519,32 @@ vector<State *> DFA::getAcceptingStates() const {
     return accepting_states;
 }
 
+void DFA::renameStates() {
+    int asciiValue = 65;    //ASCII waarde van hoofletter A.
+
+    map<string, State*> newNameStates;  //map voor de staten met nieuwe namen.
+    int alfabetRound = 0;
+    for(auto state:states){
+        string newName = "";
+        newName += char(asciiValue);
+        newName += to_string(alfabetRound);
+        if(state.first == start_state) {
+            start_state = newName;
+        }
+        if(state.first == current){
+            current = newName;
+        }
+        state.second->setName(newName);
+        newNameStates[newName] = state.second;
+
+        if(asciiValue < 90) {
+            asciiValue++;
+        }else{
+            asciiValue = 65;
+            alfabetRound++;
+        }
+    }
+    states.clear();
+    states = newNameStates;
+}
+

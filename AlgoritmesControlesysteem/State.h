@@ -103,6 +103,12 @@ public:
      */
     const map<char, State *> &getTTo() const;
 
+    /**
+     * Deze functie verandert de naam van de staat naar de gegeven string
+     * @param Name: nieuwe naam van de staat.
+     */
+    void setName(string Name);
+
 };
 
 /**
@@ -192,6 +198,12 @@ public:
      * @return map<char, set<State_NFA*>>
      */
     const map<char, set<State_NFA*>> &getTTo() const;
+
+    /**
+     * Deze functie verandert de naam van de staat naar de gegeven string
+     * @param Name: nieuwe naam van de staat.
+     */
+    void setName(string Name);
 
 };
 
