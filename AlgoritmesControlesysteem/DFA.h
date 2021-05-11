@@ -178,6 +178,18 @@ public:
      * Deze functie veranderd de namen van de staten naar simpele namen.
      */
     void renameStates();
+
+    /**
+     * Functie die de current state teruggeeft
+     * @return string current state
+     */
+    const string &getCurrentState() const;
+
+    /**
+     * Functie die het geheugen dat een DFA inneemt teruggeeft
+     * @return integer = aantal bytes
+     */
+    int getMemory() const;
 };
 
 
