@@ -13,6 +13,7 @@
 
 void Maksim::stringToBarcode(string &str) {
 
+
     ofstream fIniFile;
     fIniFile.open("../iniFile.ini"); // plaats van ini file
 
