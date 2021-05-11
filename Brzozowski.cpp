@@ -18,11 +18,10 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat) {
     // ENFA die we zullen gebruiken doorheen de functies
     ENFA enfa = ENFA();
     enfa.setEpsilon('e');
+    enfa.setAlphabet(productAutomaat.getAlphabet());
 
     reversal(productAutomaat, enfa);             // Stap 1
-
     enfa.printStats();
-
     productAutomaat = enfa.toDFA();                    // Stap 2
     elemNonReachableStates(productAutomaat);        // Stap 3
     reversal(productAutomaat, enfa);             // Stap 4

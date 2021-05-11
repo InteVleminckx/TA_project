@@ -148,6 +148,12 @@ public:
      */
     void setEpsilon(char epsilon);
 
+    /**
+     * Deze functie zet het alphabet
+     * @param alpha : het nieuwe alphabet
+     */
+    void setAlphabet(vector<char> alpha);
+
 };
 
 

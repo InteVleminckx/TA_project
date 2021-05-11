@@ -255,3 +255,7 @@ void ENFA::setStartState(string &startState) {
 void ENFA::setEpsilon(char epsilon) {
     eps = epsilon;
 }
+
+void ENFA::setAlphabet(vector<char> alpha) {
+    alphabet = alpha;
+}
