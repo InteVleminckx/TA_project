@@ -49,7 +49,6 @@ img::EasyImage generate_3DImage(const ini::Configuration &configuration) {
     }
 }
 
-
 img::EasyImage generate_image(const ini::Configuration &configuration)
 {
     string type = configuration["General"]["type"].as_string_or_die();
@@ -65,7 +64,6 @@ img::EasyImage generate_image(const ini::Configuration &configuration)
     }
 
 }
-
 
 
 //int runEngine(int argc, char const* argv[])
@@ -139,7 +137,6 @@ void save_image(std::string iniFilename) {
     std::ifstream fin(iniFilename);
     fin >> conf;
     fin.close();
-
     img::EasyImage image = generate_image(conf);
 
     if(image.get_height() > 0 && image.get_width() > 0)

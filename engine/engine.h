@@ -12,7 +12,6 @@
 #include "L3Dsysteem.h"
 #include "ZBuffer.h"
 #include "drawTriangles.h"
-
 #include <fstream>
 #include <iostream>
 #include <stdexcept>
