@@ -12,9 +12,12 @@
 #include <map>
 #include <iomanip>
 #include <fstream>
-#include "State.h"
+#include "TFA_State.h"
+#include <chrono>
+#include <algorithm>
 using namespace nlohmann;
 using namespace std;
+using namespace std::chrono;
 
 class DFA{
     vector<pair<string, string>> koppelVector;

@@ -2,15 +2,15 @@
 // Created by inte on 10.02.21.
 //
 
-#include "DFA.h"
+#include "TFA.h"
 
 using namespace std;
 using namespace nlohmann;
 
 
-DFA::DFA() {}
+TFA::TFA() {}
 
-DFA::DFA(const string& filename) {
+TFA::TFA(const string& filename) {
 
     ifstream input(filename);
     json jsonFile;
@@ -73,7 +73,7 @@ DFA::DFA(const string& filename) {
 
 }
 
-void DFA::print() {
+void TFA::print() {
 
     json  j;
 
@@ -104,7 +104,7 @@ void DFA::print() {
     cout<<setw(4)<<j<<endl;
 }
 
-bool DFA::sortStates(vector<State> &statesVec) {
+bool TFA::sortStates(vector<TFA_State> &statesVec) {
 
     bool swapped = false;
 
@@ -133,7 +133,7 @@ bool DFA::sortStates(vector<State> &statesVec) {
     return swapped;
 }
 
-bool DFA::sortStatesTransitions(vector<State> &statesVec) {
+bool TFA::sortStatesTransitions(vector<TFA_State> &statesVec) {
 
     bool swapped = false;
     for (auto & state : statesVec) {
@@ -150,20 +150,23 @@ bool DFA::sortStatesTransitions(vector<State> &statesVec) {
     return swapped;
 }
 
-DFA DFA::minimize() {
+TFA TFA::minimize(long &time) {
+
+    auto start = high_resolution_clock::now();
+
     createTable();
     addMarksFinalStatesBegin();
-    DFA oldDFA = copyDFA();
+    TFA oldDFA = copyDFA();
     int iteratie = 0;
     while (minimizeTable(iteratie)){iteratie++;}
     createNewStates();
-    DFA newDFA = copyDFA();
+    TFA newDFA = copyDFA();
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
     return newDFA;
 }
 
-void DFA::createTable() {
+void TFA::createTable() {
     //We maken eerst een table aan
     for (int i = 0; i < states.size(); ++i) {
         vector<string> row;
@@ -189,7 +192,7 @@ void DFA::createTable() {
 
 }
 
-void DFA::printTable() {
+void TFA::printTable() {
 
 
     for (int i = 0; i < table.size(); ++i) {
@@ -203,7 +206,7 @@ void DFA::printTable() {
     }
 }
 
-void DFA::addMarksFinalStatesBegin() {
+void TFA::addMarksFinalStatesBegin() {
 
     for (auto & state : states) {
 
@@ -215,7 +218,7 @@ void DFA::addMarksFinalStatesBegin() {
     }
 }
 
-void DFA::addMarksHorizontaleBegin(string &state) {
+void TFA::addMarksHorizontaleBegin(string &state) {
 
     int rowNumber;
     for (int i = 0; i < table.size(); ++i) {
@@ -235,7 +238,7 @@ void DFA::addMarksHorizontaleBegin(string &state) {
     }
 }
 
-void DFA::addMarksVerticalBegin(string &state) {
+void TFA::addMarksVerticalBegin(string &state) {
 
     int colomNumber;
     for (int i = 1; i < table.size(); ++i) {
@@ -255,7 +258,7 @@ void DFA::addMarksVerticalBegin(string &state) {
     }
 }
 
-bool DFA::isFinal(string &state) {
+bool TFA::isFinal(string &state) {
     for (auto & curState : states) {
         if (curState.name == state){
             return curState.accepting;
@@ -264,7 +267,7 @@ bool DFA::isFinal(string &state) {
     return false;
 }
 
-bool DFA::isNotSmallerOrEqual(string &state1, string &state2) {
+bool TFA::isNotSmallerOrEqual(string &state1, string &state2) {
 
     int posState1;
     int posState2;
@@ -283,7 +286,7 @@ bool DFA::isNotSmallerOrEqual(string &state1, string &state2) {
     return true;
 }
 
-bool DFA::isNotBiggerOrEqual(string &state1, string &state2) {
+bool TFA::isNotBiggerOrEqual(string &state1, string &state2) {
     int posState1;
     int posState2;
 
@@ -303,8 +306,8 @@ bool DFA::isNotBiggerOrEqual(string &state1, string &state2) {
 
 }
 
-DFA DFA::copyDFA() {
-    DFA oldDFA = DFA();
+TFA TFA::copyDFA() {
+    TFA oldDFA = TFA();
     oldDFA.states = this->states;
     oldDFA.alfabet = this->alfabet;
     oldDFA.Type = this->Type;
@@ -315,7 +318,7 @@ DFA DFA::copyDFA() {
     return oldDFA;
 }
 
-bool DFA::minimizeTable(int iteratie) {
+bool TFA::minimizeTable(int iteratie) {
 
 
 
@@ -331,7 +334,7 @@ bool DFA::minimizeTable(int iteratie) {
     return addNewMarks(iteratie+1);
 }
 
-void DFA::searchInDFA(string &state1, string &state2) {
+void TFA::searchInDFA(string &state1, string &state2) {
 
     vector<vector<string>> state1Vector;
     vector<vector<string>> state2Vector;
@@ -369,7 +372,7 @@ void DFA::searchInDFA(string &state1, string &state2) {
     }
 }
 
-void DFA::makeVectorWithKoppels(vector<string> states1, vector<string> states2) {
+void TFA::makeVectorWithKoppels(vector<string> states1, vector<string> states2) {
 
     for (int i = 0; i < states1.size(); ++i) {
         for (int j = 0; j < states2.size(); ++j) {
@@ -380,7 +383,7 @@ void DFA::makeVectorWithKoppels(vector<string> states1, vector<string> states2) 
     }
 }
 
-bool DFA::addNewMarks(int iteratie) {
+bool TFA::addNewMarks(int iteratie) {
 
     bool returnBool = false;
 
@@ -410,7 +413,7 @@ bool DFA::addNewMarks(int iteratie) {
     return returnBool;
 }
 
-pair<int, int> DFA::findMarkPositon(string state1, string state2) {
+pair<int, int> TFA::findMarkPositon(string state1, string state2) {
     pair<int, int> postionMark;
     bool found = false;
     for (int i = 0; i < table.size(); ++i) {
@@ -427,7 +430,7 @@ pair<int, int> DFA::findMarkPositon(string state1, string state2) {
     return postionMark;
 }
 
-void DFA::createNewStates() {
+void TFA::createNewStates() {
 
     for (int i = 1; i < table[0].size(); ++i) {
 
@@ -505,7 +508,7 @@ void DFA::createNewStates() {
     }
 }
 
-void DFA::vectorToStates() {
+void TFA::vectorToStates() {
 
 //    bool makedChange = true;
 
@@ -526,7 +529,7 @@ void DFA::vectorToStates() {
 
 }
 
-void DFA::stateExistinOtherState(vector<string> state1, vector<string> state2) {
+void TFA::stateExistinOtherState(vector<string> state1, vector<string> state2) {
 
     bool vectorExistinOther = false;
 
@@ -575,7 +578,7 @@ void DFA::stateExistinOtherState(vector<string> state1, vector<string> state2) {
 
 }
 
-State DFA::getState(const string& stateName) {
+TFA_State TFA::getState(const string& stateName) {
     for (int i = 0; i < states.size(); ++i) {
         if (stateName == states[i].name){
             return states[i];
@@ -585,7 +588,7 @@ State DFA::getState(const string& stateName) {
     return a;
 }
 
-void DFA::existAlready(vector<string> &trans) {
+void TFA::existAlready(vector<string> &trans) {
 
     bool exist = false;
     for (int j = 0; j < vectorNewStates.size(); ++j) {
@@ -606,7 +609,7 @@ void DFA::existAlready(vector<string> &trans) {
     }
 }
 
-void DFA::restoreDFA(DFA oldDFA) {
+void TFA::restoreDFA(TFA oldDFA) {
 
     this->states = oldDFA.states;
     this->alfabet = oldDFA.alfabet;
@@ -617,7 +620,7 @@ void DFA::restoreDFA(DFA oldDFA) {
 
 }
 
-void DFA::makeMiniDFA(DFA &newDFA) {
+void TFA::makeMiniDFA(TFA &newDFA) {
 
     for (int i = 0; i < states.size(); ++i) {
         for (int j = 0; j < states[i].transitions.size(); ++j) {
@@ -653,7 +656,7 @@ void DFA::makeMiniDFA(DFA &newDFA) {
 
 }
 
-void DFA::transitionToNewState(string &transTo) {
+void TFA::transitionToNewState(string &transTo) {
     bool found = false;
 
     for (int i = 0; i < newStates.size(); ++i) {
@@ -671,7 +674,7 @@ void DFA::transitionToNewState(string &transTo) {
     }
 }
 
-bool DFA::deleteOldStates(string state) {
+bool TFA::deleteOldStates(string state) {
 
     for (int i = 0; i < newStates.size(); ++i) {
         char charState = state[0];
@@ -688,7 +691,7 @@ bool DFA::deleteOldStates(string state) {
     return false;
 }
 
-void DFA::setHaakjes() {
+void TFA::setHaakjes() {
 
     for (int i = 0; i < states.size(); ++i) {
 
@@ -704,7 +707,7 @@ void DFA::setHaakjes() {
     }
 }
 
-void DFA::clearDubbels() {
+void TFA::clearDubbels() {
 
     for (int i = 0; i < states.size(); ++i) {
         for (int j = 0; j < states[i].transitions.size(); ++j) {
@@ -714,7 +717,7 @@ void DFA::clearDubbels() {
     }
 }
 
-void DFA::checkDoubles(string &stateTo) {
+void TFA::checkDoubles(string &stateTo) {
 
     vector<char> eachState;
     if (stateTo.size() > 1){

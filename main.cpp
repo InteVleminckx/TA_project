@@ -67,10 +67,14 @@ int main() {
     long time;
     DFA dfa1 = DFA("../TestenBrzozowski/input-tfa4.json");
     Brzozowski::brzozowskiAlgorithm(dfa1, time);
-    dfa1.print();
+    dfa1.print(cout);
 
-    DFA dfa2("../TestenBrzozowski/input-tfa4.json");
-    dfa2.minimize(time);
-    dfa2.print();
+    cout << time << " microseconden" << endl;
+
+    TFA dfa2("../TestenBrzozowski/input-tfa2.json");
+    dfa2.minimize(time).print();
+
+    cout << time << " microseconden" <<endl;
+
     return 0;
 }

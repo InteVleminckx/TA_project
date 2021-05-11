@@ -36,7 +36,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     productAutomaat = enfa.toDFA();                       // Stap 6
     productAutomaat.renameStates();                       // Stap 7
     elemNonReachableStates(productAutomaat);           // Stap 8
-  
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();
