@@ -9,8 +9,11 @@
 #include "AlgoritmesControlesysteem/DFA.h"
 #include "AlgoritmesControlesysteem/ENFA.h"
 #include "AlgoritmesControlesysteem/State.h"
+#include <chrono>
+#include <algorithm>
 
 using namespace std;
+using namespace std::chrono;
 
 class DFA;
 
@@ -28,8 +31,9 @@ public:
     /**
      * Functie die een automaat gaat minimaliseren met Brzozowski-algoritme
      * @param productAutomaat = automaat die we willen minimaliseren
+     * @param time = tijd die we by ref meegeven waarin we de duur van de functie kunnen opslagen
      */
-    static void brzozowskiAlgorithm(DFA &productAutomaat);
+    static void brzozowskiAlgorithm(DFA &productAutomaat, long &time);
 
     /**
      * Hulpfunctie die de reversal van een DFA gaat nemen
@@ -42,7 +46,6 @@ public:
      * @param productautomaat = automaat waarop we dit willen toepassen
      */
     static void elemNonReachableStates(DFA &productautomaat);
-
 
     // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };

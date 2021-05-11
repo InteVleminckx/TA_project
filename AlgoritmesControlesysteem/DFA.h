@@ -10,8 +10,11 @@
 #include <vector>
 #include "State.h"
 #include <set>
+#include <algorithm>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 /**
  * Deze finctie neem de som van alle getallen gaande van 0 t.e.m. de gegeven getal i en geeft de som terug.
@@ -101,9 +104,10 @@ public:
 
     /**
      * Deze functie zal de DFA minimaliseren a.d.h.v. de table filling algoritme en zal daarmee een nieuwe geminimaliseerde DFA aanmaken.
+     * @param time : long die we by ref meegeven zodat deze de duur van de functie teruggeeft
      * @return
      */
-    DFA minimize();
+    DFA minimize(long &time);
 
     /**
      * Deze functie voor de table-filling algoritme uit en maakt hierbij ook de tabel aan.
@@ -174,6 +178,18 @@ public:
      * Deze functie veranderd de namen van de staten naar simpele namen.
      */
     void renameStates();
+
+    /**
+     * Functie die de current state teruggeeft
+     * @return string current state
+     */
+    const string &getCurrentState() const;
+
+    /**
+     * Functie die het geheugen dat een DFA inneemt teruggeeft
+     * @return integer = aantal bytes
+     */
+    int getMemory() const;
 };
 
 
