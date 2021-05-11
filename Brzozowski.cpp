@@ -23,15 +23,20 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
-    reversal(productAutomaat, enfa);             // Stap 1
-//    enfa.printStats();
-    productAutomaat = enfa.toDFA();                    // Stap 2
-    elemNonReachableStates(productAutomaat);        // Stap 3
-    reversal(productAutomaat, enfa);             // Stap 4
-    productAutomaat = enfa.toDFA();                    // Stap 5
-    productAutomaat.renameStates();                     //Stap 6
-    elemNonReachableStates(productAutomaat);        // Stap 7
+    reversal(productAutomaat, enfa);                  // Stap 1
+    productAutomaat = enfa.toDFA();                   // Stap 2
+    productAutomaat.renameStates();                   // Stap 3
+    elemNonReachableStates(productAutomaat);          // Stap 4
 
+    enfa = ENFA();
+    enfa.setEpsilon('e');
+    enfa.setAlphabet(productAutomaat.getAlphabet());
+
+    reversal(productAutomaat, enfa);                   // Stap 5
+    productAutomaat = enfa.toDFA();                    // Stap 6
+    productAutomaat.renameStates();                    // Stap 7
+    elemNonReachableStates(productAutomaat);           // Stap 8
+  
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();
@@ -138,9 +143,6 @@ void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
         // Voor elke transitie in deze state
         for (auto it : state.second->getTTo())
         {
-
-            cout << it.second->getName() << " " << state.second->getName() << endl;
-
             // Naam van TO state toevoegen aan namen
             if (it.second->getName() != state.second->getName()) namen.insert(it.second->getName());
         }
