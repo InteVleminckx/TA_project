@@ -19,7 +19,7 @@ using namespace std;
 
 class Importer {
 public:
-    static void readXMLFile(const string &filename, Datastructuur &datastructure);Datastructuur
+    static void readXMLFile(const string &filename, Datastructuur &datastructure);
 };
 
 

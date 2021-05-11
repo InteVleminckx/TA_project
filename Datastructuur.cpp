@@ -153,7 +153,9 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
         else if (this->getLeftChild() != nullptr && this->getRightChild() != nullptr)
         {
             Node* succesor = this->getRightChild()->getInorderSuccessor()->fRoot;
-            this->deleteNode(bestemming);
+            Bestemming best;
+            best.setName(succesor->getKey());
+            this->deleteNode(best);
             this->fRoot = succesor;
         }
     }

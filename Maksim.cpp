@@ -5,9 +5,10 @@
 
 #include "Maksim.h"
 
-//    Maksim maksim;
-//    string a = "010100";
-//    maksim.stringToBarcode(a);
+//Maksim maksim;
+//string a = "010100";
+//maksim.stringToBarcode(a);
+//save_image("../iniFile.ini");
 
 void Maksim::stringToBarcode(string &str) {
 

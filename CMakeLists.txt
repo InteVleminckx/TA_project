@@ -45,4 +45,4 @@ add_executable(projectTA
         AlgoritmesControlesysteem/json.hpp
         AlgoritmesControlesysteem/RE.cpp
         AlgoritmesControlesysteem/State.cpp
-        Dzhem.cpp Dzhem.h)
+        Dzhem.cpp Dzhem.h engine/engine.h)
