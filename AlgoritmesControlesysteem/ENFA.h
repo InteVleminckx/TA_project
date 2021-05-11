@@ -28,6 +28,12 @@ private:
     vector<char> alphabet;
 
 public:
+
+    /**
+     * Default constructor.
+     */
+    ENFA();
+
     /**
      * Constructor die gebruikt wordt door de klasse RE na de omzetting van regex naar een eNFA om de ENFA te initialiseren.
      * @param s: de map met alle staten van de ENFA.
@@ -89,11 +95,64 @@ public:
      */
     DFA toDFA();
 
-
     /**
      * Deze funtie print alle informatie over de automaat.
      */
     void printStats();
+
+    /**
+     * Functie die een state aan de verzameling states toevoegt
+     * @param state = state die we aan de ENFA willen toevoegen
+     */
+    void addToStates(State_NFA* state);
+
+    /**
+     * Functie die het symbool dat als epsilon gebruikt wordt teruggeeft
+     * @return epsilon-symbol (type = const)
+     */
+    char getEpsilon() const;
+
+    /**
+     * Functie die een string toevoegd aan de set van strings die de starting states bevatten
+     * @param name = naam (type = string)
+     */
+    void addToStartingStates(const string &name);
+
+    /**
+     * Functie die een string toevoegd aan de set van strings die de current states bevatten
+     * @param name = naam (type = string)
+     */
+    void addToCurrentStates(const string &name);
+
+    /**
+     * Functie die alle accepting states van een bepaalde ENFA teruggeeft
+     * @return vector<State_NFA*>
+     */
+    vector<State_NFA*> getAcceptingStates() const;
+
+    /**
+     * Getter voor de states map
+     * @return map<string, State_NFA *>
+     */
+    const map<string, State_NFA *> &getStates() const;
+
+    /**
+     * Initialisseerd q0
+     * @param startState: string, naam van de start state
+     */
+    void setStartState(string &startState);
+
+    /**
+     * Initialisseerd eps
+     * @param epsilon: char, zegt welke char epsilon moet voorstellen
+     */
+    void setEpsilon(char epsilon);
+
+    /**
+     * Deze functie zet het alphabet
+     * @param alpha : het nieuwe alphabet
+     */
+    void setAlphabet(vector<char> alpha);
 
 };
 

@@ -57,7 +57,7 @@ DFA::DFA(const string& input) {
         string name = s["name"];
         bool acc = s["accepting"];
         bool start = s["starting"];
-        if (start){
+        if (start) {
             current = name;
             start_state = name; //start state van de DFA(veranderd niet);
         }
@@ -76,7 +76,7 @@ DFA::DFA(const string& input) {
 }
 
 
-void DFA::print() {
+void DFA::print(ostream &os_stream) {
     nlohmann::json j;
     j["type"] = "DFA";
     vector<string> alfabet;
@@ -233,7 +233,10 @@ string DFA::stateGoesTo(string name, char input) {
     return states[name]->goesTo(input);
 }
 
-DFA DFA::minimize() {
+DFA DFA::minimize(long &time) {
+
+    // Voor de tijd te meten van de functie
+    auto start = high_resolution_clock::now();
 
     map<string ,map<string ,char>> table;
 
@@ -328,6 +331,11 @@ DFA DFA::minimize() {
 
 
     DFA minimized(minimizedStates,alphabet);
+
+    // Voor tijd te bepalen
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    time = duration.count();
 
     return minimized;
 
@@ -492,4 +500,70 @@ void DFA::printTable() {
     tablePrinter(TFA_table, states);
 }
 
+const map<string, State *> &DFA::getStates() const {
+    return states;
+}
+
+void DFA::setStates(map<string, State *> &newStates) {
+    states = newStates;
+}
+
+const string &DFA::getStartState() const {
+    return start_state;
+}
+
+vector<State *> DFA::getAcceptingStates() const {
+    vector<State*> accepting_states = {};
+
+    // Over alle states loopen
+    for (const auto &pair : getStates())
+    {
+        // Als state accepting is ==> toevoegen aan vector
+        if (pair.second->is_accept())
+        {
+            accepting_states.push_back(pair.second);
+        }
+    }
+    return accepting_states;
+}
+
+void DFA::renameStates() {
+    int asciiValue = 65;    //ASCII waarde van hoofletter A.
+
+    map<string, State*> newNameStates;  //map voor de staten met nieuwe namen.
+    int alfabetRound = 0;
+    for(auto state:states){
+        string newName = "";
+        newName += char(asciiValue);
+        newName += to_string(alfabetRound);
+        if(state.first == start_state) {
+            start_state = newName;
+        }
+        if(state.first == current){
+            current = newName;
+        }
+        state.second->setName(newName);
+        newNameStates[newName] = state.second;
+
+        if(asciiValue < 90) {
+            asciiValue++;
+        }else{
+            asciiValue = 65;
+            alfabetRound++;
+        }
+    }
+    states.clear();
+    states = newNameStates;
+}
+
+const string &DFA::getCurrentState() const {
+    return current;
+}
+
+int DFA::getMemory() const {
+    int aantal_bytes = 0;
+    aantal_bytes += sizeof(getStartState());
+    aantal_bytes += sizeof(getCurrentState());
+    return aantal_bytes;
+}
 

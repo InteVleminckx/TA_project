@@ -97,6 +97,18 @@ public:
      */
     void changeName(string n);
 
+    /**
+     * Getter voor de transities van een state
+     * @return map<char, State *>
+     */
+    const map<char, State *> &getTTo() const;
+
+    /**
+     * Deze functie verandert de naam van de staat naar de gegeven string
+     * @param Name: nieuwe naam van de staat.
+     */
+    void setName(string Name);
+
 };
 
 /**
@@ -179,6 +191,20 @@ public:
      * @param degree_map: map voor het tellen voor staten van verschillende graad.
      */
     void countUpTransitions(map<char,int>& counter_map, map<int,int>& degree_map);
+
+
+    /**
+     * Getter voor de transities van een state
+     * @return map<char, set<State_NFA*>>
+     */
+    const map<char, set<State_NFA*>> &getTTo() const;
+
+    /**
+     * Deze functie verandert de naam van de staat naar de gegeven string
+     * @param Name: nieuwe naam van de staat.
+     */
+    void setName(string Name);
+
 };
 
 

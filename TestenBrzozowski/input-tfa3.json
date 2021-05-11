@@ -1,0 +1,101 @@
+{
+  "type": "DFA",
+  "alphabet": [
+    "0",
+    "1"
+  ],
+  "states": [
+    {
+      "name": "A",
+      "starting": true,
+      "accepting": false
+    },
+    {
+      "name": "B",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "C",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "D",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "E",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "F",
+      "starting": false,
+      "accepting": true
+    }
+  ],
+  "transitions": [
+    {
+      "from": "A",
+      "to": "C",
+      "input": "0"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "input": "1"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "input": "0"
+    },
+    {
+      "from": "B",
+      "to": "B",
+      "input": "1"
+    },
+    {
+      "from": "C",
+      "to": "C",
+      "input": "0"
+    },
+    {
+      "from": "C",
+      "to": "B",
+      "input": "1"
+    },
+    {
+      "from": "D",
+      "to": "B",
+      "input": "0"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "input": "1"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "input": "0"
+    },
+    {
+      "from": "E",
+      "to": "E",
+      "input": "1"
+    },
+    {
+      "from": "F",
+      "to": "E",
+      "input": "0"
+    },
+    {
+      "from": "F",
+      "to": "E",
+      "input": "1"
+    }
+  ]
+}

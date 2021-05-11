@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Importer.h"
+#include "Brzozowski.h"
+#include "Maksim.h"
+#include "TFA_Inte/TFA.h"
 
 #include <vector>
 #include <algorithm>
@@ -15,8 +18,17 @@
 
 int main() {
 
-    Datastructuur datastructuur;
-    Importer::readXMLFile("../xmlfiles/test1.xml", datastructuur);
-    return 0;
+    long time;
+    DFA dfa1 = DFA("../TestenBrzozowski/input-tfa2.json");
+    Brzozowski::brzozowskiAlgorithm(dfa1, time);
+    dfa1.print(cout);
 
+    cout << time << " microseconden" << endl;
+
+    TFA dfa2("../TestenBrzozowski/input-tfa2.json");
+    dfa2.minimize(time).print();
+
+    cout << time << " microseconden" <<endl;
+
+    return 0;
 }
