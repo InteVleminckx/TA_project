@@ -38,7 +38,7 @@ TFA::TFA(const string& filename) {
 
     //maken een state aan
     for (auto state : States) {
-        State newState;
+        TFA_State newState;
         newState.name = state["name"];
         newState.starting = state["starting"];
         newState.accepting = state["accepting"];
@@ -124,7 +124,7 @@ bool TFA::sortStates(vector<TFA_State> &statesVec) {
         //als de rechter in de vector kleiner is als de linkse moeten deze van
         //plaats wisselen
         if (state1 > state2){
-            State temp = statesVec[i+1];
+            TFA_State temp = statesVec[i+1];
             statesVec[i+1] = statesVec[i];
             statesVec[i] = temp;
             swapped = true;
@@ -163,6 +163,11 @@ TFA TFA::minimize(long &time) {
     TFA newDFA = copyDFA();
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    time = duration.count();
+
     return newDFA;
 }
 
@@ -455,7 +460,7 @@ void TFA::createNewStates() {
 
     for (int i = 0; i < vectorNewStates.size(); ++i) {
         string stateName = "{";
-        State newState;
+        TFA_State newState;
         bool accepting = false;
         bool starting = false;
         vector<vector<pair<string, string>>> trans;
@@ -464,7 +469,7 @@ void TFA::createNewStates() {
             if (j == 0){stateName += vectorNewStates[i][j];}
             else{stateName += ", " + vectorNewStates[i][j];}
 
-            State curState = getState(vectorNewStates[i][j]);
+            TFA_State curState = getState(vectorNewStates[i][j]);
             if (!accepting && curState.accepting){
                 accepting = true;
             }
@@ -584,7 +589,7 @@ TFA_State TFA::getState(const string& stateName) {
             return states[i];
         }
     }
-    State a;
+    TFA_State a;
     return a;
 }
 

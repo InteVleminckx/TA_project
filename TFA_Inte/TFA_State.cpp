@@ -4,4 +4,4 @@
 
 #include "TFA_State.h"
 
-void State::addTransition(pair<string, string> &transtion){transitions.push_back(transtion);}
+void TFA_State::addTransition(pair<string, string> &transtion){transitions.push_back(transtion);}

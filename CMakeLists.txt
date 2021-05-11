@@ -50,4 +50,10 @@ add_executable(projectTA
         AlgoritmesControlesysteem/State.cpp
         Dzhem.cpp 
         Dzhem.h
+
+        TFA_Inte/TFA.cpp
+        TFA_Inte/TFA.h
+        TFA_Inte/json.hpp
+        TFA_Inte/TFA_State.cpp
+        TFA_Inte/TFA_State.h
         )

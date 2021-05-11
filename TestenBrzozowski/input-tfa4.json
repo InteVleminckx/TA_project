@@ -13,7 +13,7 @@
     {
       "name": "Q",
       "starting": false,
-      "accepting": false
+      "accepting": true
     },
     {
       "name": "R",
@@ -29,7 +29,7 @@
     },
     {
       "from": "P",
-      "to": "Q",
+      "to": "R",
       "input": "1"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "from": "Q",
-      "to": "Q",
+      "to": "R",
       "input": "1"
     },
     {
