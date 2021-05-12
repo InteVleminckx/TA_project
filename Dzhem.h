@@ -9,6 +9,8 @@
 #include "AlgoritmesControlesysteem/json.hpp"
 #include "AlgoritmesControlesysteem/ENFA.h"
 #include "AlgoritmesControlesysteem/DFA.h"
+#include "Datastructuur.h"
+#include <string>
 
 using namespace std;
 
@@ -20,6 +22,14 @@ using namespace std;
 class Dzhem {
 
 };
+
+/**
+ * Deze functie zal controleren of de gegeven RE een geldige RE is voor een nieuwe bestemming.
+ * @param RE: de nieuw gegenereerde RE.
+ * @param bestemmingen: Datastructuur met alle bestaande bestemmingen met elks een unieke RE.
+ * @return: true of false;
+ */
+bool controleSysteem(string RE, Datastructuur& bestemmingen);
 
 
 #endif //PROJECTTA_DZHEM_H

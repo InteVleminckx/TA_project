@@ -149,7 +149,7 @@ void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
     }
 
     // Over alle states loopen
-    for (const auto& naam : productautomaat.allStates())
+    for (const auto& naam : productautomaat.getAllStates())
     {
         //Als er wel transities zijn, voegen we deze toe aan de
         if (namen.count(naam) || productautomaat.getStates().at(naam)->isStarting())
