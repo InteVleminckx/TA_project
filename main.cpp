@@ -19,14 +19,14 @@
 int main() {
 
     long time;
-    DFA dfa1 = DFA("../TestenBrzozowski/Test1.json");
+    DFA dfa1 = DFA("../TestenBrzozowski/OorspronkelijkeFile.json");
     Brzozowski::brzozowskiAlgorithm(dfa1, time);
-//    dfa1.print(cout);
+    dfa1.print(cout);
 
 //    cout << time << " microseconden" << endl;
 
-    TFA dfa2("../TestenBrzozowski/Test1.json");
-//    dfa2.minimize(time).print();
+    TFA dfa2("../TestenBrzozowski/OorspronkelijkeFile.json");
+    dfa2.minimize(time).print();
 
 //    cout << time << " microseconden" <<endl;
 
