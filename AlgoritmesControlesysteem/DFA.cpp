@@ -119,8 +119,8 @@ DFA::DFA(map<string, State *> sets, vector<char> a) {
 
 DFA::DFA(DFA dfa1, DFA dfa2, bool doorsnede) {
     //Staten van de 2 dfa's in string vorm
-    auto states1 = dfa1.allStates();
-    auto states2 = dfa2.allStates();
+    auto states1 = dfa1.getAllStates();
+    auto states2 = dfa2.getAllStates();
 
     //Vector die al de bereikbare koppels van staten bij zal houden.
     vector<pair<string, string>> state_pairs;
@@ -196,7 +196,7 @@ DFA::DFA(DFA dfa1, DFA dfa2, bool doorsnede) {
 }
 
 
-vector<string> DFA::allStates(){
+vector<string> DFA::getAllStates(){
     vector<string> stateNames;
     for (auto s:states){
         stateNames.push_back(s.first);
@@ -244,7 +244,7 @@ DFA DFA::minimize(long &time) {
 
     TFA_table = table;
 
-    vector<string> stateNames = allStates();
+    vector<string> stateNames = getAllStates();
     map<string, vector<string>> eq_states; //map die alle staten waarmee een staat equivqlent is bij zal houden,
                                            //inclusief zichzelf.
 

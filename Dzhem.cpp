@@ -3,3 +3,25 @@
 //
 
 #include "Dzhem.h"
+
+bool controleSysteem(string& re, Datastructuur &bestemmingen) {
+    RE newRE = RE(re, 'e');
+    DFA dfaRE = newRE.toDFA();
+
+    vector<Bestemming> haltes;
+    bestemmingen.inorderTraversal(haltes);
+
+    for (auto halte:haltes){
+        RE reHalte = RE(halte.getRegex(), 'e');
+        DFA dfaHalte = reHalte.toDFA();
+        //Pruductautomaat van de twee met doorsnede van de accepterende staten.
+        DFA doorsnede = DFA(dfaRE, dfaHalte, true);
+        vector<string> statesDoornsede = doorsnede.getAllStates();
+        for (auto state:statesDoornsede){ //Controle of de productautomaat met de doorsnede een accepterende staat bevat
+            if(doorsnede.isStateAccepting(state)){
+                return false;
+            }
+        }
+    }
+    return true;
+}

@@ -87,6 +87,12 @@ public:
      */
     ENFA toENFA();
 
+    /**
+     * Deze functie zet de gegvene regex om naar een DFA met als tussenstap een ENFA.
+     * @return: DFA
+     */
+    DFA toDFA();
+
 
     /**
      * Deze functie maakt een ENFA voor expressie in de vorm van een enkele character.

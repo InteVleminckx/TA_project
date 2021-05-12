@@ -13,7 +13,7 @@ using  namespace  std;
 
 class Node
 {
-
+private:
     string fKey;
     string fValue;
     Bestemming fObject;

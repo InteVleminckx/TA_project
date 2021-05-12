@@ -99,7 +99,7 @@ public:
      * Deze functie geeft een vector terug met de namen van alle staten van de DFA.
      * @return: vector van strings
      */
-    vector<string>  allStates();
+    vector<string>  getAllStates();
 
     /**
      * Deze functie zal de DFA minimaliseren a.d.h.v. de table filling algoritme en zal daarmee een nieuwe geminimaliseerde DFA aanmaken.
