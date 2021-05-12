@@ -29,42 +29,42 @@
   "transitions": [
     {
       "from": "1",
-      "to": "0",
+      "to": "1",
       "input": "f"
     },
     {
       "from": "1",
-      "to": "0",
+      "to": "1",
       "input": "d"
     },
     {
       "from": "0",
-      "to": "0",
+      "to": "1",
       "input": "f"
     },
     {
       "from": "0",
-      "to": "0",
+      "to": "1",
       "input": "d"
     },
     {
       "from": "3",
-      "to": "0",
+      "to": "1",
       "input": "f"
     },
     {
       "from": "3",
-      "to": "0",
+      "to": "1",
       "input": "d"
     },
     {
       "from": "2",
-      "to": "0",
+      "to": "1",
       "input": "f"
     },
     {
       "from": "2",
-      "to": "0",
+      "to": "1",
       "input": "d"
     }
   ]
