@@ -131,10 +131,29 @@ string ENFA::setToString(set<State_NFA*> states){
 
 
 DFA ENFA::toDFA(const bool brzozowski) {
-    State_NFA* temp = states[q0];
+//    State_NFA* temp = states[q0];
 
     vector<set<State_NFA*>> subsets = {states[q0]->ECLOSE()};   //vector met de subsets gevormd door Lazy evaluation.
     map<string, State*> DFA_states; //map met staten voor de te cosntrueren DFA.
+
+
+
+    if (brzozowski)
+    {
+        set<State_NFA*> eCloseStartState  = subsets[0];
+
+        for (auto State : eCloseStartState)
+        {
+
+           if (State->getName() == "q0")
+           {
+               eCloseStartState.erase(State);
+               break;
+           }
+        }
+
+        subsets[0] = eCloseStartState;
+    }
 
     // Als we Brzozowski-algoritme hebben, moeten we de start state uit de eclose doen
 //    if (brzozowski)
@@ -146,6 +165,9 @@ DFA ENFA::toDFA(const bool brzozowski) {
 //            subsets[0].erase(it);
 //        }
 //    }
+
+
+
 
     State* dfa_startState = new State(true, setToString(*subsets.begin()),
                                       acceptingSet(toStringSet(*subsets.begin())));    //Startstaat van de DFA = ECLOSE(q0)
