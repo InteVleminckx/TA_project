@@ -2,7 +2,7 @@
   "type": "DFA",
   "alphabet": [
     "a",
-    "e"
+    "f"
   ],
   "states": [
     {
@@ -35,7 +35,7 @@
     {
       "from": "1",
       "to": "1",
-      "input": "e"
+      "input": "f"
     },
     {
       "from": "1",
@@ -45,7 +45,7 @@
     {
       "from": "0",
       "to": "1",
-      "input": "e"
+      "input": "f"
     },
     {
       "from": "0",
@@ -55,7 +55,7 @@
     {
       "from": "4",
       "to": "4",
-      "input": "e"
+      "input": "f"
     },
     {
       "from": "4",
@@ -70,12 +70,12 @@
     {
       "from": "2",
       "to": "0",
-      "input": "e"
+      "input": "f"
     },
     {
       "from": "3",
       "to": "3",
-      "input": "e"
+      "input": "f"
     },
     {
       "from": "3",
