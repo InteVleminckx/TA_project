@@ -26,6 +26,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     reversal(productAutomaat, enfa);                  // Stap 1
     productAutomaat = enfa.toDFA();                         // Stap 2
     productAutomaat.renameStates();                         // Stap 3
+    productAutomaat.print(cout);
     elemNonReachableStates(productAutomaat);             // Stap 4
 
     enfa = ENFA();
