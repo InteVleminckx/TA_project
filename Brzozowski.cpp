@@ -32,11 +32,11 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
-    reversal(productAutomaat, enfa);                // Stap 5
-    productAutomaat = enfa.toDFA();                       // Stap 6
-    productAutomaat.renameStates();                       // Stap 7
-    elemNonReachableStates(productAutomaat);           // Stap 8
-
+    reversal(productAutomaat, enfa);              // Stap 5
+    productAutomaat = enfa.toDFA();                     // Stap 6
+    productAutomaat.renameStates();                     // Stap 7
+    elemNonReachableStates(productAutomaat);         // Stap 8
+  
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();

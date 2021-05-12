@@ -518,12 +518,15 @@ void TFA::vectorToStates() {
 //    bool makedChange = true;
 
 //    while (makedChange){
-    for (int i = 0; i < vectorNewStates.size()-1; ++i) {
-        for (int j = 0; j < vectorNewStates.size(); ++j) {
-            stateExistinOtherState(vectorNewStates[i], vectorNewStates[j]);
+    if (vectorNewStates.size() > 0)
+    {
+        for (int i = 0; i < vectorNewStates.size()-1; ++i) {
+            for (int j = 0; j < vectorNewStates.size(); ++j) {
+                stateExistinOtherState(vectorNewStates[i], vectorNewStates[j]);
+                if (vectorNewStates.size() == 1){break;}
+            }
             if (vectorNewStates.size() == 1){break;}
         }
-        if (vectorNewStates.size() == 1){break;}
     }
 //
 //        //nog weg doen
