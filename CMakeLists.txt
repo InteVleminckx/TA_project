@@ -45,11 +45,15 @@ add_executable(projectTA
         Brzozowski.h
 
         AlgoritmesControlesysteem/DFA.cpp
+        AlgoritmesControlesysteem/DFA.h
         AlgoritmesControlesysteem/ENFA.cpp
+        AlgoritmesControlesysteem/ENFA.h
         AlgoritmesControlesysteem/json.hpp
         AlgoritmesControlesysteem/RE.cpp
+        AlgoritmesControlesysteem/RE.h
         AlgoritmesControlesysteem/State.cpp
-        Dzhem.cpp 
+        AlgoritmesControlesysteem/State.h
+        Dzhem.cpp
         Dzhem.h
 
         TFA_Inte/TFA.cpp

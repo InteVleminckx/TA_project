@@ -332,7 +332,7 @@ ENFA RE::toENFA() {
 }
 
 DFA RE::toDFA() {
-    return this->toENFA().toDFA();
+    return this->toENFA().toDFA(false);
 }
 
 
