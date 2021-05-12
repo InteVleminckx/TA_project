@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Bestemming.h"
+#include "vector"
 
 using  namespace  std;
 
@@ -152,7 +153,7 @@ public:
      * @functie: inorderTraversal
      * Deze functie toont alle bestemming in gesorteerde volgorde.
      */
-    void inorderTraversal();
+    void inorderTraversal(vector<Bestemming> &bestemmingen);
 };
 
 

@@ -191,19 +191,20 @@ pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
     return make_pair(false, "");
 }
 
-void Datastructuur::inorderTraversal() {
+void Datastructuur::inorderTraversal(vector<Bestemming> &bestemmingen) {
 
     if (fRoot != nullptr){
         if (this->getLeftChild() != nullptr)
         {
-            this->getLeftChild()->inorderTraversal();
+            this->getLeftChild()->inorderTraversal(bestemmingen);
         }
 
         cout << this->fRoot->getKey() << endl;
+        bestemmingen.push_back(this->fRoot->getObject());
 
         if (this->getRightChild() != nullptr)
         {
-            this->getRightChild()->inorderTraversal();
+            this->getRightChild()->inorderTraversal(bestemmingen);
         }
     }
 }
