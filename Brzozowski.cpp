@@ -24,7 +24,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
     reversal(productAutomaat, enfa);                  // Stap 1
-    productAutomaat = enfa.toDFA();                         // Stap 2
+    productAutomaat = enfa.toDFA(true);            // Stap 2
     productAutomaat.renameStates();                         // Stap 3
     elemNonReachableStates(productAutomaat);             // Stap 4
 
@@ -33,7 +33,8 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
     reversal(productAutomaat, enfa);              // Stap 5
-    productAutomaat = enfa.toDFA();                     // Stap 6
+    productAutomaat = enfa.toDFA(true);       // Stap 6
+    productAutomaat.print(cout);
     productAutomaat.renameStates();                     // Stap 7
     elemNonReachableStates(productAutomaat);         // Stap 8
   
@@ -175,5 +176,36 @@ void Brzozowski::setTransitions(pair<const char, State *> &stateDFA, ENFA &e_nfa
             state.second->addTransition(transitie, from);
             break;
         }
+    }
+}
+
+bool Brzozowski::isStateReachable(State *start_state, State* current_state, State *target, vector<char> alphabet) {
+    // Voor deze functie gaan we recursie gebruiken
+
+    // We hebben state gevonden, returnen true
+    if (current_state == target)
+    {
+        return true;
+    }
+
+    // Als deze state geen "kinderen" meer heeft, hebben we de state niet kunnen vinden dus returnen false
+    else if (current_state->getTTo().empty())
+    {
+        return false;
+    }
+
+    // Kijken naar de "kinderen" en recursief de functie toepassen
+    else
+    {
+        // Voor elke letter
+        for (char letter : alphabet)
+        {
+            // Als de state bestaat, returnen we true
+            if (isStateReachable(start_state, current_state->getTTo().at(letter), target, alphabet))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

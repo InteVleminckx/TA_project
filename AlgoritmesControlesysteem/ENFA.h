@@ -91,9 +91,10 @@ public:
 
     /**
      * Deze funcie zet de eNFA om in een DFA a.d.h.v. de toDFA.
+     * @param brzozowski = boolean die aangeeft of we het brzozowski algoritme gebruiken
      * @return: DFA gemaakt uit de toDFA.
      */
-    DFA toDFA();
+    DFA toDFA(const bool brzozowski);
 
     /**
      * Deze funtie print alle informatie over de automaat.

@@ -47,6 +47,15 @@ public:
      */
     static void elemNonReachableStates(DFA &productautomaat);
 
+    /**
+     * Functie die nagaat of een bepaalde state reachable is vanuit de startstate
+     * @param start_state = state die de startstate is van onze DFA
+     * @param target = eindstate waarvan we willen weten of deze bereibaar is
+     * @param alphabet = verzameling van chars
+     * @return bool
+     */
+    static bool isStateReachable(State* start_state, State* current_state, State* target, vector<char> alphabet);
+
     // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };
 
