@@ -25,10 +25,9 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
 
     reversal(productAutomaat, enfa);                  // Stap 1
     productAutomaat = enfa.toDFA(true);            // Stap 2
-    productAutomaat.print(cout);
-    productAutomaat.renameStates();                         // Stap 3
-    elemNonReachableStates(productAutomaat);             // Stap 4
-
+     productAutomaat.renameStates();                         // Stap 3
+//    elemNonReachableStates(productAutomaat);             // Stap 4
+    elemNonReachableStatesRecursively(productAutomaat);
     enfa = ENFA();
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
@@ -36,7 +35,8 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     reversal(productAutomaat, enfa);              // Stap 5
     productAutomaat = enfa.toDFA(true);       // Stap 6
     productAutomaat.renameStates();                     // Stap 7
-    elemNonReachableStates(productAutomaat);         // Stap 8
+//    elemNonReachableStates(productAutomaat);         // Stap 8
+    elemNonReachableStatesRecursively(productAutomaat);
   
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -179,8 +179,18 @@ void Brzozowski::setTransitions(pair<const char, State *> &stateDFA, ENFA &e_nfa
     }
 }
 
-bool Brzozowski::isStateReachable(State *start_state, State* current_state, State *target, vector<char> alphabet) {
+bool Brzozowski::isStateReachable(State *start_state, State* current_state, State *target, vector<char> alphabet,
+                                  vector<State*> &reeds_gehad) {
     // Voor deze functie gaan we recursie gebruiken
+
+    // Loop om te kijken of we een state niet al zijn tegengekomen
+    for (State* state : reeds_gehad)
+    {
+        if (state == current_state)
+        {
+            return false;
+        }
+    }
 
     // We hebben state gevonden, returnen true
     if (current_state == target)
@@ -197,15 +207,33 @@ bool Brzozowski::isStateReachable(State *start_state, State* current_state, Stat
     // Kijken naar de "kinderen" en recursief de functie toepassen
     else
     {
+        reeds_gehad.push_back(current_state);
+
         // Voor elke letter
         for (char letter : alphabet)
         {
             // Als de state bestaat, returnen we true
-            if (isStateReachable(start_state, current_state->getTTo().at(letter), target, alphabet))
+            if (isStateReachable(start_state, current_state->getTTo().at(letter), target, alphabet, reeds_gehad))
             {
                 return true;
             }
         }
         return false;
     }
+}
+
+void Brzozowski::elemNonReachableStatesRecursively(DFA &productautomaat) {
+    map<string, State*> nieuwe_states = {};
+    State* start_state = productautomaat.getStates().at(productautomaat.getStartState());
+    vector<State*> reeds_gehad = {};
+    for (const auto& it : productautomaat.getStates())
+    {
+        // Als de state reachable is, voegen we deze toe
+        if (isStateReachable(start_state, start_state, it.second, productautomaat.getAlphabet(), reeds_gehad))
+        {
+            nieuwe_states[it.first] = it.second;
+        }
+        reeds_gehad.clear();
+    }
+    productautomaat.setStates(nieuwe_states);
 }
