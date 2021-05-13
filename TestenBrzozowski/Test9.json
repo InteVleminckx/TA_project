@@ -13,7 +13,7 @@
     {
       "name": "Q",
       "starting": false,
-      "accepting": false
+      "accepting": true
     },
     {
       "name": "R",

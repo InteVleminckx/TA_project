@@ -70,11 +70,24 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
                                               accepting_states[0]->getName(),
                                               false,
                                               e_nfa.getEpsilon());
-        string temp_name = accepting_states[0]->getName();
-        e_nfa.setStartState(temp_name);
-        e_nfa.addToStates(new_starting_state);
-        e_nfa.addToStartingStates(new_starting_state->getName());
-        e_nfa.addToCurrentStates(new_starting_state->getName());
+
+        // Als de enigste starting state eig ook de enigste accepting state was, passen we de new_accepting_state aan
+        if (new_starting_state->getName() == new_accepting_state->getName())
+        {
+            new_accepting_state->setStarting(true);
+            string temp_name = accepting_states[0]->getName();
+            e_nfa.setStartState(temp_name);
+            e_nfa.addToStartingStates(new_accepting_state->getName());
+            e_nfa.addToCurrentStates(new_accepting_state->getName());
+        }
+        else
+        {
+            string temp_name = accepting_states[0]->getName();
+            e_nfa.setStartState(temp_name);
+            e_nfa.addToStates(new_starting_state);
+            e_nfa.addToStartingStates(new_starting_state->getName());
+            e_nfa.addToCurrentStates(new_starting_state->getName());
+        }
     }
 
     // Meerdere states
