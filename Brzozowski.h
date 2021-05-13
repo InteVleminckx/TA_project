@@ -54,8 +54,10 @@ public:
      * @param alphabet = verzameling van chars
      * @return bool
      */
-    static bool isStateReachable(State* start_state, State* current_state, State* target, vector<char> alphabet);
+    static bool isStateReachable(State* start_state, State* current_state, State* target, vector<char> alphabet,
+                                 vector<State*> &reeds_gehad);
 
+    static void elemNonReachableStatesRecursively(DFA &productautomaat);
     // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };
 
