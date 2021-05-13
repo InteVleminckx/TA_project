@@ -105,6 +105,12 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
         for (State* state1 : accepting_states)
         {
             State_NFA* new_state = new State_NFA(false, state1->getName(), false, e_nfa.getEpsilon());
+
+            // Als het zowel een startstate als accepting state was oorspronkelijk, dan wordt de state nu ook accepting
+            if (state1->isStarting())
+            {
+                new_state->setAccepting(true);
+            }
             e_nfa.addToStates(new_state);
             new_starting_state->addTransition(e_nfa.getEpsilon(), new_state);
         }
