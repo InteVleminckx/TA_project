@@ -15,6 +15,8 @@
 #include "TFA_State.h"
 #include <chrono>
 #include <algorithm>
+#include <set>
+
 using namespace nlohmann;
 using namespace std;
 using namespace std::chrono;
@@ -58,6 +60,8 @@ public:
     void setHaakjes();
     void clearDubbels();
     void checkDoubles(string &stateTo);
+
+    void elemNonReachableStates(TFA &newFDA);
 
     TFA();
     static bool sortStates(vector<TFA_State> &statesVec);
