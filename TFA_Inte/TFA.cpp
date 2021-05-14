@@ -164,6 +164,8 @@ TFA TFA::minimize(long &time) {
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
 
+    elemNonReachableStates(newDFA);
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();
@@ -761,5 +763,44 @@ void TFA::checkDoubles(string &stateTo) {
         newState += '}';
         stateTo = newState;
     }
+
+}
+
+void TFA::elemNonReachableStates(TFA &newDFA)
+{
+
+    set<string> reachableStates;
+
+    for (auto & state : newDFA.states)
+    {
+        string huidigeState = state.name;
+
+        //als het een start state is moet deze worden toegevoegd
+        if (state.starting)
+        {
+            reachableStates.insert(huidigeState);
+        }
+
+        for (auto & transition : state.transitions)
+        {
+            string transToState = transition.first;
+
+            //als de state een transitie heeft en deze is niet naar zijn eigen dan moet deze ook worden toegevoegd
+            if (transToState != huidigeState)
+            {
+                reachableStates.insert(transToState);
+            }
+
+        }
+    }
+
+    //We hebben nu alle states in een set zitten waar een transitie naar toe gaat
+
+    //nu moeten we de nonreachable states nog wegdoen uit de vector
+//    for (int i = 0; i < newDFA.; ++i) {
+//
+//    }
+
+
 
 }
