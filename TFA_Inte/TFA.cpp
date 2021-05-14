@@ -796,11 +796,15 @@ void TFA::elemNonReachableStates(TFA &newDFA)
 
     //We hebben nu alle states in een set zitten waar een transitie naar toe gaat
 
+    vector<TFA_State> reachable;
+
     //nu moeten we de nonreachable states nog wegdoen uit de vector
-//    for (int i = 0; i < newDFA.; ++i) {
-//
-//    }
+    for (auto & state : newDFA.states)
+    {
+        if (reachableStates.count(state.name)) reachable.push_back(state);
+    }
 
 
+    newDFA.states = reachable;
 
 }
