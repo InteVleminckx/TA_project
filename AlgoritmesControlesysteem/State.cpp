@@ -99,6 +99,10 @@ void State::setName(string Name) {
     name = Name;
 }
 
+bool State::isState() const {
+    return state;
+}
+
 
 void State_NFA::setState(bool s) {
     state = s;

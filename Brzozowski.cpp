@@ -4,8 +4,7 @@
 
 #include "Brzozowski.h"
 
-void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
-
+void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, vector<long> &times) {
     /*
      * Stap 1 : reversal
      * Stap 2 : determineren
@@ -16,6 +15,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
      */
 
     // Voor de duur van de functie te bepalen
+    long time;
     auto start = high_resolution_clock::now();
 
     // ENFA die we zullen gebruiken doorheen de functies
@@ -41,6 +41,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, long &time) {
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();
+    times.push_back(time);
 }
 
 void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {

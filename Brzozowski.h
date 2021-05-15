@@ -33,7 +33,7 @@ public:
      * @param productAutomaat = automaat die we willen minimaliseren
      * @param time = tijd die we by ref meegeven waarin we de duur van de functie kunnen opslagen
      */
-    static void brzozowskiAlgorithm(DFA &productAutomaat, long &time);
+    static void brzozowskiAlgorithm(DFA &productAutomaat, vector<long> &times);
 
     /**
      * Hulpfunctie die de reversal van een DFA gaat nemen

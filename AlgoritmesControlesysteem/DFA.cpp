@@ -206,7 +206,7 @@ vector<string> DFA::getAllStates(){
 }
 
 
-vector<char> DFA::getAlphabet() {
+vector<char> DFA::getAlphabet() const {
     return alphabet;
 }
 
@@ -560,10 +560,43 @@ const string &DFA::getCurrentState() const {
     return current;
 }
 
-int DFA::getMemory() const {
-    int aantal_bytes = 0;
+long DFA::getMemory(vector<long> &memories) const {
+    long aantal_bytes = 0;
+
+    // Startstate = string
     aantal_bytes += sizeof(getStartState());
+
+    // Current = string
     aantal_bytes += sizeof(getCurrentState());
+
+    // Alphabet = chars
+    for (char letter : getAlphabet()) aantal_bytes += sizeof(letter);
+
+    // TFA_table
+    for (auto pair : TFA_table)
+    {
+        aantal_bytes += sizeof(pair.first);
+        for (auto pair1 : pair.second)
+        {
+            aantal_bytes += sizeof(pair1.first);
+            aantal_bytes += sizeof(pair1.second);
+        }
+    }
+
+    // States
+    for (auto pair2 : getStates())
+    {
+        aantal_bytes += sizeof(pair2.first);
+        aantal_bytes += sizeof(pair2.second->isStarting());
+        aantal_bytes += sizeof(pair2.second->is_accept());
+        aantal_bytes += sizeof(pair2.second->getName());
+        aantal_bytes += sizeof(pair2.second->isState());
+        for (auto pair3 : pair2.second->getTTo())
+        {
+            aantal_bytes += sizeof(pair3.first);
+        }
+    }
+    memories.push_back(aantal_bytes);
     return aantal_bytes;
 }
 

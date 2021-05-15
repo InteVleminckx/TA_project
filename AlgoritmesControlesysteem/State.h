@@ -109,6 +109,12 @@ public:
      */
     void setName(string Name);
 
+    /**
+     * Functie die de bool "state" teruggeeft
+     * @return boolean
+     */
+    bool isState() const;
+
 };
 
 /**
