@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "Dzhem.h" //include voor controlesysteem
+#include "Datastructuur.h" //tijdelijke include, vervanging woord de dergelijke opslag van de bestemmingen.
+
 
 
 using namespace std;
