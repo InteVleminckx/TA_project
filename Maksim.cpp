@@ -95,8 +95,11 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     cout << "U = " << U << endl;
     cout << "T = " << T << endl;
 
+    Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
+    //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
+
     // doorsnede checken => controlesysteem
-    bool doorsnede = false;
+    bool doorsnede = controleSysteem(formule, data);
 
     if (doorsnede) { // als de doorsnedes niet leeg zijn
         return generateRE(numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.

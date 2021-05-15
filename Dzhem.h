@@ -29,7 +29,7 @@ class Dzhem {
  * @param bestemmingen: Datastructuur met alle bestaande bestemmingen met elks een unieke RE.
  * @return: true of false;
  */
-bool controleSysteem(string RE, Datastructuur& bestemmingen);
+bool controleSysteem(string& RE, Datastructuur& bestemmingen);
 
 
 #endif //PROJECTTA_DZHEM_H
