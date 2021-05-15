@@ -71,7 +71,7 @@ public:
     /**
      * Geeft de alfabet van de automaat terug.
      */
-    vector<char> getAlphabet();
+    vector<char> getAlphabet() const;
 
     /**
      * Deze functie geeft weer of de staat in de automaat met de gegeven naam accepterend is.
@@ -185,10 +185,11 @@ public:
     const string &getCurrentState() const;
 
     /**
-     * Functie die het geheugen dat een DFA inneemt teruggeeft
-     * @return integer = aantal bytes
+     * Functie dat het geheugen dat een DFA inneemt returned
+     * @param memories = vector waar we het geheugen aan toevoegen en dus in opslagen
+     * @return none
      */
-    int getMemory() const;
+    long getMemory(vector<long> &memories) const;
 };
 
 

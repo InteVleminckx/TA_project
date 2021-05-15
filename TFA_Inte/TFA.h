@@ -68,7 +68,7 @@ public:
     TFA(const string& filename);
     void print();
     void printTable();
-    TFA minimize(long &time);
+    TFA minimize(vector<long> &times);
 
 };
 

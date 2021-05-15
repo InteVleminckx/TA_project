@@ -18,15 +18,15 @@
 
 int main() {
 
-    long time;
+    vector<long> times;
     DFA dfa1 = DFA("../TestenBrzozowski/Test5.json");
-    Brzozowski::brzozowskiAlgorithm(dfa1, time);
+    Brzozowski::brzozowskiAlgorithm(dfa1, times);
     dfa1.print(cout);
 
 //    cout << time << " microseconden" << endl;
 
     TFA dfa2("../TestenBrzozowski/Test5.json");
-    dfa2.minimize(time).print();
+    dfa2.minimize(times).print();
 
 //    cout << time << " microseconden" <<endl;
 

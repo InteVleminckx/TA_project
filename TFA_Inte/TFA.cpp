@@ -150,8 +150,9 @@ bool TFA::sortStatesTransitions(vector<TFA_State> &statesVec) {
     return swapped;
 }
 
-TFA TFA::minimize(long &time) {
+TFA TFA::minimize(vector<long> &times) {
 
+    long time;
     auto start = high_resolution_clock::now();
 
     createTable();
@@ -169,6 +170,7 @@ TFA TFA::minimize(long &time) {
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     time = duration.count();
+    times.push_back(time);
 
     return newDFA;
 }
