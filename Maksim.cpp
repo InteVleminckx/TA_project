@@ -81,6 +81,9 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     // U bepalen
     string randomU = getRandomString(numberOfIterations);
     U = randomU;
+    while (U[U.size()-1] == '*') {
+        U = U.substr(0, U.size()-1);
+    }
 
     // T bepalen
     string randomT = getRandomString(numberOfIterations);
