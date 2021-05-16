@@ -1,0 +1,41 @@
+{
+    "alphabet": [
+        "d",
+        "f"
+    ],
+    "states": [
+        {
+            "accepting": false,
+            "name": "{0, 2, 3}",
+            "starting": true
+        },
+        {
+            "accepting": true,
+            "name": "{1}",
+            "starting": false
+        }
+    ],
+    "transitions": [
+        {
+            "from": "{0, 2, 3}",
+            "input": "d",
+            "to": "{1}"
+        },
+        {
+            "from": "{0, 2, 3}",
+            "input": "f",
+            "to": "{1}"
+        },
+        {
+            "from": "{1}",
+            "input": "d",
+            "to": "{1}"
+        },
+        {
+            "from": "{1}",
+            "input": "f",
+            "to": "{1}"
+        }
+    ],
+    "type": "DFA"
+}
