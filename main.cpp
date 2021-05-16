@@ -19,16 +19,22 @@
 int main() {
 
     vector<long> times;
-    DFA dfa1 = DFA("../TestenBrzozowski/Test5.json");
+    DFA dfa1 = DFA("../TestenBrzozowski/Test4.json");
     Brzozowski::brzozowskiAlgorithm(dfa1, times);
     dfa1.print(cout);
 
-//    cout << time << " microseconden" << endl;
+    TFA temp_tfa("../TestenBrzozowski/Test4.json");
+    TFA minimized_TFA = temp_tfa.minimize(times);
+    minimized_TFA.print(cout);
 
-    TFA dfa2("../TestenBrzozowski/Test5.json");
-    dfa2.minimize(times).print();
+    dfa1.getMemory(times);
+    DFA dfa2 = minimized_TFA.toDFA();
+    dfa2.getMemory(times);
 
-//    cout << time << " microseconden" <<endl;
+    cout << "Tijd met Brzozowski ==> " << times[0] << " microseconden" << endl;
+    cout << "Tijd met TFA ==> " << times[1] << " microseconden" << endl;
+    cout << "Geheugen DFA met Brzozowski ==> " << times[2] << " bytes" << endl;
+    cout << "Geheugen DFA met TFA ==> " << times[3] << " bytes" << endl;
 
     return 0;
 }
