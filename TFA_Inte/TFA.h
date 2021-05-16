@@ -16,6 +16,7 @@
 #include <chrono>
 #include <algorithm>
 #include <set>
+#include "../AlgoritmesControlesysteem/DFA.h"
 
 using namespace nlohmann;
 using namespace std;
@@ -66,9 +67,15 @@ public:
     TFA();
     static bool sortStates(vector<TFA_State> &statesVec);
     TFA(const string& filename);
-    void print();
+    void print(ostream& stream) const;
     void printTable();
     TFA minimize(vector<long> &times);
+
+    /**
+     * Functie die een TFA (= DFA van Inte) gaat omzetten naar een DFA van Dzhem
+     * @return DFA (van Dzhem)
+     */
+    DFA toDFA() const;
 
 };
 

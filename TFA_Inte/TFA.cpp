@@ -73,7 +73,7 @@ TFA::TFA(const string& filename) {
 
 }
 
-void TFA::print() {
+void TFA::print(ostream& stream) const {
 
     json  j;
 
@@ -101,7 +101,7 @@ void TFA::print() {
         }
     }
 
-    cout<<setw(4)<<j<<endl;
+    stream<<setw(4)<<j<<endl;
 }
 
 bool TFA::sortStates(vector<TFA_State> &statesVec) {
@@ -809,4 +809,16 @@ void TFA::elemNonReachableStates(TFA &newDFA)
 
     newDFA.states = reachable;
 
+}
+
+DFA TFA::toDFA() const {
+    // Stappen:
+    // 1) TFA uitprinten naar ander bestand (.json)
+    // 2) Terug inlezen naar een DFA
+
+    ofstream output_stream;
+    output_stream.open("../TFAToDFAFiles/TFA.json");
+    print(output_stream);
+    DFA toDFA("../TFAToDFAFiles/TFA.json");
+    return toDFA;
 }
