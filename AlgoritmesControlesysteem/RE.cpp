@@ -102,7 +102,9 @@ vector<State_NFA *> RE::concatenator(vector<char> conChar) {
         auto c_enfa = getCharENFA(c);
         if(conChar.size()>1 and i != conChar.size()-1 and conChar.at(i+1) == '*'){ //als de char kleenClosed wordt
             auto kleenSub = KleeneStar(c_enfa);
-            concatenated.back()->addTransition(eps, kleenSub.at(0));
+            if(!concatenated.empty()) {
+                concatenated.back()->addTransition(eps, kleenSub.at(0));
+            }
             concatenated.insert(concatenated.end(), kleenSub.begin(), kleenSub.end());
             i = i + 1;
         }
@@ -352,11 +354,22 @@ DFA RE::toDFA() {
 vector<State_NFA *> RE::concatChecker(string subexpression) {
     vector<string> concatParts;
     int size = subexpression.size();
+
     for (int i = 0; i<size; i++){
         auto c = subexpression.at(i);
         string repl;
-        if (isalnum(c)){
+        if (isalnum(c) or c == '*'){
             repl += c;
+            int place = i+1;
+            for (int k = i+1; k <subexpression.size(); k++){
+                place = k;
+                if (subexpression.at(k) == '\''){
+                    place = k-1;
+                    break;
+                }
+            }
+            repl += subexpression.substr(i+1, place-i);
+            i = place;
             concatParts.push_back(repl);
         }else if(c == '\''){
             repl += c;
@@ -377,10 +390,15 @@ vector<State_NFA *> RE::concatChecker(string subexpression) {
         }
     }
     vector<State_NFA*> concatenated;
-    for(auto string:concatParts){
+    for(int i=0;i<concatParts.size(); i++){
+        string string = concatParts.at(i);
         vector<State_NFA*> part;
         if (subENFAs.find(string) != subENFAs.end()) {
-            part = subENFAs[string].back();
+            if(i < concatParts.size()-1 and concatParts.at(i+1) == "*"){
+                part = KleeneStar(subENFAs[string].back());
+            }else {
+                part = subENFAs[string].back();
+            }
             subENFAs[string].pop_back();
         }else if (placeholderENFAs.find(string) != placeholderENFAs.end()){
             part = placeholderENFAs[string];
