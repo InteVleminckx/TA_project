@@ -118,7 +118,7 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
 
 string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voor de eerste keer
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
-    int randomBewerking = rand() % 3; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+    int randomBewerking = rand() % 2; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
 
     string deelRegex;
     if (randomBewerking == 0) { // unie
@@ -128,10 +128,10 @@ string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voo
         int randConcat = rand() % 2;
 
         if (randConcat == 0) {
-            deelRegex = "(" + to_string(symbool1) + to_string(1-symbool1) + ")"; // 01 of 10
+            deelRegex = to_string(symbool1) + to_string(1-symbool1); // 01 of 10
         }
         else if (randConcat == 1) {
-            deelRegex = "(" + to_string(symbool1) + to_string(symbool1) + ")"; // 00 of 11
+            deelRegex = to_string(symbool1) + to_string(symbool1); // 00 of 11
         }
     }
     else if (randomBewerking == 2) { // kleene
@@ -144,12 +144,12 @@ string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voo
 string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie moeten voltooien bij generateRE(), roepen we deze functie op.
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
     int randomBewerking;
-    if (deelRegex1[deelRegex1.size()-1] != '*') {
-        randomBewerking = rand() % 3; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
-    }
-    else {
-        randomBewerking = rand() % 2; // kleene star zit hier niet bij de mogelijke bewerkingen
-    }
+//    if (deelRegex1[deelRegex1.size()-1] != '*') {
+//        randomBewerking = rand() % 3; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+//    }
+//    else {
+    randomBewerking = rand() % 2; // kleene star zit hier niet bij de mogelijke bewerkingen
+//    }
     string deelRegex;
     if (randomBewerking == 0) { // unie
         deelRegex = "(" + to_string(symbool1) + "+" + deelRegex1 + ")"; // (0+1)
@@ -162,7 +162,7 @@ string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie 
         }
         else if (randConcat == 1) {
 
-            deelRegex = "(" + deelRegex1 + to_string(symbool1) + ")"; // 00 of 11
+            deelRegex = deelRegex1 + to_string(symbool1); // 00 of 11
         }
     }
     else if (randomBewerking == 2) { // kleene
