@@ -93,7 +93,7 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     T = "01";
     U = "1";*/
     // formule samenstellen
-    string formule = "(" + R + "+" + S + U + "*"+T+")" + "*" + S + U + "*"; // algemene vorm van formule
+    string formule = "(" + R + "+" + S + "(" + U + ")" + "*"+T+")" + "*" + S + "(" +  U + ")" + "*"; // algemene vorm van formule
 
     //debugging
     cout << "R = " << R << endl;
