@@ -28,10 +28,13 @@ void RE::parser() {
     int i = 0;
     while(i < tokens.size()){
         auto t = tokens.at(i);
-        if(isalpha(t)){ //als het om een character gaat en deze niet epsilon is
+        if(isalnum(t)){ //als het om een character gaat en deze niet epsilon is
             vector<char> subExpr;
+            if (find(alphabet.begin(), alphabet.end(), t) == alphabet.end()){
+                alphabet.push_back(t);
+            }
             string naamSubExpr;
-            while(isalpha(t) or t == '*'){   //Als de character kleenClosed is.
+            while(isalnum(t) or t == '*'){   //Als de character kleenClosed is.
                 subExpr.push_back(t);   //t mss weg doen uit if
                 naamSubExpr = naamSubExpr + t;
                 i++;
@@ -50,7 +53,6 @@ void RE::parser() {
                 subENFAs[naamSubExpr].push_back(subEnfa);
                 continue;
             }
-            i++;
         }else{
             i++;
         }
@@ -99,7 +101,6 @@ vector<State_NFA *> RE::concatenator(vector<char> conChar) {
         auto c = conChar.at(i);
         auto c_enfa = getCharENFA(c);
         if(conChar.size()>1 and i != conChar.size()-1 and conChar.at(i+1) == '*'){ //als de char kleenClosed wordt
-            //auto sub = getCharENFA(c);
             auto kleenSub = KleeneStar(c_enfa);
             concatenated.back()->addTransition(eps, kleenSub.at(0));
             concatenated.insert(concatenated.end(), kleenSub.begin(), kleenSub.end());
@@ -214,20 +215,32 @@ vector<State_NFA *> RE::replToENFA(string replacedName, int r) {
     for(int i=1; i<repl.size()-1; i++){
         auto c = repl.at(i);
         if (c == '+' or i == repl.size()-2){
-            if (i == repl.size()-2){
-                naamSub =naamSub + c;
+            if (i == repl.size()-2 and c != '*'){
+                naamSub += c;
             }
-            if (r>0 and naamSub == r_name){ //als het om een replacement in de replacement gaat.
+            int test = naamSub.find('\'', 1);
+            if (r>0 and naamSub.at(0) == '\'' and naamSub.at(naamSub.size()-1) == '\'' and
+                (repl.at(i+1) == ')' or repl.at(i) == '+') and naamSub.find('\'', 1) == naamSub.size()-1){ //als het om een replacement in de replacement gaat.
+                if (c == '*'){
+                    placeholderENFAs[naamSub] = KleeneStar(placeholderENFAs[naamSub]);
+                }
                 forUnion.push_back(placeholderENFAs[naamSub]);
             }
-            else {  //Als het om een character of concatenatie van characters gaat.
+            else if(subENFAs.find(naamSub) != subENFAs.end()){  //Als het om een character of concatenatie van characters gaat.
                 forUnion.push_back(subENFAs[naamSub].back());
                 subENFAs[naamSub].pop_back();
+            }else{
+                vector<State_NFA*> concat = concatChecker(naamSub);
+                if (c =='*'){
+                    forUnion.push_back(KleeneStar(concat));
+                }else{
+                    forUnion.push_back(concat);
+                }
             }
             naamSub = "";
         }
         else{
-            naamSub = naamSub + c;
+            naamSub += c;
         }
     }
 
@@ -260,8 +273,9 @@ vector<State_NFA *> RE::replacedMerger() {
                     concat = sub;
                 }
             }
-            naamSub = expressie.substr(i, 7);
-            i = i + 6;
+            int posend = expressie.find('\'', i+1);
+            naamSub = expressie.substr(i, posend+1-i);
+            i = posend;
             if(i != expressie.size()-1 and expressie.at(i+1) == '*'){   //als de replacement kleenClosed is.
                 i++;
                 auto res = KleeneStar(placeholderENFAs[naamSub]);
@@ -333,6 +347,53 @@ ENFA RE::toENFA() {
 
 DFA RE::toDFA() {
     return this->toENFA().toDFA(false);
+}
+
+vector<State_NFA *> RE::concatChecker(string subexpression) {
+    vector<string> concatParts;
+    int size = subexpression.size();
+    for (int i = 0; i<size; i++){
+        auto c = subexpression.at(i);
+        string repl;
+        if (isalnum(c)){
+            repl += c;
+            concatParts.push_back(repl);
+        }else if(c == '\''){
+            repl += c;
+            int place = 0;
+            for (int k = i+1; k <subexpression.size(); k++){
+                if (subexpression.at(k) == '\''){
+                    place = k;
+                    break;
+                }
+            }
+            repl += subexpression.substr(i+1, place-i);
+            i = place;
+            if (i+1 < subexpression.size() and subexpression.at(i+1) == '*'){
+                placeholderENFAs[repl] = KleeneStar(placeholderENFAs[repl]);
+                i++;
+            }
+            concatParts.push_back(repl);
+        }
+    }
+    vector<State_NFA*> concatenated;
+    for(auto string:concatParts){
+        vector<State_NFA*> part;
+        if (subENFAs.find(string) != subENFAs.end()) {
+            part = subENFAs[string].back();
+            subENFAs[string].pop_back();
+        }else if (placeholderENFAs.find(string) != placeholderENFAs.end()){
+            part = placeholderENFAs[string];
+        }
+        if (concatenated.empty()) {
+            concatenated.insert(concatenated.end(), part.begin(), part.end());
+        }else{
+            int conectionPoint = concatenated.size()-1;
+            concatenated.insert(concatenated.end(), part.begin(), part.end());
+            concatenated[conectionPoint]->addTransition(eps, concatenated[conectionPoint+1]);
+        }
+    }
+    return concatenated;
 }
 
 

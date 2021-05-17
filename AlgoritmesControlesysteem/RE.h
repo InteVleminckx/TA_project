@@ -80,6 +80,13 @@ public:
      */
     vector<State_NFA*> replacedMerger();
 
+    /**
+     * Deze functie kijk na of de gegeven string een concatenatie voorstelt.
+     * @param subexpression: de expressie die gecontroleert wordt
+     * @return: geconcateneerde ENFA
+     */
+    vector<State_NFA*>concatChecker(string subexpression);
+
 
     /**
      * Deze functie zet de RE om in een ENFA.

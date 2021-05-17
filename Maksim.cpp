@@ -88,9 +88,12 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     // T bepalen
     string randomT = getRandomString(numberOfIterations);
     T = randomT;
-
+    /*R = "1";
+    S = "0";
+    T = "01";
+    U = "1";*/
     // formule samenstellen
-    string formule = "(" + R + " + " + S + U + "*" + T + ")" + "*" + S + U + "*"; // algemene vorm van formule
+    string formule = "(" + R + "+" + S + U + "*"+T+")" + "*" + S + U + "*"; // algemene vorm van formule
 
     //debugging
     cout << "R = " << R << endl;
@@ -104,7 +107,7 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     // doorsnede checken => controlesysteem
     bool doorsnede = controleSysteem(formule, data);
 
-    if (doorsnede) { // als de doorsnedes niet leeg zijn
+    if (!doorsnede) { // als de doorsnedes niet leeg zijn
         return generateRE(numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {

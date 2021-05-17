@@ -37,7 +37,7 @@ int main() {
 //    cout << "Geheugen DFA met TFA ==> " << times[3] << " bytes" << endl;
 
     Maksim maksim;
-    srand ((int)time(NULL));
+    //srand ((int)time(NULL));
     for (auto i = 0; i < 10; i++) {
         string re = maksim.generateRE(2);
         cout << re << endl;
