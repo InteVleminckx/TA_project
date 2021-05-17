@@ -1,0 +1,161 @@
+{
+  "type": "DFA",
+  "alphabet": [
+    "0",
+    "1"
+  ],
+  "states": [
+    {
+      "name": "A",
+      "starting": true,
+      "accepting": false
+    },
+    {
+      "name": "B",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "C",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "D",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "E",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "F",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "G",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "H",
+      "starting": false,
+      "accepting": true
+    },
+    {
+      "name": "I",
+      "starting": false,
+      "accepting": false
+    },
+    {
+      "name": "J",
+      "starting": false,
+      "accepting": true
+    }
+  ],
+  "transitions": [
+    {
+      "from": "A",
+      "to": "B",
+      "input": "0"
+    },
+    {
+      "from": "A",
+      "to": "A",
+      "input": "1"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "input": "0"
+    },
+    {
+      "from": "B",
+      "to": "E",
+      "input": "1"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "input": "0"
+    },
+    {
+      "from": "C",
+      "to": "E",
+      "input": "1"
+    },
+    {
+      "from": "D",
+      "to": "D",
+      "input": "0"
+    },
+    {
+      "from": "D",
+      "to": "F",
+      "input": "1"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "input": "0"
+    },
+    {
+      "from": "E",
+      "to": "A",
+      "input": "1"
+    },
+    {
+      "from": "F",
+      "to": "F",
+      "input": "0"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "input": "1"
+    },
+    {
+      "from": "G",
+      "to": "E",
+      "input": "0"
+    },
+    {
+      "from": "G",
+      "to": "D",
+      "input": "1"
+    },
+    {
+      "from": "H",
+      "to": "D",
+      "input": "0"
+    },
+    {
+      "from": "H",
+      "to": "I",
+      "input": "1"
+    },
+    {
+      "from": "I",
+      "to": "B",
+      "input": "0"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "input": "1"
+    },
+    {
+      "from": "J",
+      "to": "I",
+      "input": "0"
+    },
+    {
+      "from": "J",
+      "to": "J",
+      "input": "1"
+    }
+  ]
+}
