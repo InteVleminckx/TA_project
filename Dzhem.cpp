@@ -7,6 +7,7 @@
 bool controleSysteem(string& re, Datastructuur &bestemmingen) {
     RE newRE = RE(re, 'e');
     DFA dfaRE = newRE.toDFA();
+    dfaRE.renameStates();
 
     vector<Bestemming> haltes;
     bestemmingen.inorderTraversal(haltes);
