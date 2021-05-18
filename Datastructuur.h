@@ -16,7 +16,7 @@ class Node
 private:
     string fKey;
     string fValue;
-    Bestemming fObject;
+    Bestemming* fObject;
 
 
 public:
@@ -48,7 +48,7 @@ public:
      * Deze functie geeft de bestemming zelf terug te mee opgeslagen zit in de node.
      * @return : Bestemming, de bestemming.
      */
-    Bestemming getObject();
+    Bestemming* getObject();
 };
 
 
@@ -153,7 +153,7 @@ public:
      * @functie: inorderTraversal
      * Deze functie toont alle bestemming in gesorteerde volgorde.
      */
-    void inorderTraversal(vector<Bestemming> &bestemmingen);
+    void inorderTraversal(vector<Bestemming*> &bestemmingen);
 };
 
 

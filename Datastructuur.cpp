@@ -7,14 +7,14 @@
 Node::Node(Bestemming &bestemming) {
     fKey = bestemming.getName();
     fValue = bestemming.getRegex();
-    fObject = bestemming;
+    fObject = &bestemming;
 }
 
 string Node::getKey() {return fKey;}
 
 string Node::getValue() {return fValue;}
 
-Bestemming Node::getObject() {return fObject;}
+Bestemming* Node::getObject() {return fObject;}
 
 Datastructuur::Datastructuur() = default;
 
@@ -46,7 +46,7 @@ bool Datastructuur::insert(Node* object) {
     }
 
     //Er bestaat al een node met dezelfde zoeksleutel in de datastructuur.
-    else if (this->getBestemming(object->getObject()).first) return false;
+    else if (this->getBestemming(*object->getObject()).first) return false;
 
     //De datastructuur is niet leeg en de zoeksleutel zit er nog niet in.
     else
@@ -197,7 +197,8 @@ pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
     return make_pair(false, "");
 }
 
-void Datastructuur::inorderTraversal(vector<Bestemming> &bestemmingen) {
+
+void Datastructuur::inorderTraversal(vector<Bestemming*> &bestemmingen) {
 
     if (fRoot != nullptr){
         if (this->getLeftChild() != nullptr)

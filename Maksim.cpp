@@ -58,7 +58,7 @@ void Maksim::stringToBarcode(string &str) {
 //cout << re << endl;
 //cout << endl;
 //}
-string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepaalt hoeveel bewerkingen we gaan uitvoeren (per deelbewerking)
+string Maksim::generateRE(Datastructuur& data, int numberOfIterations) { // het aantal iteraties bepaalt hoeveel bewerkingen we gaan uitvoeren (per deelbewerking)
 
     // het alfabet van de RE is {0,1}
     // vector<string> alfabet{"0", "1"};
@@ -88,27 +88,28 @@ string Maksim::generateRE(int numberOfIterations) { // het aantal iteraties bepa
     // T bepalen
     string randomT = getRandomString(numberOfIterations);
     T = randomT;
-    /*R = "1";
+    //R = "1";
     S = "0";
-    T = "01";
-    U = "1";*/
+    T = "0";
+    U = "0";
     // formule samenstellen
-    string formule = "(" + R + "+" + S + "(" + U + ")" + "*"+T+")" + "*" + S + "(" +  U + ")" + "*"; // algemene vorm van formule
+    string formule = "(" + R + "+" + S + "(" + U + ")" + "*"+T+")" + S + "(" +  U + ")"; // algemene vorm van formule
 
     //debugging
     cout << "R = " << R << endl;
     cout << "S = " << S << endl;
     cout << "U = " << U << endl;
     cout << "T = " << T << endl;
+    cout << formule << endl << endl;
 
-    Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
+    //Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
     //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
 
     // doorsnede checken => controlesysteem
     bool doorsnede = controleSysteem(formule, data);
 
     if (!doorsnede) { // als de doorsnedes niet leeg zijn
-        return generateRE(numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
+        return generateRE(data, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {
         RE = formule;

@@ -9,12 +9,13 @@ bool controleSysteem(string& re, Datastructuur &bestemmingen) {
     DFA dfaRE = newRE.toDFA();
     dfaRE.renameStates();
 
-    vector<Bestemming> haltes;
+    vector<Bestemming*> haltes;
     bestemmingen.inorderTraversal(haltes);
 
     for (auto halte:haltes){
-        RE reHalte = RE(halte.getRegex(), 'e');
+        RE reHalte = RE(halte->getRegex(), 'e');
         DFA dfaHalte = reHalte.toDFA();
+        dfaHalte.renameStates();
         //Pruductautomaat van de twee met doorsnede van de accepterende staten.
         DFA doorsnede = DFA(dfaRE, dfaHalte, true);
         vector<string> statesDoornsede = doorsnede.getAllStates();

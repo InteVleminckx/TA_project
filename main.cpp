@@ -10,6 +10,8 @@
 #include <time.h>
 #include "Maksim.h"
 #include "engine/engine.h"
+#include "Bestemming.h"
+#include "Datastructuur.h"
 
 /**
  * Opmerking: de working directory staat standaard op de cmake-build-debug map, we moeten dus altijd eerst een
@@ -37,12 +39,23 @@ int main() {
 //    cout << "Geheugen DFA met TFA ==> " << times[3] << " bytes" << endl;
 
     Maksim maksim;
-    srand ((int)time(NULL));
-    for (auto i = 0; i < 10; i++) {
+    //srand ((int)time(NULL));
+    /*for (auto i = 0; i < 10; i++) {
         string re = maksim.generateRE(2);
         cout << re << endl;
         cout << endl;
+    }*/
+
+    Datastructuur data;
+    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd"};
+    for (int i =0; i < 4; i++){
+        string re = maksim.generateRE(data);
+        Bestemming* halte = new Bestemming(haltes.at(i), re);
+        Node* newHalte = new Node(*halte);
+        data.insert(newHalte);
     }
+    vector<Bestemming*> hhh;
+    data.inorderTraversal(hhh);
 
     return 0;
 }
