@@ -9,6 +9,8 @@
 
 using namespace std;
 
+//Class structuur van "Node's" / stukken code van de RE
+//Als insperatie van het examen Inleiding Programmeren 2020
 class Code {
 protected:
     string fType;
@@ -64,6 +66,8 @@ public:
 class Barcode {
 
     Code* parseRE(string &RE);
+    void placeByConcatenateAPoint(string &RE);
+
 
 public:
     string createBarcode(string &RE);
