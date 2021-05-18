@@ -91,21 +91,8 @@ Code *Barcode::parseRE(string &re) {
          * Kleene Star
          */
 
-        //We controlleren eerst op de kleene star, we kijken dus of er achteraan een * staat
-        if (re[re.size()-1] == '*')
-        {
-            //We maken een KleenClosure node aan met alles dat voor de string staat
-            //Bij de KleenStar staat ook haakjes deze verwijderen we ineens
-
-            string reWithoutKleene = re.substr(1, re.size()-3);
-            return new KleeneClosure(parseRE(reWithoutKleene));
-        }
-
-        /**
-         * Omdat onze re uit haakjes kan staan maken we het ons makkelijker om deze te verwijderen als het mogelijk is
-         * Als we een re van de vorm (1+0) hebben bijvoorbeeld kunnen we deze verwijderen en heeft het verder geen gevolgen.
-         * Als we een re van de vorm (1+0)(0+11) hebben bijvoorbeeld kun we deze niet verwijderen want er is nog een concatenatie tussen die 2 groepen van haakjes
-         */
+        //We plaatsen eerst tussen elke concatenatie een punt, dit maakt het ons makkelijker om naar concatenatie te zoeken
+        placeByConcatenateAPoint(re);
 
         //We controlleren dus eerst of er vanvoor en vanachter een haakje staat in de re.
         if (re[0] == '(' && re[re.size()-1] == ')')
@@ -114,87 +101,108 @@ Code *Barcode::parseRE(string &re) {
             bool clearHaakjes = true;
             for (int i = 1; i < re.size()-1; ++i)
             {
-
-                if (re[i] == '(' || re[i] == ')')
-                {
-                    clearHaakjes = false;
-                    break;
-                }
+                if (re[i] == '(' || re[i] == ')') { clearHaakjes = false; break; }
             }
 
             if (clearHaakjes) re = re.substr(1, re.size()-2);
         }
 
-        /**
-         * Nu de haakjes al dan niet zijn verwijderd moeten we opzoek gaan naar de operator
-         * Dit kan enkel nog de concatenatie of de union zijn
-         * union wordt herkend door de +
-         * en concatenatie is er wanneer er 2 op eenvolgende variable achter elkaar komen
-         * of wanneer er een '(' volgt na er een ')' is geweest
-         *
-         * Bij de union moeten we wel opletten want als we van de vorm (1+0)(0+1) hebben dan is het een concatenatie
-         * maar dan mogen we de + niet herkennen dus vanaf we een haakje tegen komen mogen we niet verder zoeken naar een operator
-         * tot we gesloten haakje tegenkomen
-         */
 
-        bool seenHaakje = false;
-        char prevLetter = ' ';
-        string beforeOperator;
-        string afterOperator;
-        string operatorName;
-        bool foundOperator = false;
+        int haakjesClosed = 0;
+        string leftCode, rightCode, tempLeft, tempRight;
 
-        for (char letter : re)
+        bool seenOperator = false;
+        bool isUnion = false;
+
+        for (int i = 0; i < re.size(); ++i)
         {
-            if (!foundOperator)
+
+            //Haakjes open tellen er 1 bij op
+            if (re[i] == '(') haakjesClosed++;
+
+            //Haakjes toe trekken er 1 vanaf
+            else if (re[i] == ')') haakjesClosed--;
+
+            //Als alle haakjes die open zijn gedaan terug gesloten zijn kunnen we naar operatoren zoeken
+            if (haakjesClosed == 0)
             {
-                //Als we geen haakje tegenkomen kunnen we verder zoeken naar een operator
-                if (!seenHaakje)
+                //Als we helemaal opt einde van de re zitten en er is nog geen andere operator gezien
+                //En er is een kleene star dan kunnen we een kleene star toevoegen
+                if (re[i] == '*' && i == re.size()-1 && !seenOperator)
                 {
-                    if (letter == '(') seenHaakje = true;
-
-                    if (prevLetter == ')')
-                    {
-                        foundOperator = true;
-                        operatorName = "Concatenatie";
-                    }
-
-                    else if ((prevLetter == '1' && letter == '0') || (prevLetter == '1' && letter == '1') || (prevLetter == '1' && letter == '(') ||
-                             (prevLetter == '0' && letter == '0') || (prevLetter == '0' && letter == '1') || (prevLetter == '0' && letter == '('))
-                    {
-                        foundOperator = true;
-                        operatorName = "Concatenatie";
-                    }
-
-
-                    else if (letter == '+')
-                    {
-                        foundOperator = true;
-                        operatorName = "Union";
-                    }
-
+                    string reWithoutKleene = re.substr(1, re.size()-3);
+                    return new KleeneClosure(parseRE(reWithoutKleene));
                 }
-                else if (letter == ')') seenHaakje = false;
 
+                //Als we een '.' tegenkomen hebben we een concatenatie
+                //We slagen de code op een temp string want we gaan nog verder zoeken naar een plus
+                //en anders moeten we nog eens opnieuw gaan zoeken naar dit stuk van de string
+                if (re[i] == '.'){ tempLeft = leftCode; seenOperator = true; }
 
-                prevLetter = letter;
+                // Als we een '+' tegenkomen hebben we een unie
+                // We zeggen dat we een unie hebben gevonden en moest er een concatenatie hiervoor gevonden zijn
+                // is deze niet meer geldig.
+                else if(re[i] == '+') { isUnion = true;seenOperator = true; }
 
-                if (!foundOperator) beforeOperator.push_back(letter);
-                else if (foundOperator && operatorName == "Concatenatie") afterOperator.push_back(letter);
             }
 
-            else if (!operatorName.empty())
-            {
-                afterOperator.push_back(letter);
-            }
+            //Nog geen operator gevonden pushen alles in het linkerdeel
+            if (!seenOperator) leftCode.push_back(re[i]);
+
+            //We weten dat het een unie is dus pushen alles in een string die het rechterdeel bevat
+            else if (seenOperator && isUnion) rightCode.push_back(re[i]);
+
+            //Als we een concatenatie hebben gevonden pushen we alles in een temp want we kunnen nog altijd een unie tegenkomen
+            //ALs we dan nog een unie tegen komen vormen tempLeft en tempRight de linkerdeel van de code voor de '+'
+            //en wordt rightCode het rechterdeel
+            else if (seenOperator && !isUnion) tempRight.push_back(re[i]);
 
         }
 
-        //Als het een union is
-        if (operatorName == "Union") return new Union(parseRE(beforeOperator), parseRE(afterOperator));
+        if (isUnion)
+        {
+            //moesten tempLeft en tempRight niet leeg zijn dan betekent dat we al eens een concatenatie zijn tegenkomen
+            //moest dit niet het geval zijn dan, blijft leftCode gewoon leftCode
+            if (!tempLeft.empty() && !tempRight.empty()) leftCode = tempLeft+tempRight;
 
-        //Anders is het een concatenatie
-        else return new Concatenatie(parseRE(beforeOperator), parseRE(afterOperator));
+            //We verwijderen de operator nog van de string
+            rightCode = rightCode.substr(1, rightCode.size());
+            return new Union(parseRE(leftCode), parseRE(rightCode));
+        }
 
+        else
+        {
+            //We stellen leftcode nog gelijk aan tempLeft
+            leftCode = tempLeft;
+
+            //We verwijderen de operator nog van de string
+            rightCode = tempRight.substr(1, tempRight.size());
+
+            return new Concatenatie(parseRE(leftCode), parseRE(rightCode));
+        }
     }
+}
+
+void Barcode::placeByConcatenateAPoint(string &RE) {
+
+    string newRE;
+
+    if (RE[0] == '.') RE.substr(1, RE.size());
+
+    char prevLetter;
+
+    for (char i : RE)
+    {
+        if ((prevLetter == '1' && i == '1') || (prevLetter == '1' && i == '0') || (prevLetter == '1' && i == '(') ||
+            (prevLetter == '0' && i == '1') || (prevLetter == '0' && i == '0') || (prevLetter == '0' && i == '(') ||
+            (prevLetter == ')' && i == '1') || (prevLetter == ')' && i == '0') || (prevLetter == ')' && i == '(') ||
+            (prevLetter == '*' && i == '1') || (prevLetter == '*' && i == '0') || (prevLetter == '*' && i == '('))
+        {
+            newRE.push_back('.');
+        }
+        newRE.push_back(i);
+        prevLetter = i;
+    }
+
+    RE = newRE;
 }
