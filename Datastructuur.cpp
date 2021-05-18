@@ -164,6 +164,12 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
 
 pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
 
+    // Als de datastructuur leeg is geven we false terug
+    if (this->fRoot == nullptr)
+    {
+        return make_pair(false, "");
+    }
+
     //Als de zoeksleutel groter is, zoeken we verder in de rechterdeelboom (Als deze bestaat).
     if (bestemming.getName() > this->fRoot->getKey())
     {
