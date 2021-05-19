@@ -95,10 +95,7 @@ class Datastructuur {
      */
     Datastructuur* getLeftChild();
 
-    /**
-     * Deze functie geeft de size van de boom weer.
-     */
-    int getSize();
+
 
     /**
      * @functie: getRightChild
@@ -121,6 +118,11 @@ public:
      * Dit is de constructor voor een nieuwe datastructuur aan te maken.
      */
     Datastructuur();
+
+    /**
+     * Deze functie geeft de size van de boom weer.
+     */
+    int getSize();
 
     /**
      * @functie: insert
