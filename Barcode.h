@@ -6,6 +6,8 @@
 #define PROJECTTA_BARCODE_H
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <random>
 
 using namespace std;
 
@@ -17,6 +19,13 @@ protected:
 public:
 
     virtual string getType();
+
+    virtual char getName(){};
+
+    virtual pair<Code*, Code*> getLeftAndRightOperator(){};
+
+    virtual Code* getKleeneClosure(){};
+
 };
 
 class VarCode: public Code {
@@ -25,6 +34,8 @@ class VarCode: public Code {
 public:
 
     VarCode(char input);
+
+    char getName() override;
 
 };
 
@@ -38,6 +49,7 @@ public:
 
     Concatenatie(Code* left, Code* right);
 
+    pair<Code*, Code*> getLeftAndRightOperator() override;
 
 };
 
@@ -49,7 +61,7 @@ public:
 
     Union(Code* left, Code* right);
 
-
+    pair<Code*, Code*> getLeftAndRightOperator() override;
 };
 
 class KleeneClosure: public Code {
@@ -57,8 +69,10 @@ class KleeneClosure: public Code {
     Code* fOperator;
 
 public:
+
     KleeneClosure(Code* string);
 
+    Code* getKleeneClosure() override;
 };
 
 
@@ -67,7 +81,7 @@ class Barcode {
 
     Code* parseRE(string &RE);
     void placeByConcatenateAPoint(string &RE);
-
+    void generateBarcode(string &re, Code* parsedRE);
 
 public:
     string createBarcode(string &RE);

@@ -11,6 +11,8 @@ VarCode::VarCode(char input)
     fType = "varCode";
 }
 
+char VarCode::getName() {return fName;}
+
 string Code::getType() {return fType;}
 
 Concatenatie::Concatenatie(Code *left, Code *right)
@@ -20,6 +22,8 @@ Concatenatie::Concatenatie(Code *left, Code *right)
     fType = "Concatenatie";
 }
 
+pair<Code *, Code *> Concatenatie::getLeftAndRightOperator() {return make_pair(fLeftOperator, fRightOperator);}
+
 Union::Union(Code *left, Code *right)
 {
     fLeftOperator = left;
@@ -27,19 +31,24 @@ Union::Union(Code *left, Code *right)
     fType = "Union";
 }
 
+pair<Code *, Code *> Union::getLeftAndRightOperator() {return make_pair(fLeftOperator, fRightOperator);}
+
 KleeneClosure::KleeneClosure(Code *string)
 {
     fOperator = string;
     fType = "KleeneClosure";
 }
 
+Code *KleeneClosure::getKleeneClosure() { return fOperator; }
+
 string Barcode::createBarcode(string &RE)
 {
+
     string barcode;
 
     Code* parsedRE = parseRE(RE);
 
-
+    generateBarcode(barcode, parsedRE);
 
     return barcode;
 }
@@ -205,4 +214,49 @@ void Barcode::placeByConcatenateAPoint(string &RE) {
     }
 
     RE = newRE;
+}
+
+void Barcode::generateBarcode(string &re, Code* parsedRE)
+{
+
+
+    if (parsedRE->getType() == "KleeneClosure")
+    {
+        int aantalKleeneIteraties = rand() % 5;
+
+        for (int i = 0; i < aantalKleeneIteraties; ++i)
+        {
+            generateBarcode(re, parsedRE->getKleeneClosure());
+        }
+
+
+    }
+    else if (parsedRE->getType() == "Union")
+    {
+        int leftOrRight = rand() % 10;
+
+        if (leftOrRight >= 4)
+        {
+            if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().first->getName());
+
+            else generateBarcode(re, parsedRE->getLeftAndRightOperator().first);
+        }
+
+        else
+        {
+            if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().second->getName());
+
+            else generateBarcode(re, parsedRE->getLeftAndRightOperator().second);
+        }
+    }
+    else if (parsedRE->getType() == "Concatenatie")
+    {
+        if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().first->getName());
+        else generateBarcode(re, parsedRE->getLeftAndRightOperator().first);
+
+        if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().second->getName());
+        else generateBarcode(re, parsedRE->getLeftAndRightOperator().second);
+    }
+
+
 }
