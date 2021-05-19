@@ -20,11 +20,11 @@ public:
 
     virtual string getType();
 
-    virtual char getName(){};
+    virtual char getName(){return ' ';};
 
-    virtual pair<Code*, Code*> getLeftAndRightOperator(){};
+    virtual pair<Code*, Code*> getLeftAndRightOperator(){return make_pair(nullptr, nullptr);};
 
-    virtual Code* getKleeneClosure(){};
+    virtual Code* getKleeneClosure(){return nullptr;};
 
 };
 

@@ -56,12 +56,34 @@ string Barcode::createBarcode(string &RE)
 Code *Barcode::parseRE(string &re) {
 
 
+    //We controlleren dus eerst of er vanvoor en vanachter een haakje staat in de re.
+    if (re[0] == '(' && re[re.size()-1] == ')')
+    {
+        int haakjes = 0;
+
+        //Nu moeten we nog controlleren of er geen andere haakjes in de formule staan
+        bool clearHaakjes = true;
+
+        for (int i = 1; i < re.size()-1; ++i)
+        {
+            if (re[i] == '(') haakjes++;
+
+            else if (re[i] == ')') haakjes--;
+
+            if (haakjes < 0) {clearHaakjes = false; break;}
+        }
+
+
+        if (clearHaakjes) re = re.substr(1, re.size()-2);
+    }
+
     //Controlleren eerst dat de re niet leeg is. Dit mag niet
     if (re.empty())
     {
         cout << "Lege regex bij het parsen." << endl;
         return nullptr;
     }
+
 
     /**
      * Als het geen lege is kan deze lengte 1 hebben of groter als lengte 1.
@@ -102,19 +124,6 @@ Code *Barcode::parseRE(string &re) {
 
         //We plaatsen eerst tussen elke concatenatie een punt, dit maakt het ons makkelijker om naar concatenatie te zoeken
         placeByConcatenateAPoint(re);
-
-        //We controlleren dus eerst of er vanvoor en vanachter een haakje staat in de re.
-        if (re[0] == '(' && re[re.size()-1] == ')')
-        {
-            //Nu moeten we nog controlleren of er geen andere haakjes in de formule staan
-            bool clearHaakjes = true;
-            for (int i = 1; i < re.size()-1; ++i)
-            {
-                if (re[i] == '(' || re[i] == ')') { clearHaakjes = false; break; }
-            }
-
-            if (clearHaakjes) re = re.substr(1, re.size()-2);
-        }
 
 
         int haakjesClosed = 0;
@@ -198,7 +207,7 @@ void Barcode::placeByConcatenateAPoint(string &RE) {
 
     if (RE[0] == '.') RE.substr(1, RE.size());
 
-    char prevLetter;
+    char prevLetter = ' ';
 
     for (char i : RE)
     {
@@ -211,6 +220,11 @@ void Barcode::placeByConcatenateAPoint(string &RE) {
         }
         newRE.push_back(i);
         prevLetter = i;
+    }
+
+    if (newRE[0] == '.')
+    {
+        newRE.substr(1, newRE.size());
     }
 
     RE = newRE;
