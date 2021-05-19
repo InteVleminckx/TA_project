@@ -4,22 +4,27 @@
 
 #include "Plotter.h"
 
-Plotter::Plotter(vector<long> &TFA, vector<long> &BRZ)
+Plotter::Plotter(vector<long> &TFA, vector<long> &BRZ, string vergelijkingsType)
 {
-    string path = "../snelheidsvergelijking.html";
+
+    string path = "../" + vergelijkingsType + "comparison.html";
 
     plot.open(path);
-    createHTML(TFA, BRZ);
+    createHTML(TFA, BRZ, vergelijkingsType);
     plot.close();
 }
 
-void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
+void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ, string &vergelijkingsType)
 {
 
-    string htmlTabTitle = "Speed comparison";
-    string titleXas = "Number of minimisations";
-    string titleYas = "Minimisation time";
-    string plotTitle = "Speed comparison";
+    string htmlTabTitle = vergelijkingsType + " comparison";
+    string titleXas = "Number of minimized DFA's";
+    string titleYas;
+
+    if (vergelijkingsType == "Speed") titleYas = "Minimisation time";
+    if (vergelijkingsType == "Memory") titleYas = "Memory usage";
+
+    string plotTitle = vergelijkingsType + " comparison";
     string lineColorTFA = "#00beff";
     string lineColorBRZ = "#59ff00";
     string markerColorTFA = "#00518f";
@@ -62,6 +67,7 @@ void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
     plot << "\t\t\t\t" << "axisX:{" << "\n";
     plot << "\t\t\t\t\t" << "title:" << "\"" << titleXas << "\"," << "\n";
     plot << "\t\t\t\t\t" << "includeZero:" << "true," << "\n";
+    plot << "\t\t\t\t\t" << "interval:" << "1," << "\n";
     plot << "\t\t\t\t\t" << "crosshair: {" << "\n";
     plot << "\t\t\t\t\t\t" << "enabled:" << "true," << "\n";
     plot << "\t\t\t\t\t\t" << "snapToDataPoint:" << "true" << "\n";
@@ -138,37 +144,37 @@ void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
     plot << "<style> \n";
     plot << "\t" << ".styled-table\n";
     plot << "\t" << "{\n";
-    plot << "\t\t" << "border-collapse: collapse;";
-    plot << "\t\t" << "margin: 25px 0;";
-    plot << "\t\t" << "font-size: 0.9em;";
-    plot << "\t\t" << "font-family: sans-serif;";
-    plot << "\t\t" << "min-width: 99vw;";
-    plot << "\t\t" << "background-color: #32373a;";
-    plot << "\t\t" << "color: white;";
-    plot << "\t\t" << "text-align: center;";
-    plot << "\t\t" << "border-radius: 10px 10px 10px 10px;";
-    plot << "\t\t" << "overflow: hidden;";
-    plot << "\t\t" << "box-shadow: 0 0 20px rgba(0,0,0,0.25);";
+    plot << "\t\t" << "border-collapse: collapse;\n";
+    plot << "\t\t" << "margin: 25px 0;\n";
+    plot << "\t\t" << "font-size: 0.9em;\n";
+    plot << "\t\t" << "font-family: sans-serif;\n";
+    plot << "\t\t" << "min-width: 98vw;\n";
+    plot << "\t\t" << "background-color: #32373a;\n";
+    plot << "\t\t" << "color: white;\n";
+    plot << "\t\t" << "text-align: center;\n";
+    plot << "\t\t" << "border-radius: 10px 10px 10px 10px;\n";
+    plot << "\t\t" << "overflow: hidden;\n";
+    plot << "\t\t" << "box-shadow: 0 0 20px rgba(0,0,0,0.25);\n";
     plot << "\t" << "}\n";
 
     plot << "\t" << ".styled-table thead tr\n";
     plot << "\t" << "{\n";
-    plot << "\t\t" << "background-color: #32373a;";
-    plot << "\t\t" << "color: white;";
-    plot << "\t\t" << "text-align: center;";
-    plot << "\t\t" << "font-weight: bold;";
-    plot << "\t\t" << "font-size: 18px;";
+    plot << "\t\t" << "background-color: #32373a;\n";
+    plot << "\t\t" << "color: white;\n";
+    plot << "\t\t" << "text-align: center;\n";
+    plot << "\t\t" << "font-weight: bold;\n";
+    plot << "\t\t" << "font-size: 18px;\n";
     plot << "\t" << "}\n";
 
     plot << "\t" << ".styled-table th,\n";
     plot << "\t" << ".styled-table td\n";
     plot << "\t" << "{\n";
-    plot << "\t\t" << "padding: 12px 15px;";
+    plot << "\t\t" << "padding: 12px 15px;\n";
     plot << "\t" << "}\n";
 
     plot << "\t" << ".styled-table tbody tr\n";
     plot << "\t" << "{\n";
-    plot << "\t\t" << "border-bottom: 1px solid white;";
+    plot << "\t\t" << "border-bottom: 1px solid white;\n";
     plot << "\t" << "}\n";
 
     plot << "</style> \n";
@@ -177,7 +183,7 @@ void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
     plot << "<table class=\"styled-table\">\n";
     plot << "\t" << "<thead>\n";
     plot << "\t" << "<tr>\n";
-    plot << "\t\t" << "<th>Aantal minimalisaties</th>\n";
+    plot << "\t\t" << "<th>Number of minimized DFA's</th>\n";
     plot << "\t\t" << "<th>Table filling algoritme</th>\n";
     plot << "\t\t" << "<th>Brzozowski algoritme</th>\n";
     plot << "\t" << "</tr>\n";
@@ -190,7 +196,7 @@ void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
     plot << "</table>\n";
 
     plot << "<body>\n";
-    plot << "<div id=\"chartContainer\" style=\"height: 370px; width: 100%;\"></div>\n";
+    plot << "<div id=\"chartContainer\" style=\"height: 370px; width: 99%;\"></div>\n";
     plot << "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n";
 
     //einde body
@@ -206,11 +212,11 @@ void Plotter::createCoordinates(vector<long> &points)
     {
         if (i != points.size()-1)
         {
-            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i) << ", y: " << to_string(points[i]) << "}, \n";
+            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i+1) << ", y: " << to_string(points[i]) << "}, \n";
         }
         else
         {
-            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i) << ", y: " << to_string(points[i]) << "} \n";
+            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i+1) << ", y: " << to_string(points[i]) << "} \n";
         }
     }
 }
