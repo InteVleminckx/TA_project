@@ -48,14 +48,17 @@ int main() {
 
     Datastructuur data;
     vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd"};
+    vector<long> timeBrz;
+    vector<long> timeTFA;
     for (int i =0; i < 4; i++){
-        string re = maksim.generateRE(data);
+        string re = maksim.generateRE(data, timeBrz, timeTFA);
         Bestemming* halte = new Bestemming(haltes.at(i), re);
         Node* newHalte = new Node(*halte);
         data.insert(newHalte);
     }
+    Plotter* plot = new Plotter(timeTFA, timeBrz);
     vector<Bestemming*> hhh;
-    data.inorderTraversal(hhh);
+    //data.inorderTraversal(hhh);
 
     return 0;
 }

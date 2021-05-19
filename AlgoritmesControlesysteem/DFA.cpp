@@ -101,7 +101,7 @@ void DFA::print(ostream &os_stream) {
     }
     j["transitions"] = tr;
 
-    cout << setw(4) << j << endl;
+    os_stream << setw(4) << j << endl;
 }
 
 

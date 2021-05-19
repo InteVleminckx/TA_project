@@ -4,7 +4,7 @@
 
 #include "Plotter.h"
 
-Plotter::Plotter(vector<double> &TFA, vector<double> &BRZ)
+Plotter::Plotter(vector<long> &TFA, vector<long> &BRZ)
 {
     string path = "../snelheidsvergelijking.html";
 
@@ -13,7 +13,7 @@ Plotter::Plotter(vector<double> &TFA, vector<double> &BRZ)
     plot.close();
 }
 
-void Plotter::createHTML(vector<double> &TFA, vector<double> &BRZ)
+void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ)
 {
 
     string htmlTabTitle = "Speed comparison";
@@ -200,7 +200,7 @@ void Plotter::createHTML(vector<double> &TFA, vector<double> &BRZ)
 
 }
 
-void Plotter::createCoordinates(vector<double> &points)
+void Plotter::createCoordinates(vector<long> &points)
 {
     for (int i = 0; i < points.size(); ++i)
     {
@@ -215,7 +215,7 @@ void Plotter::createCoordinates(vector<double> &points)
     }
 }
 
-void Plotter::createTable(vector<double> &TFA, vector<double> &BRZ)
+void Plotter::createTable(vector<long> &TFA, vector<long> &BRZ)
 {
 
     int maxLength = max(TFA.size(), BRZ.size());

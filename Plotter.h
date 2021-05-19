@@ -21,20 +21,20 @@ class Plotter
      * @param TFA: de snelheidswaardes van het Table filling algorithm
      * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
      */
-    void createHTML(vector<double> &TFA, vector<double> &BRZ);
+    void createHTML(vector<long> &TFA, vector<long> &BRZ);
 
     /**
      * Bepaald de coordinaten voor de punten op de grafiek te zetten
      * @param points: de snelheidswaardes van het Table filling algorithm of Brzozoswki algorithm
      */
-    void createCoordinates(vector<double> &points);
+    void createCoordinates(vector<long> &points);
 
     /**
      * Deze functie maakt de table aan met alle tijden
      * @param TFA: de snelheidswaardes van het Table filling algorithm
      * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
      */
-    void createTable(vector<double> &TFA, vector<double> &BRZ);
+    void createTable(vector<long> &TFA, vector<long> &BRZ);
 
 public:
 
@@ -43,7 +43,7 @@ public:
      * @param TFA: de snelheidswaardes van het Table filling algorithm
      * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
      */
-    Plotter(vector<double> &TFA, vector<double> &BRZ);
+    Plotter(vector<long> &TFA, vector<long> &BRZ);
 
 };
 

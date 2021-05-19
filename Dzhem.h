@@ -10,6 +10,9 @@
 #include "AlgoritmesControlesysteem/ENFA.h"
 #include "AlgoritmesControlesysteem/DFA.h"
 #include "Datastructuur.h"
+#include "Brzozowski.h"
+#include "Plotter.h"
+#include "TFA_Inte/TFA.h"
 #include <string>
 
 using namespace std;
@@ -29,7 +32,7 @@ class Dzhem {
  * @param bestemmingen: Datastructuur met alle bestaande bestemmingen met elks een unieke RE.
  * @return: true of false;
  */
-bool controleSysteem(string& RE, Datastructuur& bestemmingen);
+bool controleSysteem(string& RE, Datastructuur& bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA);
 
 
 #endif //PROJECTTA_DZHEM_H
