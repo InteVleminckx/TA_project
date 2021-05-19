@@ -113,6 +113,7 @@ bool Datastructuur::deleteNode(string naamBestemming)
         if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() == nullptr)
         {
             this->fRoot = nullptr;
+            size--;
             return true;
         }
 
@@ -159,7 +160,11 @@ bool Datastructuur::deleteNode(string naamBestemming)
             this->fRoot = succesor;
         }
     }
-
+    Datastructuur* parent = this;
+    while(parent->getParent()!=nullptr){
+        parent = parent->getParent();
+    }
+    parent->size--;
     return true;
 }
 
