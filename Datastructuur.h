@@ -50,7 +50,7 @@ class Datastructuur {
     Datastructuur* fParent = nullptr;
     Datastructuur* fLeftChild = nullptr;
     Datastructuur* fRightChild = nullptr;
-    int size;
+    int fSize;
 
 
     /**

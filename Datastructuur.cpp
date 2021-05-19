@@ -30,11 +30,11 @@ Datastructuur *Datastructuur::getLeftChild() {return fLeftChild;}
 Datastructuur *Datastructuur::getRightChild() {return fRightChild;}
 
 int Datastructuur::getSize(){
-    return size;
+    return fSize;
 }
 
 bool Datastructuur::insert(Node* object) {
-    size++;
+    fSize++;
 
     //Als de datastructuur nog geen waardes bevat.
     if (this->fRoot == nullptr)
@@ -47,7 +47,11 @@ bool Datastructuur::insert(Node* object) {
     }
 
     //Er bestaat al een node met dezelfde zoeksleutel in de datastructuur.
-    else if (this->getBestemming(object->getKey()).first) return false;
+    else if (this->getBestemming(object->getKey()).first)
+    {
+        fSize--;
+        return false;
+    }
 
     //De datastructuur is niet leeg en de zoeksleutel zit er nog niet in.
     else
@@ -113,7 +117,7 @@ bool Datastructuur::deleteNode(string naamBestemming)
         if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() == nullptr)
         {
             this->fRoot = nullptr;
-            size--;
+            fSize--;
             return true;
         }
 
@@ -164,7 +168,7 @@ bool Datastructuur::deleteNode(string naamBestemming)
     while(parent->getParent()!=nullptr){
         parent = parent->getParent();
     }
-    parent->size--;
+    parent->fSize--;
     return true;
 }
 
@@ -209,7 +213,7 @@ void Datastructuur::inorderTraversal(vector<Bestemming*> &bestemmingen) {
             this->getLeftChild()->inorderTraversal(bestemmingen);
         }
 
-        cout << this->fRoot->getKey() << endl;
+//        cout << this->fRoot->getKey() << endl;
         bestemmingen.push_back(this->fRoot->getObject());
 
         if (this->getRightChild() != nullptr)
