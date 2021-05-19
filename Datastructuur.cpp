@@ -6,13 +6,10 @@
 
 Node::Node(Bestemming &bestemming) {
     fKey = bestemming.getName();
-    fValue = bestemming.getRegex();
     fObject = &bestemming;
 }
 
 string Node::getKey() {return fKey;}
-
-string Node::getValue() {return fValue;}
 
 Bestemming* Node::getObject() {return fObject;}
 
@@ -46,7 +43,7 @@ bool Datastructuur::insert(Node* object) {
     }
 
     //Er bestaat al een node met dezelfde zoeksleutel in de datastructuur.
-    else if (this->getBestemming(*object->getObject()).first) return false;
+    else if (this->getBestemming(object->getKey()).first) return false;
 
     //De datastructuur is niet leeg en de zoeksleutel zit er nog niet in.
     else
@@ -92,7 +89,7 @@ Datastructuur *Datastructuur::getInorderSuccessor() {
     else return this;
 }
 
-bool Datastructuur::deleteNode(Bestemming &bestemming)
+bool Datastructuur::deleteNode(string naamBestemming)
 {
 
     //Als op de huidige positie nog geen deelboom aangemaakt is, dan betekent dat er nog geen node is toegevoegd
@@ -100,10 +97,10 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
     if (this == nullptr) return false;
 
     //Als de zoeksleutel van de node die verwijderd moet worden groter is, moeten we verder gaan zoeken in de rechterdeelboom.
-    else if (bestemming.getName() > this->fRoot->getKey()) this->getRightChild()->deleteNode(bestemming);
+    else if (naamBestemming > this->fRoot->getKey()) this->getRightChild()->deleteNode(naamBestemming);
 
     //Als de zoeksleutel van de node die verwijderd moet worden kleiner is, moeten we verder gaan zoeken in de linkerdeelboom.
-    else if (bestemming.getName() < this->fRoot->getKey()) this->getLeftChild()->deleteNode(bestemming);
+    else if (naamBestemming < this->fRoot->getKey()) this->getLeftChild()->deleteNode(naamBestemming);
 
     //Als het geen van deze bovenstaande is, betekent dat we de node hebben gevonden met de opgeven bestemming en kunnen we deze gaan verwijderen.
     else
@@ -153,8 +150,8 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
         else if (this->getLeftChild() != nullptr && this->getRightChild() != nullptr)
         {
             Node* succesor = this->getRightChild()->getInorderSuccessor()->fRoot;
-            Bestemming succ = Bestemming(succesor->getKey(), succesor->getValue());
-            this->deleteNode(succ);
+//            Bestemming succ = Bestemming(succesor->getKey(), succesor->getValue());
+            this->deleteNode(succesor->getKey());
             this->fRoot = succesor;
         }
     }
@@ -162,39 +159,36 @@ bool Datastructuur::deleteNode(Bestemming &bestemming)
     return true;
 }
 
-pair<bool, string> Datastructuur::getBestemming(Bestemming bestemming) {
+pair<bool, Bestemming*> Datastructuur::getBestemming(string naamBestemming) {
 
     // Als de datastructuur leeg is geven we false terug
     if (this->fRoot == nullptr)
     {
-        return make_pair(false, "");
+        return make_pair(false, nullptr);
     }
 
     //Als de zoeksleutel groter is, zoeken we verder in de rechterdeelboom (Als deze bestaat).
-    if (bestemming.getName() > this->fRoot->getKey())
+    if (naamBestemming > this->fRoot->getKey())
     {
         //Rechterdeelboom bestaat.
-        if (this->getRightChild() != nullptr) this->getRightChild()->getBestemming(bestemming);
+        if (this->getRightChild() != nullptr) return this->getRightChild()->getBestemming(naamBestemming);
 
         //Rechterdeelboom bestaat niet, dus gezochte node ook niet en returnen we false.
-        else return make_pair(false, "");
+        else return make_pair(false, nullptr);
     }
 
     //Als de zoeksleutel kleiner is, zoeken we verder in de linkerdeelboom (Als deze bestaat).
-    else if (bestemming.getName() < this->fRoot->getKey())
+    else if (naamBestemming < this->fRoot->getKey())
     {
         //Linkerdeelboom bestaat.
-        if (this->getLeftChild() != nullptr) this->getLeftChild()->getBestemming(bestemming);
+        if (this->getLeftChild() != nullptr) return this->getLeftChild()->getBestemming(naamBestemming);
 
         //Linkerdeelboom bestaat niet, dus gezochte node ook niet en returnen we false.
-        else return make_pair(false, "");
+        else return make_pair(false, nullptr);
     }
 
     //Als de zoeksleutel gelijk is, dan is de bestemming gevonden in de datastructuur en returnen we true + de value van de bestemming.
-    else if (bestemming.getName() == this->fRoot->getKey()) return make_pair(true, this->fRoot->getValue());
-
-    //Als zoeksleutel niet gevonden is, dan returnen we ook false. (Hier gaat het programma normaal gezien niet komen.)
-    return make_pair(false, "");
+    else return make_pair(true, this->fRoot->getObject());
 }
 
 

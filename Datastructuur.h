@@ -15,7 +15,6 @@ class Node
 {
 private:
     string fKey;
-    string fValue;
     Bestemming* fObject;
 
 
@@ -35,13 +34,6 @@ public:
      * @return : string, de zoeksleutel.
      */
     string getKey();
-
-    /**
-     * @functie: getValue
-     * Deze functie geeft het opgeslagen deel terug, in dit geval de regex van de halte.
-     * @return : string, de regex.
-     */
-    string getValue();
 
     /**
      * @functie: getObject
@@ -135,10 +127,10 @@ public:
     /**
      * @functie: deleteNode
      * Deze functie verwijderd bestemmingen uit onze datastructuur.
-     * @param bestemming: de bestemming die verwijderd moet worden.
+     * @param naamBestemming: de van de bestemming die verwijderd moet worden.
      * @return: bool, true als deze verwijderd is. False als deze niet is verwijderd.
      */
-    bool deleteNode(Bestemming &bestemming);
+    bool deleteNode(string naamBestemming);
 
     /**
      * @functie: getBestemming
@@ -147,7 +139,7 @@ public:
      * @return bool, true als de bestemming bestaat. False als deze niet bestaat.
      * @return string, als de bestemming bestaat geeft het de regex van de bestemming.
      */
-    pair<bool, string> getBestemming(Bestemming bestemming);
+    pair<bool, Bestemming*> getBestemming(string naamBestemming);
 
     /**
      * @functie: inorderTraversal
