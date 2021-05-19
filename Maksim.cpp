@@ -93,7 +93,7 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     //T = "0";
     //U = "0";
     // formule samenstellen
-    string formule = "(" + R + "+" + S + "(" + U + ")"+T+")" + S + "(" +  U + ")"; // algemene vorm van formule
+    string formule = "(" + R + "+" + S + U +T+")" + S  +  U; // algemene vorm van formule
 
     //debugging
     cout << "R = " << R << endl;
