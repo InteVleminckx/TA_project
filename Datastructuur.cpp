@@ -29,8 +29,12 @@ Datastructuur *Datastructuur::getLeftChild() {return fLeftChild;}
 
 Datastructuur *Datastructuur::getRightChild() {return fRightChild;}
 
-bool Datastructuur::insert(Node* object) {
+int Datastructuur::getSize(){
+    return size;
+}
 
+bool Datastructuur::insert(Node* object) {
+    size++;
 
     //Als de datastructuur nog geen waardes bevat.
     if (this->fRoot == nullptr)

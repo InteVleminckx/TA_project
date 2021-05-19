@@ -4,9 +4,11 @@
 
 #include "Bestemming.h"
 
+#include <utility>
+
 Bestemming::Bestemming(string naam, string RegEx) {
-    fNaam = naam;
-    fRegex = RegEx;
+    fNaam = std::move(naam);
+    fRegex = std::move(RegEx);
 }
 
 void Bestemming::setName(string naam) {

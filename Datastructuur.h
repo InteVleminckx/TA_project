@@ -50,6 +50,7 @@ class Datastructuur {
     Datastructuur* fParent = nullptr;
     Datastructuur* fLeftChild = nullptr;
     Datastructuur* fRightChild = nullptr;
+    int size;
 
 
     /**
@@ -93,6 +94,11 @@ class Datastructuur {
      * @return Datastructuur: de linkerdeelboom.
      */
     Datastructuur* getLeftChild();
+
+    /**
+     * Deze functie geeft de size van de boom weer.
+     */
+    int getSize();
 
     /**
      * @functie: getRightChild
