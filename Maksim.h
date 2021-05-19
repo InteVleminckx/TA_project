@@ -33,7 +33,7 @@ public:
 
     void stringToBarcode(string &str);
 
-    string generateRE(Datastructuur& data, int numberOfIterations = 0);
+    string generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, int numberOfIterations = 0);
 
     string chooseOperationFirstTime();
 
