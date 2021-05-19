@@ -20,8 +20,9 @@ class Plotter
      * Deze maakt de html aan
      * @param TFA: de snelheidswaardes van het Table filling algorithm
      * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
+     * @param vergelijkingsType: type van de vergelijking -> snelheid of memory
      */
-    void createHTML(vector<long> &TFA, vector<long> &BRZ);
+    void createHTML(vector<long> &TFA, vector<long> &BRZ, string &vergelijkingsType);
 
     /**
      * Bepaald de coordinaten voor de punten op de grafiek te zetten
@@ -42,8 +43,9 @@ public:
      * Constructor van de plotter
      * @param TFA: de snelheidswaardes van het Table filling algorithm
      * @param BRZ: de snelheidswaardes van het Brzozoswki algorithm
+     * @param vergelijkingsType: type van de vergelijking -> snelheid of memory
      */
-    Plotter(vector<long> &TFA, vector<long> &BRZ);
+    Plotter(vector<long> &TFA, vector<long> &BRZ, string vergelijkingsType);
 
 };
 
