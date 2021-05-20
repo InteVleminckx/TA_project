@@ -14,7 +14,7 @@ using namespace std;
 class Plotter
 {
 
-    ofstream plot;
+    ofstream fPlot;
 
     /**
      * Deze maakt de html aan

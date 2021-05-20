@@ -134,20 +134,20 @@ class Barcode {
      * @param RE: De re die geparsed moet worden.
      * @return: Code*, De geparsed code opgesplitst in allemaal verschillende delen.
      */
-    Code* parseRE(string &RE);
+    static Code* parseRE(string &RE);
 
     /**
      * Plaatst waar over een concatenatie is een '.'.
      * @param RE: De RE waar we overal de punten gaan plaatsen.
      */
-    void placeByConcatenateAPoint(string &RE);
+    static void placeByConcatenateAPoint(string &RE);
 
     /**
      * Maakt van de geparsed RE een barcode door deze te analyseren.
      * @param barcode: de string waar de nieuwe barcode wordt ingeschreven.
      * @param parsedRE: De geparsed RE.
      */
-    void generateBarcode(string &barcode, Code* parsedRE);
+    static void generateBarcode(string &barcode, Code* parsedRE);
 
 public:
 
@@ -156,7 +156,7 @@ public:
      * @param RE: De Re die geparsed moet worden.
      * @return: string, de barcode die gecreeerd is met de RE.
      */
-    string createBarcode(string &RE);
+    static string createBarcode(string RE);
 
 };
 

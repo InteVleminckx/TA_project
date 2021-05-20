@@ -9,9 +9,9 @@ Plotter::Plotter(vector<long> &TFA, vector<long> &BRZ, string vergelijkingsType)
 
     string path = "../" + vergelijkingsType + "comparison.html";
 
-    plot.open(path);
+    fPlot.open(path);
     createHTML(TFA, BRZ, vergelijkingsType);
-    plot.close();
+    fPlot.close();
 }
 
 void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ, string &vergelijkingsType)
@@ -34,175 +34,175 @@ void Plotter::createHTML(vector<long> &TFA, vector<long> &BRZ, string &vergelijk
     string lineNameBRZ = "Brzozoswki algorithm";
 
 
-    plot << "<!DOCTYPE HTML>\n";
-    plot << "<html>\n";
-    plot << "\n";
+    fPlot << "<!DOCTYPE HTML>\n";
+    fPlot << "<html>\n";
+    fPlot << "\n";
 
     //Geeft de tab van de html een title
-    plot << "<head>\n";
-    plot << "\t<title>\n";
-    plot << "\t\t" << "\"" <<  htmlTabTitle << "\"" <<  "\n";
-    plot << "\t</title>\n";
-    plot << "</head>\n";
-    plot << "\n";
+    fPlot << "<head>\n";
+    fPlot << "\t<title>\n";
+    fPlot << "\t\t" << "\"" << htmlTabTitle << "\"" << "\n";
+    fPlot << "\t</title>\n";
+    fPlot << "</head>\n";
+    fPlot << "\n";
 
     //Beginnen aan het script voor de chart te tekenen
-    plot << "<head>\n";
-    plot << "\t<script>\n";
-    plot << "\t\t" << "window.onload = function () {" << "\n";
+    fPlot << "<head>\n";
+    fPlot << "\t<script>\n";
+    fPlot << "\t\t" << "window.onload = function () {" << "\n";
 
     //maken nieuw object aan
-    plot << "\t\t\t" << "var chart = new CanvasJS.Chart(\"chartContainer\", {" << "\n";
+    fPlot << "\t\t\t" << "var chart = new CanvasJS.Chart(\"chartContainer\", {" << "\n";
 
     //toevoegen van de char options
-    plot << "\t\t\t\t" << "animationEnabled: true," << "\n";
-    plot << "\t\t\t\t" << "theme: \"dark2\"," << "\n";
+    fPlot << "\t\t\t\t" << "animationEnabled: true," << "\n";
+    fPlot << "\t\t\t\t" << "theme: \"dark2\"," << "\n";
 
     //Title van de chart
-    plot << "\t\t\t\t" << "title:{" << "\n";
-    plot << "\t\t\t\t\t" << "text:" << "\"" << plotTitle << "\"" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t" << "title:{" << "\n";
+    fPlot << "\t\t\t\t\t" << "text:" << "\"" << plotTitle << "\"" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
     //X-as informatie
-    plot << "\t\t\t\t" << "axisX:{" << "\n";
-    plot << "\t\t\t\t\t" << "title:" << "\"" << titleXas << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "includeZero:" << "true," << "\n";
-    plot << "\t\t\t\t\t" << "interval:" << "1," << "\n";
-    plot << "\t\t\t\t\t" << "crosshair: {" << "\n";
-    plot << "\t\t\t\t\t\t" << "enabled:" << "true," << "\n";
-    plot << "\t\t\t\t\t\t" << "snapToDataPoint:" << "true" << "\n";
-    plot << "\t\t\t\t\t" << "}" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t" << "axisX:{" << "\n";
+    fPlot << "\t\t\t\t\t" << "title:" << "\"" << titleXas << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "includeZero:" << "true," << "\n";
+    fPlot << "\t\t\t\t\t" << "interval:" << "1," << "\n";
+    fPlot << "\t\t\t\t\t" << "crosshair: {" << "\n";
+    fPlot << "\t\t\t\t\t\t" << "enabled:" << "true," << "\n";
+    fPlot << "\t\t\t\t\t\t" << "snapToDataPoint:" << "true" << "\n";
+    fPlot << "\t\t\t\t\t" << "}" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
     //Y-as informatie
-    plot << "\t\t\t\t" << "axisY:{" << "\n";
-    plot << "\t\t\t\t\t" << "title:" << "\"" << titleYas << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "includeZero:" << "true," << "\n";
-    plot << "\t\t\t\t\t" << "crosshair: {" << "\n";
-    plot << "\t\t\t\t\t\t" << "enabled:" << "true" << "\n";
-    plot << "\t\t\t\t\t" << "}" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t" << "axisY:{" << "\n";
+    fPlot << "\t\t\t\t\t" << "title:" << "\"" << titleYas << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "includeZero:" << "true," << "\n";
+    fPlot << "\t\t\t\t\t" << "crosshair: {" << "\n";
+    fPlot << "\t\t\t\t\t\t" << "enabled:" << "true" << "\n";
+    fPlot << "\t\t\t\t\t" << "}" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
     //toolTip
-    plot << "\t\t\t\t" << "toolTip:{" << "\n";
-    plot << "\t\t\t\t\t" << "shared:" << "true" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t" << "toolTip:{" << "\n";
+    fPlot << "\t\t\t\t\t" << "shared:" << "true" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
     //legende
-    plot << "\t\t\t\t" << "legend:{" << "\n";
-    plot << "\t\t\t\t\t" << "verticalAlign:" << "\"bottom\"," << "\n";
-    plot << "\t\t\t\t\t" << "horizontalAlign:" << "\"center \"," << "\n";
-    plot << "\t\t\t\t\t" << "dockInsidePlotArea:" << "false" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t" << "legend:{" << "\n";
+    fPlot << "\t\t\t\t\t" << "verticalAlign:" << "\"bottom\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "horizontalAlign:" << "\"center \"," << "\n";
+    fPlot << "\t\t\t\t\t" << "dockInsidePlotArea:" << "false" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
     //data
     //TFA
-    plot << "\t\t\t\t" << "data: [{" << "\n";
-    plot << "\t\t\t\t\t" << "type:" << "\"line\"," << "\n";
-    plot << "\t\t\t\t\t" << "showInLegend:" << "true," << "\n";
-    plot << "\t\t\t\t\t" << "name:" << "\"" << lineNameTFA << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "markerType:" << "\"" << markerType << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "markerColor:" << "\"" << markerColorTFA << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "color:" << "\"" << lineColorTFA << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "dataPoints: [" << "\n";
+    fPlot << "\t\t\t\t" << "data: [{" << "\n";
+    fPlot << "\t\t\t\t\t" << "type:" << "\"line\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "showInLegend:" << "true," << "\n";
+    fPlot << "\t\t\t\t\t" << "name:" << "\"" << lineNameTFA << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "markerType:" << "\"" << markerType << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "markerColor:" << "\"" << markerColorTFA << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "color:" << "\"" << lineColorTFA << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "dataPoints: [" << "\n";
 
     //toevoegen van de TFA waardes
     createCoordinates(TFA);
 
-    plot << "\t\t\t\t\t" << "]" << "\n";
-    plot << "\t\t\t\t" << "}," << "\n";
+    fPlot << "\t\t\t\t\t" << "]" << "\n";
+    fPlot << "\t\t\t\t" << "}," << "\n";
 
-    plot << "\t\t\t\t" << "{" << "\n";
+    fPlot << "\t\t\t\t" << "{" << "\n";
 
     //BRZ
-    plot << "\t\t\t\t\t" << "type:" << "\"line\"," << "\n";
-    plot << "\t\t\t\t\t" << "showInLegend:" << "true," << "\n";
-    plot << "\t\t\t\t\t" << "name:" << "\"" << lineNameBRZ << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "markerType:" << "\"" << markerType << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "markerColor:" << "\"" << markerColorBRZ << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "color:" << "\"" << lineColorBRZ << "\"," << "\n";
-    plot << "\t\t\t\t\t" << "dataPoints: [" << "\n";
+    fPlot << "\t\t\t\t\t" << "type:" << "\"line\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "showInLegend:" << "true," << "\n";
+    fPlot << "\t\t\t\t\t" << "name:" << "\"" << lineNameBRZ << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "markerType:" << "\"" << markerType << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "markerColor:" << "\"" << markerColorBRZ << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "color:" << "\"" << lineColorBRZ << "\"," << "\n";
+    fPlot << "\t\t\t\t\t" << "dataPoints: [" << "\n";
 
     //toevoegen van de BRZ waardes
     createCoordinates(BRZ);
 
-    plot << "\t\t\t\t\t" << "]" << "\n";
-    plot << "\t\t\t\t" << "}]" << "\n";
+    fPlot << "\t\t\t\t\t" << "]" << "\n";
+    fPlot << "\t\t\t\t" << "}]" << "\n";
 
     //sluiten van options
-    plot << "\t\t" << "});" << "\n";
+    fPlot << "\t\t" << "});" << "\n";
 
     //Renderchart
-    plot << "\t\t" << "chart.render();" << "\n";
-    plot << "\t" << "}" << "\n";
+    fPlot << "\t\t" << "chart.render();" << "\n";
+    fPlot << "\t" << "}" << "\n";
 
     //Einde van het script
-    plot << "\t</script>\n";
-    plot << "</head>\n";
+    fPlot << "\t</script>\n";
+    fPlot << "</head>\n";
 
     //table style
-    plot << "<style> \n";
-    plot << "\t" << ".styled-table\n";
-    plot << "\t" << "{\n";
-    plot << "\t\t" << "border-collapse: collapse;\n";
-    plot << "\t\t" << "margin: 25px 0;\n";
-    plot << "\t\t" << "font-size: 0.9em;\n";
-    plot << "\t\t" << "font-family: sans-serif;\n";
-    plot << "\t\t" << "min-width: 98vw;\n";
-    plot << "\t\t" << "background-color: #32373a;\n";
-    plot << "\t\t" << "color: white;\n";
-    plot << "\t\t" << "text-align: center;\n";
-    plot << "\t\t" << "border-radius: 10px 10px 10px 10px;\n";
-    plot << "\t\t" << "overflow: hidden;\n";
-    plot << "\t\t" << "box-shadow: 0 0 20px rgba(0,0,0,0.25);\n";
-    plot << "\t" << "}\n";
+    fPlot << "<style> \n";
+    fPlot << "\t" << ".styled-table\n";
+    fPlot << "\t" << "{\n";
+    fPlot << "\t\t" << "border-collapse: collapse;\n";
+    fPlot << "\t\t" << "margin: 25px 0;\n";
+    fPlot << "\t\t" << "font-size: 0.9em;\n";
+    fPlot << "\t\t" << "font-family: sans-serif;\n";
+    fPlot << "\t\t" << "min-width: 98vw;\n";
+    fPlot << "\t\t" << "background-color: #32373a;\n";
+    fPlot << "\t\t" << "color: white;\n";
+    fPlot << "\t\t" << "text-align: center;\n";
+    fPlot << "\t\t" << "border-radius: 10px 10px 10px 10px;\n";
+    fPlot << "\t\t" << "overflow: hidden;\n";
+    fPlot << "\t\t" << "box-shadow: 0 0 20px rgba(0,0,0,0.25);\n";
+    fPlot << "\t" << "}\n";
 
-    plot << "\t" << ".styled-table thead tr\n";
-    plot << "\t" << "{\n";
-    plot << "\t\t" << "background-color: #32373a;\n";
-    plot << "\t\t" << "color: white;\n";
-    plot << "\t\t" << "text-align: center;\n";
-    plot << "\t\t" << "font-weight: bold;\n";
-    plot << "\t\t" << "font-size: 18px;\n";
-    plot << "\t" << "}\n";
+    fPlot << "\t" << ".styled-table thead tr\n";
+    fPlot << "\t" << "{\n";
+    fPlot << "\t\t" << "background-color: #32373a;\n";
+    fPlot << "\t\t" << "color: white;\n";
+    fPlot << "\t\t" << "text-align: center;\n";
+    fPlot << "\t\t" << "font-weight: bold;\n";
+    fPlot << "\t\t" << "font-size: 18px;\n";
+    fPlot << "\t" << "}\n";
 
-    plot << "\t" << ".styled-table th,\n";
-    plot << "\t" << ".styled-table td\n";
-    plot << "\t" << "{\n";
-    plot << "\t\t" << "padding: 12px 15px;\n";
-    plot << "\t" << "}\n";
+    fPlot << "\t" << ".styled-table th,\n";
+    fPlot << "\t" << ".styled-table td\n";
+    fPlot << "\t" << "{\n";
+    fPlot << "\t\t" << "padding: 12px 15px;\n";
+    fPlot << "\t" << "}\n";
 
-    plot << "\t" << ".styled-table tbody tr\n";
-    plot << "\t" << "{\n";
-    plot << "\t\t" << "border-bottom: 1px solid white;\n";
-    plot << "\t" << "}\n";
+    fPlot << "\t" << ".styled-table tbody tr\n";
+    fPlot << "\t" << "{\n";
+    fPlot << "\t\t" << "border-bottom: 1px solid white;\n";
+    fPlot << "\t" << "}\n";
 
-    plot << "</style> \n";
+    fPlot << "</style> \n";
 
     //table
-    plot << "<table class=\"styled-table\">\n";
-    plot << "\t" << "<thead>\n";
-    plot << "\t" << "<tr>\n";
-    plot << "\t\t" << "<th>Number of minimized DFA's</th>\n";
-    plot << "\t\t" << "<th>Table filling algoritme</th>\n";
-    plot << "\t\t" << "<th>Brzozowski algoritme</th>\n";
-    plot << "\t" << "</tr>\n";
-    plot << "\t" << "</thead>\n";
-    plot << "\t" << "<tbody>\n";
+    fPlot << "<table class=\"styled-table\">\n";
+    fPlot << "\t" << "<thead>\n";
+    fPlot << "\t" << "<tr>\n";
+    fPlot << "\t\t" << "<th>Number of minimized DFA's</th>\n";
+    fPlot << "\t\t" << "<th>Table filling algoritme</th>\n";
+    fPlot << "\t\t" << "<th>Brzozowski algoritme</th>\n";
+    fPlot << "\t" << "</tr>\n";
+    fPlot << "\t" << "</thead>\n";
+    fPlot << "\t" << "<tbody>\n";
 
     createTable(TFA, BRZ);
 
-    plot << "\t" << "</tbody>\n";
-    plot << "</table>\n";
+    fPlot << "\t" << "</tbody>\n";
+    fPlot << "</table>\n";
 
-    plot << "<body>\n";
-    plot << "<div id=\"chartContainer\" style=\"height: 370px; width: 99%;\"></div>\n";
-    plot << "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n";
+    fPlot << "<body>\n";
+    fPlot << "<div id=\"chartContainer\" style=\"height: 370px; width: 99%;\"></div>\n";
+    fPlot << "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\n";
 
     //einde body
-    plot << "</body> \n";
+    fPlot << "</body> \n";
     //einde html
-    plot << "</html> \n";
+    fPlot << "</html> \n";
 
 }
 
@@ -212,11 +212,11 @@ void Plotter::createCoordinates(vector<long> &points)
     {
         if (i != points.size()-1)
         {
-            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i+1) << ", y: " << to_string(points[i]) << "}, \n";
+            fPlot << "\t\t\t\t\t\t" << "{ x:" << to_string(i + 1) << ", y: " << to_string(points[i]) << "}, \n";
         }
         else
         {
-            plot << "\t\t\t\t\t\t" << "{ x:" << to_string(i+1) << ", y: " << to_string(points[i]) << "} \n";
+            fPlot << "\t\t\t\t\t\t" << "{ x:" << to_string(i + 1) << ", y: " << to_string(points[i]) << "} \n";
         }
     }
 }
@@ -228,16 +228,16 @@ void Plotter::createTable(vector<long> &TFA, vector<long> &BRZ)
 
     for (int i = 0; i < maxLength; ++i)
     {
-        plot << "\t" << "<tr>\n";
+        fPlot << "\t" << "<tr>\n";
 
-        plot << "\t\t" << "<td>" << i << "</td>\n";
+        fPlot << "\t\t" << "<td>" << i+1 << "</td>\n";
 
-        if (i < TFA.size()) plot << "\t\t" << "<td>" << TFA[i] << "</td>\n";
-        else plot << "\t\t" << "<td>" << " " << "</td>\n";
+        if (i < TFA.size()) fPlot << "\t\t" << "<td>" << TFA[i] << "</td>\n";
+        else fPlot << "\t\t" << "<td>" << " " << "</td>\n";
 
-        if (i < BRZ.size()) plot << "\t\t" << "<td>" << BRZ[i] << "</td>\n";
-        else plot << "\t\t" << "<td>" << " " << "</td>\n";
-        plot << "\t" << "</tr>\n";
+        if (i < BRZ.size()) fPlot << "\t\t" << "<td>" << BRZ[i] << "</td>\n";
+        else fPlot << "\t\t" << "<td>" << " " << "</td>\n";
+        fPlot << "\t" << "</tr>\n";
     }
 
 }
