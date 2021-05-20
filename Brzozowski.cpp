@@ -22,6 +22,7 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, vector<long> &times) 
     ENFA enfa = ENFA();
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
+    //enfa.setStartState(const_cast<string &>(productAutomaat.getStartState()));
 
     reversal(productAutomaat, enfa);                  // Stap 1
     productAutomaat = enfa.toDFA(true);            // Stap 2

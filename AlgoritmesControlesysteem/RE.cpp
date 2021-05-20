@@ -26,13 +26,18 @@ void RE::getAlphabet(string& expr, char e) {
 
 void RE::parser() {
     int i = 0;
+    for (auto token:tokens){
+        if(isalnum(token)){
+            if (find(alphabet.begin(), alphabet.end(), token) == alphabet.end()){
+                alphabet.push_back(token);
+            }
+        }
+    }
+
     while(i < tokens.size()){
         auto t = tokens.at(i);
         if(isalnum(t)){ //als het om een character gaat en deze niet epsilon is
             vector<char> subExpr;
-            if (find(alphabet.begin(), alphabet.end(), t) == alphabet.end()){
-                alphabet.push_back(t);
-            }
             string naamSubExpr;
             while(isalnum(t) or t == '*'){   //Als de character kleenClosed is.
                 subExpr.push_back(t);   //t mss weg doen uit if

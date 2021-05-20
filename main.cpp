@@ -13,7 +13,7 @@
 #include "Datastructuur.h"
 #include "Plotter.h"
 
-#include <windows.h>
+//#include <windows.h>
 
 /**
  * Opmerking: de working directory staat standaard op de cmake-build-debug map, we moeten dus altijd eerst een
@@ -22,8 +22,6 @@
 
 int main() {
 
-    vector<long> timeBRZ{1,10,2,5,12,48,45,12};
-    vector<long> timeTFA{5,21,18,12,5,18,25,11};
 //    DFA dfa1 = DFA("../TestenBrzozowski/Test11.json");
 //    Brzozowski::brzozowskiAlgorithm(dfa1, timeBRZ);
 //    dfa1.print(cout);
@@ -73,23 +71,25 @@ int main() {
 //    code.createBarcode(re6);
 //    cout << endl;
 //
-//    Maksim maksim;
-//
-//    Datastructuur data;
-//    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd"};
-//    for (int i =0; i < 4; i++){
-//        string re = maksim.generateRE(data);
-//        Bestemming* halte = new Bestemming(haltes.at(i), re);
-//        Node* newHalte = new Node(*halte);
-//        data.insert(newHalte);
-//    }
-//    vector<Bestemming*> hhh;
-//    data.inorderTraversal(hhh);
+    vector<long> timeBRZ;
+    vector<long> timeTFA;
+    vector<long> memoryBRZ;
+    vector<long> memoryTFA;
+    Maksim maksim;
+
+    Datastructuur data;
+    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd"};
+    for (int i =0; i < 4; i++){
+        string re = maksim.generateRE(data, timeBRZ, timeTFA, memoryBRZ, memoryTFA);
+        Bestemming* halte = new Bestemming(haltes.at(i), re);
+        Node* newHalte = new Node(*halte);
+        data.insert(newHalte);
+    }
 
     Plotter plot = Plotter(timeTFA, timeBRZ, "Speed");
-    Plotter plot1 = Plotter(timeTFA, timeBRZ, "Memory");
-    ShellExecute(NULL, "open", "..\\Speedcomparison.html", NULL, NULL, SW_SHOWNORMAL);
-    ShellExecute(NULL, "open", "..\\Memorycomparison.html", NULL, NULL, SW_SHOWNORMAL);
+    Plotter plot1 = Plotter(memoryTFA, memoryBRZ, "Memory");
+    //ShellExecute(NULL, "open", "..\\Speedcomparison.html", NULL, NULL, SW_SHOWNORMAL);
+    //ShellExecute(NULL, "open", "..\\Memorycomparison.html", NULL, NULL, SW_SHOWNORMAL);
     return 0;
 
 //
