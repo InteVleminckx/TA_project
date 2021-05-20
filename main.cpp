@@ -78,16 +78,20 @@ int main() {
     Maksim maksim;
 
     Datastructuur data;
-    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd"};
-    for (int i =0; i < 4; i++){
+    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd", "eee", "fff", "ggg" , "hhh"};
+    //srand(time(NULL));
+    for (int i =0; i < 8; i++){
+        if (i == 7) {
+            cout << i << endl <<endl << endl;
+        }
         string re = maksim.generateRE(data, timeBRZ, timeTFA, memoryBRZ, memoryTFA);
         Bestemming* halte = new Bestemming(haltes.at(i), re);
         Node* newHalte = new Node(*halte);
         data.insert(newHalte);
     }
 
-    Plotter plot = Plotter(timeTFA, timeBRZ, "Speed");
-    Plotter plot1 = Plotter(memoryTFA, memoryBRZ, "Memory");
+//    Plotter plot = Plotter(timeTFA, timeBRZ, "Speed");
+//    Plotter plot1 = Plotter(memoryTFA, memoryBRZ, "Memory");
     //ShellExecute(NULL, "open", "..\\Speedcomparison.html", NULL, NULL, SW_SHOWNORMAL);
     //ShellExecute(NULL, "open", "..\\Memorycomparison.html", NULL, NULL, SW_SHOWNORMAL);
     return 0;
