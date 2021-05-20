@@ -66,35 +66,58 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     // vector<string> bewerkingen{"unie", "concatenatie", "kleeneStar"};
 
     string RE; // string die we returnen
-    string R;
-    string S;
-    string U;
-    string T;
+    string R; string S; string U; string T;
+
+    int isBewerking = rand() % 10; // er is een kans voor elke deelregex om leeg te blijven
 
     // R bepalen
-    string randomR = getRandomString(numberOfIterations);
+    string randomR;
+    if (isBewerking < 6) {
+        randomR = getRandomString(numberOfIterations);
+    }
     R = randomR;
 
     // S bepalen
-    string randomS = getRandomString(numberOfIterations);
+    string randomS;
+    if (isBewerking < 3) {
+        randomS = getRandomString(numberOfIterations);
+    }
     S = randomS;
 
     // U bepalen
-    string randomU = getRandomString(numberOfIterations);
-    U = randomU;
-    while (U[U.size()-1] == '*') {
-        U = U.substr(0, U.size()-1);
+    string randomU;
+    if (isBewerking > 6) {
+        randomU = getRandomString(numberOfIterations);
     }
+    U = randomU;
 
     // T bepalen
-    string randomT = getRandomString(numberOfIterations);
+    string randomT;
+    if (isBewerking > 7-numberOfIterations%3) { // in het slechtste geval => isBewerking > 5
+        randomT = getRandomString(numberOfIterations);
+    }
     T = randomT;
-    //R = "1";
-    //S = "0";
-    //T = "0";
-    //U = "0";
+
+    if (!R.empty()) {
+        R = R + "+";
+    }
+
+    //    while (U[U.size()-1] == '*') {
+//        U = U.substr(0, U.size()-1);
+//    }
+    string formule;
+    if (S.empty() && U.empty()) {
+        formule = R + S + U + T + S + U; // algemene vorm van formule
+        if (T.empty()) {
+            R = R.substr(0, R.size()-1);
+            formule = R;
+        }
+    }
+    else {
+        formule = "(" + R + S + U + T +")" + S + U; // algemene vorm van formule
+    }
+
     // formule samenstellen
-    string formule = "(" + R + "+" + S + U +T+")" + S  +  U; // algemene vorm van formule
 
     //debugging
     cout << "R = " << R << endl;
@@ -102,6 +125,10 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     cout << "U = " << U << endl;
     cout << "T = " << T << endl;
     cout << formule << endl << endl;
+
+    if (numberOfIterations == 12) {
+        cout << numberOfIterations << endl;
+    }
 
     //Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
     //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
