@@ -73,7 +73,6 @@ Code *Barcode::parseRE(string &re) {
             if (haakjes < 0) {clearHaakjes = false; break;}
         }
 
-
         if (clearHaakjes) re = re.substr(1, re.size()-2);
     }
 
@@ -107,12 +106,10 @@ Code *Barcode::parseRE(string &re) {
         }
 
         //Als het aanvaardt wordt kunnen we een stuk code al aanmaken.
-
         else return new VarCode(re[0]);
     }
 
     //Als de string groter als 1 is hebben we een samengestelde formule.
-
     else
     {
         /**
@@ -205,71 +202,93 @@ void Barcode::placeByConcatenateAPoint(string &RE) {
 
     string newRE;
 
+    //Extra moest er een punt vooraan staan aan de RE moet deze weg.
     if (RE[0] == '.') RE.substr(1, RE.size());
 
     char prevLetter = ' ';
 
     for (char i : RE)
     {
+        //We controlleren of er een een concatenatie is.
         if ((prevLetter == '1' && i == '1') || (prevLetter == '1' && i == '0') || (prevLetter == '1' && i == '(') ||
             (prevLetter == '0' && i == '1') || (prevLetter == '0' && i == '0') || (prevLetter == '0' && i == '(') ||
             (prevLetter == ')' && i == '1') || (prevLetter == ')' && i == '0') || (prevLetter == ')' && i == '(') ||
             (prevLetter == '*' && i == '1') || (prevLetter == '*' && i == '0') || (prevLetter == '*' && i == '('))
         {
+            //Als dit het geval is voegen we eerst een punt toe en dan pas de huidige karakter.
             newRE.push_back('.');
         }
+        //Als we geen concatenatie hebben kunnen we gewoon de huidige karakter toevoegen.
         newRE.push_back(i);
+
+        //slagen deze variable op voor te controlleren bij de volgende karakter.
         prevLetter = i;
     }
 
-    if (newRE[0] == '.')
-    {
-        newRE.substr(1, newRE.size());
-    }
+    //Extra moest er een punt vooraan staan aan de RE moet deze weg.
+    if (newRE[0] == '.') newRE.substr(1, newRE.size());
 
+    //Stellen de re terug gelijk aan de nieuwe re met toegevoegde punten.
     RE = newRE;
 }
 
-void Barcode::generateBarcode(string &re, Code* parsedRE)
+void Barcode::generateBarcode(string &barcode, Code* parsedRE)
 {
 
-
+    //Als het een kleene closure is
     if (parsedRE->getType() == "KleeneClosure")
     {
+        //zetten hier een grens op anders kan de barcode heel groot worden.
         int aantalKleeneIteraties = rand() % 5;
 
         for (int i = 0; i < aantalKleeneIteraties; ++i)
         {
-            generateBarcode(re, parsedRE->getKleeneClosure());
+            //roepen de functie terug opnieuw aan met het deel dat binnen in de kleene closure staat.
+            generateBarcode(barcode, parsedRE->getKleeneClosure());
         }
-
-
     }
+
+    //Als het een unie is
     else if (parsedRE->getType() == "Union")
     {
+        //Nemen een rand tussen 0-9 zodat het nog iets willekeuriger is dan 0 en 1.
         int leftOrRight = rand() % 10;
 
+        //Als de rand tussen 0-5 ligt dan kiezen we het linkerdeel van de concatenatie
         if (leftOrRight >= 4)
         {
-            if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().first->getName());
+            //Als we op het einde zitten hebben we enkel nog een variable en kunnen we deze toevoegen aan de barcode
+            if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") barcode.push_back(parsedRE->getLeftAndRightOperator().first->getName());
 
-            else generateBarcode(re, parsedRE->getLeftAndRightOperator().first);
+            //Anders gaan we nog verder en zoeken we voort in het linkerdeel
+            else generateBarcode(barcode, parsedRE->getLeftAndRightOperator().first);
         }
 
+        //Als de rand tussen 5-9 ligt dan kiezen we het rechterdeel van de concatenatie
         else
         {
-            if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().second->getName());
+            //Als we op het einde zitten hebben we enkel nog een variable en kunnen we deze toevoegen aan de barcode
+            if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") barcode.push_back(parsedRE->getLeftAndRightOperator().second->getName());
 
-            else generateBarcode(re, parsedRE->getLeftAndRightOperator().second);
+            //Anders gaan we nog verder en zoeken we voort in het rechterdeel
+            else generateBarcode(barcode, parsedRE->getLeftAndRightOperator().second);
         }
     }
+
+    //Als het een concatenatie is
     else if (parsedRE->getType() == "Concatenatie")
     {
-        if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().first->getName());
-        else generateBarcode(re, parsedRE->getLeftAndRightOperator().first);
+        //Als het linkerdeel van de concatenatie enkel nog een variable is voegen we deze al toe aan de barcode
+        if (parsedRE->getLeftAndRightOperator().first->getType() == "varCode") barcode.push_back(parsedRE->getLeftAndRightOperator().first->getName());
 
-        if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") re.push_back(parsedRE->getLeftAndRightOperator().second->getName());
-        else generateBarcode(re, parsedRE->getLeftAndRightOperator().second);
+        //Als dit nog niet is gaan we eerst het linkerdeel verder ontleden voor we het rechterdeel gaan toevoegen.
+        else generateBarcode(barcode, parsedRE->getLeftAndRightOperator().first);
+
+        //Als het rechterdeem van de concatenatie enkel nog een variable is voegen we deze toe aan de barcode
+        if (parsedRE->getLeftAndRightOperator().second->getType() == "varCode") barcode.push_back(parsedRE->getLeftAndRightOperator().second->getName());
+
+        //Anders gaan we het rechterdeel verder ontleden en dit dan toevoegen als we daar tot een variable komen.
+        else generateBarcode(barcode, parsedRE->getLeftAndRightOperator().second);
     }
 
 
