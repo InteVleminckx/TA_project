@@ -4,12 +4,14 @@
 
 #include "Dzhem.h"
 
-bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA) {
+bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA,
+                     vector<long>& memoryBrz, vector<long>& memoryTFA) {
     RE newRE = RE(re, 'e');
     DFA dfaRE = newRE.toDFA();
     dfaRE.renameStates();
     DFA dfaReTFA = DFA(dfaRE);
     Brzozowski::brzozowskiAlgorithm(dfaRE, timeBrz);
+    dfaRE.getMemory(memoryBrz);
     ofstream json;
     json.open("../controlesysteem.json");
     dfaReTFA.print(json);
@@ -17,6 +19,7 @@ bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& time
     TFA* tfa = new TFA("../controlesysteem.json");
     tfa->minimize(timeTFA);
     dfaReTFA = tfa->toDFA();
+    dfaReTFA.getMemory(memoryTFA);
 
     vector<Bestemming*> haltes;
     bestemmingen.inorderTraversal(haltes);
@@ -26,16 +29,6 @@ bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& time
         RE reHalte = RE(halte->getRegex(), 'e');
         DFA dfaHalte = reHalte.toDFA();
         dfaHalte.renameStates();
-        //vector<long> halteRE;
-        /*if (halte == haltes.back()) {
-            ofstream json;
-            json.open("../controlesysteem.json");
-            dfaHalte.print(json);
-            json.close();
-            TFA* tfa = new TFA("../controlesysteem.json");
-            tfa->minimize(timeTFA);
-            dfaHalte = tfa->toDFA();
-        }*/
         //Pruductautomaat van de twee met doorsnede van de accepterende staten.
         DFA doorsnede = DFA(dfaRE, dfaHalte, true);
         vector<string> statesDoornsede = doorsnede.getAllStates();
