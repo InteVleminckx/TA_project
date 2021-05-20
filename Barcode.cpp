@@ -41,7 +41,7 @@ KleeneClosure::KleeneClosure(Code *string)
 
 Code *KleeneClosure::getKleeneClosure() { return fOperator; }
 
-string Barcode::createBarcode(string &RE)
+string Barcode::createBarcode(string RE)
 {
 
     string barcode;
