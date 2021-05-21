@@ -30,11 +30,12 @@ Datastructuur *Datastructuur::getLeftChild() {return fLeftChild;}
 Datastructuur *Datastructuur::getRightChild() {return fRightChild;}
 
 int Datastructuur::getSize(){
-    return fSize;
+    vector<Bestemming*> vec;
+    this->inorderTraversal(vec);
+    return vec.size();
 }
 
 bool Datastructuur::insert(Node* object) {
-    fSize++;
 
     //Als de datastructuur nog geen waardes bevat.
     if (this->fRoot == nullptr)
@@ -49,7 +50,6 @@ bool Datastructuur::insert(Node* object) {
     //Er bestaat al een node met dezelfde zoeksleutel in de datastructuur.
     else if (this->getBestemming(object->getKey()).first)
     {
-        fSize--;
         return false;
     }
 
@@ -117,7 +117,6 @@ bool Datastructuur::deleteNode(string naamBestemming)
         if (this->getLeftChild() == nullptr && this->getRightChild() == nullptr && this->getParent() == nullptr)
         {
             this->fRoot = nullptr;
-            fSize--;
             return true;
         }
 
@@ -164,11 +163,6 @@ bool Datastructuur::deleteNode(string naamBestemming)
             this->fRoot = succesor;
         }
     }
-    Datastructuur* parent = this;
-    while(parent->getParent()!=nullptr){
-        parent = parent->getParent();
-    }
-    parent->fSize--;
     return true;
 }
 
