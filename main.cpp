@@ -89,6 +89,7 @@ int main() {
         Node* newHalte = new Node(*halte);
         data.insert(newHalte);
     }
+    data.clearTree();
 
 //    Plotter plot = Plotter(timeTFA, timeBRZ, "Speed");
 //    Plotter plot1 = Plotter(memoryTFA, memoryBRZ, "Memory");
