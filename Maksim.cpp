@@ -96,14 +96,14 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
 
     // R bepalen
     string randomR;
-    if (isBewerking < 7) {
+    if (isBewerking < 10) {
         randomR = getRandomString(numberOfIterations);
     }
     R = randomR;
 
     // S bepalen
     string randomS;
-    if (isBewerking < 3) {
+    if (isBewerking < 10) {
         randomS = getRandomString(numberOfIterations);
     }
     S = randomS;
@@ -150,9 +150,9 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     cout << "T = " << T << endl;
     cout << formule << endl << endl;
 
-    if (numberOfIterations == 12) {
+//    if (numberOfIterations == 12) {
         cout << numberOfIterations << endl;
-    }
+//    }
 
     //Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
     //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
