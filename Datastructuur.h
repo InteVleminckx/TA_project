@@ -153,6 +153,11 @@ public:
      * Deze functie toont alle bestemming in gesorteerde volgorde.
      */
     void inorderTraversal(vector<Bestemming*> &bestemmingen);
+
+    /**
+     * Deze functie maakt de boom leeg.
+     */
+    void clearTree();
 };
 
 

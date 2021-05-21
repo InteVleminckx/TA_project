@@ -217,3 +217,19 @@ void Datastructuur::inorderTraversal(vector<Bestemming*> &bestemmingen) {
     }
 }
 
+void Datastructuur::clearTree() {
+    if (fRoot != nullptr){
+        if (this->getLeftChild() != nullptr)
+        {
+            this->getLeftChild()->clearTree();
+            this->setLeftChild(nullptr);
+        }
+        if (this->getRightChild() != nullptr)
+        {
+            this->getRightChild()->clearTree();
+            this->setRightChild(nullptr);
+        }
+        delete this;
+    }
+}
+
