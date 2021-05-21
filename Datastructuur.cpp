@@ -222,14 +222,18 @@ void Datastructuur::clearTree() {
         if (this->getLeftChild() != nullptr)
         {
             this->getLeftChild()->clearTree();
+            delete this->getLeftChild();
             this->setLeftChild(nullptr);
         }
         if (this->getRightChild() != nullptr)
         {
             this->getRightChild()->clearTree();
+            delete this->getRightChild();
             this->setRightChild(nullptr);
         }
-        delete this;
+        delete this->fRoot;
+        fRoot = nullptr;
+        fParent = nullptr;
     }
 }
 
