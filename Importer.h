@@ -14,6 +14,7 @@
 #include <iostream>
 #include "Datastructuur.h"
 #include "Bestemming.h"
+#include "Maksim.h"
 
 using namespace std;
 

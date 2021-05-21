@@ -12,6 +12,11 @@
  */
 void Importer::readXMLFile(const string &filename, Datastructuur &datastructure) {
     TiXmlDocument doc;
+    vector<long> BRZ_times;
+    vector<long> TFA_times;
+    vector<long> BRZ_memories;
+    vector<long> TFA_memories;
+    Maksim maks;
 
     // Niet inleesbaar ==> error wegsturen via cerr
     if (!doc.LoadFile(filename.c_str())) {
@@ -50,7 +55,7 @@ void Importer::readXMLFile(const string &filename, Datastructuur &datastructure)
             destination.setName(info);
 
             // TODO: hier RE toevoegen gegenereerd door code van Maksim
-            destination.setRegex("101010");
+            destination.setRegex(maks.generateRE(datastructure, BRZ_times, TFA_times, BRZ_memories, TFA_memories, 0));
 
             Node* node = new Node(destination);
             datastructure.insert(node);

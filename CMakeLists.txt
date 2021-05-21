@@ -61,4 +61,7 @@ add_executable(projectTA
         TFA_Inte/json.hpp
         TFA_Inte/TFA_State.cpp
         TFA_Inte/TFA_State.h
+
+        Plotter.h
+        Plotter.cpp
         )
