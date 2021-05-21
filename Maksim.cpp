@@ -96,7 +96,7 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
 
     // R bepalen
     string randomR;
-    if (isBewerking < 6) {
+    if (isBewerking < 7) {
         randomR = getRandomString(numberOfIterations);
     }
     R = randomR;
