@@ -29,22 +29,46 @@ void Maksim::stringToBarcode(string &str) {
 
     // vanaf 16 bits met verhoudingen werken
 
-    for (auto i = 0; i < figures; i++) { // figures = str.size
-        fIniFile << "[Figure" <<  i << "]" << endl;
-        fIniFile << "type = \"Cylinder\"" << endl;
-        fIniFile << "height = " << 15 << endl;
-        fIniFile << "n = 36" << endl;
-        fIniFile << "scale = 0.25" << endl;
-        fIniFile << "rotateX = 0" << endl;
-        fIniFile << "rotateY = 0" << endl;
-        fIniFile << "rotateZ = 0" << endl;
-        fIniFile << "center = " << "(0, " << i*0.5 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
-        if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
-            fIniFile << "color = " << "(0, 0, 0)" << endl;
-        }
-        else {
-            fIniFile << "color = " << "(1, 1, 1)" << endl;
+    if (figures < 16) {
+        for (auto i = 0; i < figures; i++) { // figures = str.size
+            fIniFile << "[Figure" <<  i << "]" << endl;
+            fIniFile << "type = \"Cylinder\"" << endl;
+            fIniFile << "height = " << 15 << endl;
+            fIniFile << "n = 36" << endl;
+            fIniFile << "scale = 0.25" << endl;
+            fIniFile << "rotateX = 0" << endl;
+            fIniFile << "rotateY = 0" << endl;
+            fIniFile << "rotateZ = 0" << endl;
+            fIniFile << "center = " << "(0, " << i*0.5 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
+            if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
+                fIniFile << "color = " << "(0, 0, 0)" << endl;
+            }
+            else {
+                fIniFile << "color = " << "(1, 1, 1)" << endl;
 
+            }
+        }
+    }
+    else { // hier moeten we de scale en hoogte aanpassen
+        double hoogte = 25;
+        double scale = 0.175;
+        for (auto i = 0; i < figures; i++) { // figures = str.size
+            fIniFile << "[Figure" <<  i << "]" << endl;
+            fIniFile << "type = \"Cylinder\"" << endl;
+            fIniFile << "height = " << hoogte << endl;
+            fIniFile << "n = 36" << endl;
+            fIniFile << "scale = " << scale << endl;
+            fIniFile << "rotateX = 0" << endl;
+            fIniFile << "rotateY = 0" << endl;
+            fIniFile << "rotateZ = 0" << endl;
+            fIniFile << "center = " << "(0, " << i*0.35 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
+            if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
+                fIniFile << "color = " << "(0, 0, 0)" << endl;
+            }
+            else {
+                fIniFile << "color = " << "(1, 1, 1)" << endl;
+
+            }
         }
     }
 
