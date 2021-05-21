@@ -39,7 +39,7 @@ void Maksim::stringToBarcode(string &str) {
             fIniFile << "rotateX = 0" << endl;
             fIniFile << "rotateY = 0" << endl;
             fIniFile << "rotateZ = 0" << endl;
-            fIniFile << "center = " << "(0, " << i*0.5 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
+            fIniFile << "center = " << "(0, " << i*0.55 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
             if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
                 fIniFile << "color = " << "(0, 0, 0)" << endl;
             }
@@ -50,8 +50,15 @@ void Maksim::stringToBarcode(string &str) {
         }
     }
     else { // hier moeten we de scale en hoogte aanpassen
-        double hoogte = 25;
-        double scale = 0.175;
+
+        // 17.5 - 0.25? - 0.575 //
+        // 25 - 0.175 - 0.4 //
+        // 32.5 - 0.1 - 0.225 //
+        // 40 - 0.05 - 0.125 //
+        // 47.5 - 0.025 - 0.05 //
+
+        double hoogte = 55;
+        double scale = 0.0125;
         for (auto i = 0; i < figures; i++) { // figures = str.size
             fIniFile << "[Figure" <<  i << "]" << endl;
             fIniFile << "type = \"Cylinder\"" << endl;
@@ -61,7 +68,7 @@ void Maksim::stringToBarcode(string &str) {
             fIniFile << "rotateX = 0" << endl;
             fIniFile << "rotateY = 0" << endl;
             fIniFile << "rotateZ = 0" << endl;
-            fIniFile << "center = " << "(0, " << i*0.35 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
+            fIniFile << "center = " << "(0, " << i*0.03 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
             if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
                 fIniFile << "color = " << "(0, 0, 0)" << endl;
             }
@@ -149,10 +156,6 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     cout << "U = " << U << endl;
     cout << "T = " << T << endl;
     cout << formule << endl << endl;
-
-    if (numberOfIterations == 12) {
-        cout << numberOfIterations << endl;
-    }
 
     //Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
     //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
