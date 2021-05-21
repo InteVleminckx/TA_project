@@ -48,16 +48,16 @@ void Importer::readXMLFile(const string &filename, Datastructuur &datastructure)
             cerr << "Naam van childtag is niet halte" << endl;
         }
 
-        // Info tussen twee tags halen
+            // Info tussen twee tags halen
         else {
             string info = elem->FirstChild()->ToText()->Value();
-            Bestemming destination;
-            destination.setName(info);
+            Bestemming* destination = new Bestemming;
+            destination->setName(info);
 
             // TODO: hier RE toevoegen gegenereerd door code van Maksim
-            destination.setRegex(maks.generateRE(datastructure, BRZ_times, TFA_times, BRZ_memories, TFA_memories, 0));
+            destination->setRegex(maks.generateRE(datastructure, BRZ_times, TFA_times, BRZ_memories, TFA_memories, 0));
 
-            Node* node = new Node(destination);
+            Node* node = new Node(*destination);
             datastructure.insert(node);
         }
     }
