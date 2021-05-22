@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include <set>
+#include <istream>
 
 #include "json.hpp"
 

@@ -117,7 +117,7 @@ DFA::DFA(map<string, State *> sets, vector<char> a) {
 }
 
 
-DFA::DFA(DFA dfa1, DFA dfa2, bool doorsnede) {
+DFA::DFA(DFA& dfa1, DFA& dfa2, bool doorsnede) {
     //Staten van de 2 dfa's in string vorm
     auto states1 = dfa1.getAllStates();
     auto states2 = dfa2.getAllStates();

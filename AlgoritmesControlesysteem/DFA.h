@@ -42,7 +42,7 @@ public:
      * @param dfa2: automaat 2
      * @param ddorsnede: boolean die aangeeft of het om de ddorsnede of de unie gaat.
      */
-    DFA(DFA dfa1, DFA dfa2, bool doorsnede);
+    DFA(DFA& dfa1, DFA& dfa2, bool doorsnede);
 
     /**
     * Dit is de constructor voor de DFA die wordt geconstrueert a.d.h.v. de toDFA.
