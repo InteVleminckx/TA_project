@@ -98,33 +98,36 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
 
     string RE; // string die we returnen
     string R; string S; string U; string T;
+    bool leeg = false;
+    if (numberOfIterations > 8) {
+        leeg = true;
+    }
 
     int isBewerking = rand() % 10; // er is een kans voor elke deelregex om leeg te blijven
 
     // R bepalen
     string randomR;
-    if (isBewerking < 7) {
-        randomR = getRandomString(numberOfIterations);
-    }
+    randomR = getRandomString(numberOfIterations);
+
     R = randomR;
 
     // S bepalen
     string randomS;
-    if (isBewerking < 3) {
+    if (isBewerking < 5 || leeg) {
         randomS = getRandomString(numberOfIterations);
     }
     S = randomS;
 
     // U bepalen
     string randomU;
-    if (isBewerking > 6) {
+    if (isBewerking > 5 || leeg) {
         randomU = getRandomString(numberOfIterations);
     }
     U = randomU;
 
     // T bepalen
     string randomT;
-    if (isBewerking > 7-numberOfIterations%3) { // in het slechtste geval => isBewerking > 5
+    if (isBewerking > 7-numberOfIterations%3 || leeg) { // in het slechtste geval => isBewerking > 5
         randomT = getRandomString(numberOfIterations);
     }
     T = randomT;
@@ -147,6 +150,8 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     else {
         formule = "(" + R + S + U + T +")" + S + U; // algemene vorm van formule
     }
+
+    cout << numberOfIterations << endl;
 
     // formule samenstellen
 
@@ -177,23 +182,30 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
 string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voor de eerste keer
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
     int randomBewerking = rand() % 2; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+    int geenBewerking = rand() % 10;
 
     string deelRegex;
-    if (randomBewerking == 0) { // unie
-        deelRegex = "(" + to_string(symbool1) + "+" + to_string(1-symbool1) + ")"; // (0+1)
-    }
-    else if (randomBewerking == 1) { // concat
-        int randConcat = rand() % 2;
 
-        if (randConcat == 0) {
-            deelRegex = to_string(symbool1) + to_string(1-symbool1); // 01 of 10
-        }
-        else if (randConcat == 1) {
-            deelRegex = to_string(symbool1) + to_string(symbool1); // 00 of 11
-        }
+    if (geenBewerking < 3) {
+        deelRegex = to_string(symbool1);
     }
-    else if (randomBewerking == 2) { // kleene
-        deelRegex = "(" + to_string(symbool1) + ")*"; // (0)* of (1)*
+    else {
+        if (randomBewerking == 0) { // unie
+            deelRegex = "(" + to_string(symbool1) + "+" + to_string(1-symbool1) + ")"; // (0+1)
+        }
+        else if (randomBewerking == 1) { // concat
+            int randConcat = rand() % 2;
+
+            if (randConcat == 0) {
+                deelRegex = to_string(symbool1) + to_string(1-symbool1); // 01 of 10
+            }
+            else if (randConcat == 1) {
+                deelRegex = to_string(symbool1) + to_string(symbool1); // 00 of 11
+            }
+        }
+        else if (randomBewerking == 2) { // kleene
+            deelRegex = "(" + to_string(symbool1) + ")*"; // (0)* of (1)*
+        }
     }
 
     return deelRegex;
@@ -201,30 +213,34 @@ string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voo
 
 string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie moeten voltooien bij generateRE(), roepen we deze functie op.
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
-    int randomBewerking;
-//    if (deelRegex1[deelRegex1.size()-1] != '*') {
-//        randomBewerking = rand() % 3; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
-//    }
-//    else {
-    randomBewerking = rand() % 2; // kleene star zit hier niet bij de mogelijke bewerkingen
-//    }
+    int randomBewerking = rand() % 3; // kleene star zit hier niet bij de mogelijke bewerkingen
+    int geenBewerking = rand() % 10;
+
     string deelRegex;
-    if (randomBewerking == 0) { // unie
-        deelRegex = "(" + to_string(symbool1) + "+" + deelRegex1 + ")"; // (0+1)
-    }
-    else if (randomBewerking == 1) { // concat
-        int randConcat = rand() % 2;
 
-        if (randConcat == 0) {
-            deelRegex = to_string(symbool1) + deelRegex1; // 01 of 10
-        }
-        else if (randConcat == 1) {
-
-            deelRegex = deelRegex1 + to_string(symbool1); // 00 of 11
-        }
+    if (geenBewerking < 2) {
+        deelRegex = deelRegex1;
     }
-    else if (randomBewerking == 2) { // kleene
-        deelRegex = "(" + deelRegex1 + ")*"; // (0)* of (1)*
+    else {
+        if (randomBewerking == 0) { // unie
+            if (deelRegex1 == to_string(symbool1)) {
+                symbool1 = 1 - symbool1;
+            }
+            deelRegex = "(" + to_string(symbool1) + "+" + deelRegex1 + ")"; // (0+1)
+        }
+        else if (randomBewerking == 1 || randomBewerking == 2) { // concat
+            int randConcat = rand() % 2;
+
+            if (randConcat == 0) {
+                deelRegex = to_string(symbool1) + deelRegex1; // 01 of 10
+            }
+            else if (randConcat == 1) {
+                deelRegex = deelRegex1 + to_string(symbool1); // 00 of 11
+            }
+        }
+//        else if (randomBewerking == 2) { // kleene
+//            deelRegex = "(" + deelRegex1 + ")*"; // (0)* of (1)*
+//        }
     }
 
     return deelRegex;
