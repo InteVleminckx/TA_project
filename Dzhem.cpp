@@ -34,9 +34,6 @@ bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& time
         vector<string> statesDoornsede = doorsnede.getAllStates();
         for (auto state:statesDoornsede){ //Controle of de productautomaat met de doorsnede een accepterende staat bevat
             if(doorsnede.isStateAccepting(state)){
-                for (int k=0; k<i; k++){
-                    timeTFA.pop_back();
-                }
                 return false;
             }
         }
