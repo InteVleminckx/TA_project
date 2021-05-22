@@ -6,6 +6,7 @@
 #define PROJECTTA_BESTEMMING_H
 
 #include <string>
+#include "AlgoritmesControlesysteem//DFA.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ class Bestemming {
 private:
     string fNaam;
     string fRegex;
+    DFA dfa;
 
 public:
 
@@ -51,6 +53,17 @@ public:
      * @return
      */
     string getRegex();
+
+    /**
+     * Deze functie stelt de geminimaliseerde DFA in voor de bestemming.
+     */
+    void setDFA(DFA& dfa);
+
+    /**
+     * Deze functie geeft een refference naar de DFA van de bestemming.
+     * @return: dfa
+     */
+    DFA& getDFA();
 
 
 };

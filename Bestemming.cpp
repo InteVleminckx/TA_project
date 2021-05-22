@@ -27,5 +27,13 @@ string Bestemming::getRegex() {
     return fRegex;
 }
 
+void Bestemming::setDFA(DFA &dfaToCopy) {
+    dfa = DFA(dfaToCopy);
+}
+
+DFA &Bestemming::getDFA() {
+    return dfa;
+}
+
 
 Bestemming::Bestemming() = default;
