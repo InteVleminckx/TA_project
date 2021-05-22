@@ -37,6 +37,11 @@ public:
     DFA(const string& input);
 
     /**
+     * Default constructor
+     */
+    DFA() = default;
+
+    /**
      * Dit is de constructor voor het genereren van de productautomaat van 2 gegeven DFA's.
      * @param dfa1: automaat 1
      * @param dfa2: automaat 2

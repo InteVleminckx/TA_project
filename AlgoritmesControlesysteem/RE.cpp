@@ -27,13 +27,6 @@ void RE::getAlphabet(string& expr, char e) {
 void RE::parser() {
     int i = 0;
     alphabet = {'0', '1'};
-    /*for (auto token:tokens){
-        if(isalnum(token)){
-            if (find(alphabet.begin(), alphabet.end(), token) == alphabet.end()){
-                alphabet.push_back(token);
-            }
-        }
-    }*/
 
     while(i < tokens.size()){
         auto t = tokens.at(i);

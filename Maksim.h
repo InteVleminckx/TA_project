@@ -34,7 +34,7 @@ public:
     void stringToBarcode(string &str);
 
     string generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, vector<long>& memoryBRZ,
-                      vector<long>& memoryTFA, int numberOfIterations = 0);
+                      vector<long>& memoryTFA,Bestemming& best, int numberOfIterations = 0);
 
     string chooseOperationFirstTime();
 

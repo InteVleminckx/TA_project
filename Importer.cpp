@@ -54,8 +54,8 @@ void Importer::readXMLFile(const string &filename, Datastructuur &datastructure)
             Bestemming* destination = new Bestemming;
             destination->setName(info);
 
-            // TODO: hier RE toevoegen gegenereerd door code van Maksim
-            destination->setRegex(maks.generateRE(datastructure, BRZ_times, TFA_times, BRZ_memories, TFA_memories, 0));
+            string re  = maks.generateRE(datastructure, BRZ_times, TFA_times, BRZ_memories, TFA_memories,* destination, 0);
+            destination->setRegex(re);
 
             Node* node = new Node(*destination);
             datastructure.insert(node);

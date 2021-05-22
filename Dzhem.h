@@ -33,7 +33,7 @@ class Dzhem {
  * @return: true of false;
  */
 bool controleSysteem(string& RE, Datastructuur& bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA,
-                     vector<long>& memoryBrz, vector<long>& memoryTFA);
+                     vector<long>& memoryBrz, vector<long>& memoryTFA, Bestemming& best);
 
 bool statechecker(DFA& dfa);
 

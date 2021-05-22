@@ -90,7 +90,7 @@ void Maksim::stringToBarcode(string &str) {
 //cout << endl;
 //}
 string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, vector<long>& memoryBRZ,
-                          vector<long>& memoryTFA, int numberOfIterations) { // het aantal iteraties bepaalt hoeveel bewerkingen we gaan uitvoeren (per deelbewerking)
+                          vector<long>& memoryTFA, Bestemming& best, int numberOfIterations) { // het aantal iteraties bepaalt hoeveel bewerkingen we gaan uitvoeren (per deelbewerking)
 
     // het alfabet van de RE is {0,1}
     // vector<string> alfabet{"0", "1"};
@@ -166,12 +166,12 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
 
     // doorsnede checken => controlesysteem
-    bool doorsnede = controleSysteem(formule, data, timeBrz, timeTFA, memoryBRZ, memoryTFA);
+    bool doorsnede = controleSysteem(formule, data, timeBrz, timeTFA, memoryBRZ, memoryTFA, best);
 
     if (!doorsnede) { // als de doorsnedes niet leeg zijn
         timeBrz.pop_back();
         timeTFA.pop_back();
-        return generateRE(data, timeBrz, timeTFA,memoryBRZ, memoryTFA, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
+        return generateRE(data, timeBrz, timeTFA,memoryBRZ, memoryTFA,best, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {
         RE = formule;
