@@ -35,5 +35,7 @@ class Dzhem {
 bool controleSysteem(string& RE, Datastructuur& bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA,
                      vector<long>& memoryBrz, vector<long>& memoryTFA);
 
+bool statechecker(DFA& dfa);
+
 
 #endif //PROJECTTA_DZHEM_H

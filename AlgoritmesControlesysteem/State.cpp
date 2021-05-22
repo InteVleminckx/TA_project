@@ -84,7 +84,11 @@ set<char> State::no_transitionChars(vector<char>& alphabet) {
 
 
 string State::goesTo(char c) {
-    return t_to[c]->getName();
+    if (t_to.find(c)!= t_to.end()){
+        return t_to[c]->getName();
+    }else{
+        return "none";
+    }
 }
 
 void State::changeName(string n) {
