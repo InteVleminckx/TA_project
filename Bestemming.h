@@ -15,6 +15,7 @@ private:
     string fNaam;
     string fRegex;
     DFA dfa;
+    vector<string> fBarcodes;
 
 public:
 
@@ -64,6 +65,18 @@ public:
      * @return: dfa
      */
     DFA& getDFA();
+
+    /**
+     * Deze functie voegt een barcode toe aan een vector die alle barcodes bevat voor een bestemming, waarvan een ticket is gekocht.
+     * @param barcode: de nieuw gegenereerde barcode die aangemaakt is bij het aankopen van een ticket.
+     */
+    void setBarcode(string &barcode);
+
+    /**
+     * Deze functie geeft een barcode terug uit en verwijderd de barcode uit de vector.
+     * @return: string, een barcode.
+     */
+    string getBarcode();
 
 
 };
