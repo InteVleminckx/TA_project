@@ -35,5 +35,26 @@ DFA &Bestemming::getDFA() {
     return dfa;
 }
 
+void Bestemming::setBarcode(string &barcode) {
+
+    fBarcodes.push_back(barcode);
+
+}
+
+string Bestemming::getBarcode() {
+
+    //Als er nog geen tickets zijn gekocht bestaat er nog geen barcode dus returnen we een lege string.
+    if (fBarcodes.empty()) return "";
+
+
+    int barcodeNumber = rand() % fBarcodes.size();
+    //We nemen een barcode uit de vector en verwijderen deze nadien.
+    string barcode = fBarcodes[barcodeNumber];
+    fBarcodes.erase(fBarcodes.begin()+barcodeNumber);
+
+    return barcode;
+
+}
+
 
 Bestemming::Bestemming() = default;
