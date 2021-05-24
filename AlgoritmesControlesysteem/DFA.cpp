@@ -127,8 +127,8 @@ DFA::DFA(DFA& dfa1, DFA& dfa2, bool doorsnede) {
 
     //Startstaat van de productautomaat
     pair<string, string> p;
-    p.first = states1.at(0);
-    p.second = states2.at(0);
+    p.first = dfa1.getStartState();
+    p.second = dfa2.getStartState();
     state_pairs.push_back(p);
 
     alphabet = dfa1.getAlphabet();
