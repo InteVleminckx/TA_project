@@ -49,16 +49,51 @@ void Maksim::stringToBarcode(string &str) {
             }
         }
     }
-    else { // hier moeten we de scale en hoogte aanpassen
+    else { // hier moeten we de scale, factorI en hoogte aanpassen
 
-        // 17.5 - 0.25? - 0.575 //
+        // 17.5 - 0.25 - 0.575 //
         // 25 - 0.175 - 0.4 //
         // 32.5 - 0.1 - 0.225 //
         // 40 - 0.05 - 0.125 //
         // 47.5 - 0.025 - 0.05 //
+        // 55 - 0.0125 - 0.03
 
-        double hoogte = 55;
-        double scale = 0.0125;
+        double hoogte;
+        double scale;
+        double factorI;
+
+        if (16 <= figures && figures < 24) {
+            hoogte = 17.5;
+            scale = 0.25;
+            factorI = 0.575;
+        }
+        else if (24 <= figures && figures < 32) {
+            hoogte = 25;
+            scale = 0.175;
+            factorI = 0.4;
+        }
+        else if (32 <= figures && figures < 40) {
+            hoogte = 32.5;
+            scale = 0.1;
+            factorI = 0.225;
+        }
+        else if (40 <= figures && figures < 48) {
+            hoogte = 40;
+            scale = 0.05;
+            factorI = 0.125;
+        }
+        else if (48 <= figures && figures < 56) {
+            hoogte = 47.5;
+            scale = 0.025;
+            factorI = 0.055;
+        }
+        else { // if (49 <= figures && figures < 56)
+            hoogte = 55;
+            scale = 0.0125;
+            factorI = 0.03;
+        }
+        cout << hoogte;
+
         for (auto i = 0; i < figures; i++) { // figures = str.size
             fIniFile << "[Figure" <<  i << "]" << endl;
             fIniFile << "type = \"Cylinder\"" << endl;
@@ -68,7 +103,7 @@ void Maksim::stringToBarcode(string &str) {
             fIniFile << "rotateX = 0" << endl;
             fIniFile << "rotateY = 0" << endl;
             fIniFile << "rotateZ = 0" << endl;
-            fIniFile << "center = " << "(0, " << i*0.03 << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
+            fIniFile << "center = " << "(0, " << i*factorI << ", 0)" << endl; // de y verandert telkens met +0.5, enkel bij deze afstandsverschil komen de cylinders mooi naast elkaar te staan.
             if (str[i] == '1') { // als we een 1 tegenkomen, moet er een zwarte rechthoek komen. Bij een 0 is dit dan een witte rechthoek.
                 fIniFile << "color = " << "(0, 0, 0)" << endl;
             }
