@@ -102,7 +102,7 @@ bool Datastructuur::deleteNode(string naamBestemming)
 
     //Als op de huidige positie nog geen deelboom aangemaakt is, dan betekent dat er nog geen node is toegevoegd
     //op de locatie waar we willen verwijderen dus dit object bestaat niet.
-    if (this == nullptr) return false;
+    if (this->fRoot == nullptr) return false;
 
     //Als de zoeksleutel van de node die verwijderd moet worden groter is, moeten we verder gaan zoeken in de rechterdeelboom.
     else if (naamBestemming > this->fRoot->getKey()) this->getRightChild()->deleteNode(naamBestemming);
