@@ -78,7 +78,11 @@ public:
      */
     string getBarcode();
 
-
+     /**
+     * Deze functie verwijderd een gekochte barcode voor deze bestemming.
+     * @param re: te verwijderen barcode
+     */
+    void deleteBarcode(string re);
 };
 
 

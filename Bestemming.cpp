@@ -56,5 +56,10 @@ string Bestemming::getBarcode() {
 
 }
 
+void Bestemming::deleteBarcode(string re){
+    auto place = find(fBarcodes.begin(), fBarcodes.end(), re);
+    fBarcodes.erase(place);
+}
+
 
 Bestemming::Bestemming() = default;
