@@ -1,6 +1,6 @@
 //
 // Created by Maksim Karnaukh on 5/05/2021.
-// Ik heb geprobeerd overal waar ik kan te commenten
+//
 //
 
 #include "Maksim.h"
@@ -51,44 +51,37 @@ void Maksim::stringToBarcode(string &str) {
     }
     else { // hier moeten we de scale, factorI en hoogte aanpassen
 
-        // 17.5 - 0.25 - 0.575 //
-        // 25 - 0.175 - 0.4 //
-        // 32.5 - 0.1 - 0.225 //
-        // 40 - 0.05 - 0.125 //
-        // 47.5 - 0.025 - 0.05 //
-        // 55 - 0.0125 - 0.03
-
         double hoogte;
         double scale;
         double factorI;
 
         if (16 <= figures && figures < 24) {
-            hoogte = 17.5;
+            hoogte = 20;
             scale = 0.25;
             factorI = 0.575;
         }
         else if (24 <= figures && figures < 32) {
-            hoogte = 25;
+            hoogte = 34;
             scale = 0.175;
             factorI = 0.4;
         }
         else if (32 <= figures && figures < 40) {
-            hoogte = 32.5;
+            hoogte = 44;
             scale = 0.1;
             factorI = 0.225;
         }
         else if (40 <= figures && figures < 48) {
-            hoogte = 40;
+            hoogte = 60;
             scale = 0.05;
             factorI = 0.125;
         }
         else if (48 <= figures && figures < 56) {
-            hoogte = 47.5;
+            hoogte = 70;
             scale = 0.025;
             factorI = 0.055;
         }
         else { // if (49 <= figures && figures < 56)
-            hoogte = 55;
+            hoogte = 80;
             scale = 0.0125;
             factorI = 0.03;
         }
@@ -319,4 +312,8 @@ string Maksim::getRandomString(int nr_iterations, bool isConcatOnly) {
         }
     }
     return randomRegex;
+}
+
+void Maksim::createHTML(Datastructuur &datastructuur) {
+
 }

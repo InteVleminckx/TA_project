@@ -41,6 +41,8 @@ public:
     string chooseOperation(string &deelRegex, bool isConcatOnly);
 
     string getRandomString(int nr_iterations, bool isConcatOnly);
+
+    void createHTML(Datastructuur &datastructuur);
 };
 
 ////// test datastructuur ////
