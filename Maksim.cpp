@@ -217,6 +217,8 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     if (!doorsnede) { // als de doorsnedes niet leeg zijn
         timeBrz.pop_back();
         timeTFA.pop_back();
+        memoryBRZ.pop_back();
+        memoryTFA.pop_back();
         return generateRE(data, timeBrz, timeTFA,memoryBRZ, memoryTFA,best, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {
