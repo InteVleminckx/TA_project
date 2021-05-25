@@ -36,11 +36,11 @@ public:
     string generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, vector<long>& memoryBRZ,
                       vector<long>& memoryTFA,Bestemming& best, int numberOfIterations = 0);
 
-    string chooseOperationFirstTime();
+    string chooseOperationFirstTime(bool isConcatOnly);
 
-    string chooseOperation(string &deelRegex);
+    string chooseOperation(string &deelRegex, bool isConcatOnly);
 
-    string getRandomString(int nr_iterations);
+    string getRandomString(int nr_iterations, bool isConcatOnly);
 };
 
 ////// test datastructuur ////

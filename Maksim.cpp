@@ -132,40 +132,49 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     // vector<string> bewerkingen{"unie", "concatenatie", "kleeneStar"};
 
     string RE; // string die we returnen
-    string R; string S; string U; string T;
-    bool leeg = false;
+    string R; string S; string U; string T; string C;
+    bool notEmpty = false;
+    bool isConcatDeelRegex = false;
     if (numberOfIterations > 8) {
-        leeg = true;
+        notEmpty = true;
+        isConcatDeelRegex = true;
     }
 
     int isBewerking = rand() % 10; // er is een kans voor elke deelregex om leeg te blijven
 
     // R bepalen
     string randomR;
-    randomR = getRandomString(numberOfIterations);
+    randomR = getRandomString(numberOfIterations, false);
 
     R = randomR;
 
     // S bepalen
     string randomS;
-    if (isBewerking < 5 || leeg) {
-        randomS = getRandomString(numberOfIterations);
+    if (isBewerking < 5 || notEmpty) {
+        randomS = getRandomString(numberOfIterations, false);
     }
     S = randomS;
 
     // U bepalen
     string randomU;
-    if (isBewerking > 5 || leeg) {
-        randomU = getRandomString(numberOfIterations);
+    if (isBewerking > 5 || notEmpty) {
+        randomU = getRandomString(numberOfIterations, false);
     }
     U = randomU;
 
     // T bepalen
     string randomT;
-    if (isBewerking > 7-numberOfIterations%3 || leeg) { // in het slechtste geval => isBewerking > 5
-        randomT = getRandomString(numberOfIterations);
+    if (isBewerking > 7-numberOfIterations%3 || notEmpty) { // in het slechtste geval => isBewerking > 5
+        randomT = getRandomString(numberOfIterations, false);
     }
     T = randomT;
+
+    string concatDeelRegex;
+    if (isConcatDeelRegex) { // in het slechtste geval => isBewerking > 5
+        concatDeelRegex = getRandomString(numberOfIterations-7, true);
+    }
+    C = concatDeelRegex;
+
 
     if (!R.empty()) {
         R = R + "+";
@@ -176,14 +185,17 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
 //    }
     string formule;
     if (S.empty() && U.empty()) {
-        formule = R + S + U + T + S + U; // algemene vorm van formule
+        formule = R + S + U + T + S + U + C; // algemene vorm van formule
         if (T.empty()) {
-            R = R.substr(0, R.size()-1);
-            formule = R;
+            formule = R + C;
+            if (C.empty()) {
+                R = R.substr(0, R.size()-1);
+                formule = R;
+            }
         }
     }
     else {
-        formule = "(" + R + S + U + T +")" + S + U; // algemene vorm van formule
+        formule = "(" + R + S + U + T +")" + S + U + C; // algemene vorm van formule
     }
 
     cout << numberOfIterations << endl;
@@ -195,10 +207,9 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     cout << "S = " << S << endl;
     cout << "U = " << U << endl;
     cout << "T = " << T << endl;
-    cout << formule << endl << endl;
+    cout << "C = " << C << endl;
 
-    //Datastructuur data; //tijdelijke plaatshouder, stelt de bestaande bestemmingen voor.
-    //Mss best nog een extra parameter aan deze functie, de echte datastuur meegegeven bij het oproepen van de generatie.
+    cout << formule << endl << endl;
 
     // doorsnede checken => controlesysteem
     bool doorsnede = controleSysteem(formule, data, timeBrz, timeTFA, memoryBRZ, memoryTFA, best);
@@ -214,9 +225,15 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     return RE;
 }
 
-string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voor de eerste keer
+string Maksim::chooseOperationFirstTime(bool isConcatOnly) { // hier "maken" we een deelregex voor de eerste keer
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
-    int randomBewerking = rand() % 2; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+    int randomBewerking;
+    if (isConcatOnly) {
+        randomBewerking = 1;
+    }
+    else {
+        randomBewerking = rand() % 2; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+    }
     int geenBewerking = rand() % 10;
 
     string deelRegex;
@@ -246,9 +263,15 @@ string Maksim::chooseOperationFirstTime() { // hier "maken" we een deelregex voo
     return deelRegex;
 }
 
-string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie moeten voltooien bij generateRE(), roepen we deze functie op.
+string Maksim::chooseOperation(string &deelRegex1, bool isConcatOnly) { // vanaf dat we 1 iteratie moeten voltooien bij generateRE(), roepen we deze functie op.
     int symbool1 = rand() % 2; // kiest een symbool (0 of 1)
-    int randomBewerking = rand() % 3; // kleene star zit hier niet bij de mogelijke bewerkingen
+    int randomBewerking; // kleene star zit hier niet bij de mogelijke bewerkingen
+    if (isConcatOnly) {
+        randomBewerking = 1;
+    }
+    else {
+        randomBewerking = rand() % 3; // kiest een bewerking. 0 = unie, 1 = concatenatie, 2 = kleeneStar
+    }
     int geenBewerking = rand() % 10;
 
     string deelRegex;
@@ -281,16 +304,16 @@ string Maksim::chooseOperation(string &deelRegex1) { // vanaf dat we 1 iteratie 
     return deelRegex;
 }
 
-string Maksim::getRandomString(int nr_iterations) {
+string Maksim::getRandomString(int nr_iterations, bool isConcatOnly) {
     string randomRegex;
     if (nr_iterations == 0) {
-        randomRegex = chooseOperationFirstTime();
+        randomRegex = chooseOperationFirstTime(isConcatOnly);
     }
     else {
-        randomRegex = chooseOperationFirstTime();
+        randomRegex = chooseOperationFirstTime(isConcatOnly);
 
         for (auto i = 0; i < nr_iterations; i++) {
-            randomRegex = chooseOperation(randomRegex);
+            randomRegex = chooseOperation(randomRegex, isConcatOnly);
         }
     }
     return randomRegex;
