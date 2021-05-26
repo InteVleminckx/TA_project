@@ -165,10 +165,7 @@ TFA TFA::minimize(vector<long> &times) {
     TFA newDFA = copyDFA();
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
-    newDFA.print(cout);
-
     elemNonReachableStates(newDFA);
-    newDFA.printTable();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -672,37 +669,28 @@ void TFA::makeMiniDFA(TFA &newDFA) {
 }
 
 void TFA::transitionToNewState(string &transTo) {
-    bool found = false;
 
     for (int i = 0; i < newStates.size(); ++i) {
         string state = newStates[i].name;
         for (int j = 0; j < state.size(); ++j) {
-            char trans = transTo[0];
-
-            if ( trans == state[j]){
+            size_t foundString = state.find(transTo);
+            if (foundString != string::npos){
                 transTo = newStates[i].name;
-                found = true;
-                break;
+                return;
             }
         }
-        if (found){break;}
     }
 }
 
 bool TFA::deleteOldStates(string state) {
 
     for (int i = 0; i < newStates.size(); ++i) {
-        char charState = state[0];
         string stateNew = newStates[i].name;
-        for (int j = 0; j < stateNew.size(); ++j) {
-
-            if (stateNew[j] == charState){
-                return true;
-
-            }
+        std::size_t found = stateNew.find(state);
+        if (found != std::string::npos) {
+            return true;
         }
     }
-
     return false;
 }
 
