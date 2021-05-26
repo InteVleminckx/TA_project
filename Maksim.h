@@ -42,7 +42,7 @@ public:
 
     string getRandomString(int nr_iterations, bool isConcatOnly);
 
-    void createHTML(Datastructuur &datastructuur);
+    void createHTMLFile(Datastructuur &datastructuur);
 };
 
 ////// test datastructuur ////
