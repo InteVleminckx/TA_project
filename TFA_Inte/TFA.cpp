@@ -156,7 +156,6 @@ TFA TFA::minimize(vector<long> &times) {
     auto start = high_resolution_clock::now();
 
     createTable();
-    printTable();
     addMarksFinalStatesBegin();
     TFA oldDFA = copyDFA();
     int iteratie = 0;
