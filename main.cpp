@@ -12,6 +12,7 @@
 #include "Barcode.h"
 #include "Datastructuur.h"
 #include "Plotter.h"
+#include "Dzhem.h"
 
 //#include <windows.h>
 
@@ -71,26 +72,30 @@ int main() {
 //    code.createBarcode(re6);
 //    cout << endl;
 //
+    Datastructuur datastr;
     vector<long> timeBRZ;
     vector<long> timeTFA;
     vector<long> memoryBRZ;
     vector<long> memoryTFA;
     Maksim maksim;
+    string re = "(0+001)001";
+    Bestemming best("Antje", re);
+    bool doorsnede = controleSysteem(re, datastr, timeBRZ, timeTFA, memoryBRZ, memoryTFA, best);
 
-    Datastructuur data;
-    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd", "eee", "fff", "ggg" , "hhh"};
-    //srand(time(NULL));
-    for (int i =0; i < 8; i++){
-        if (i == 7) {
-            cout << i << endl <<endl << endl;
-        }
-        string re = maksim.generateRE(data, timeBRZ, timeTFA, memoryBRZ, memoryTFA);
-        Bestemming* halte = new Bestemming(haltes.at(i), re);
-        Node* newHalte = new Node(*halte);
-        data.insert(newHalte);
-    }
-
-    data.clearTree();
+//    Datastructuur data;
+//    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd", "eee", "fff", "ggg" , "hhh"};
+//    //srand(time(NULL));
+//    for (int i =0; i < 8; i++){
+//        if (i == 7) {
+//            cout << i << endl <<endl << endl;
+//        }
+//        string re = maksim.generateRE(data, timeBRZ, timeTFA, memoryBRZ, memoryTFA);
+//        Bestemming* halte = new Bestemming(haltes.at(i), re);
+//        Node* newHalte = new Node(*halte);
+//        data.insert(newHalte);
+//    }
+//
+//    data.clearTree();
 
 //    Plotter plot = Plotter(timeTFA, timeBRZ, "Speed");
 //    Plotter plot1 = Plotter(memoryTFA, memoryBRZ, "Memory");

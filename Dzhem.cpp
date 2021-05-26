@@ -30,7 +30,7 @@ bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& time
     dfaReTFA.print(json);
     json.close();
     TFA* tfa = new TFA("controlesysteem.json");
-    tfa->minimize(timeTFA);
+    *tfa = tfa->minimize(timeTFA);
     dfaReTFA = tfa->toDFA();
     dfaReTFA.getMemory(memoryTFA);
 

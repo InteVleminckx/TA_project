@@ -156,6 +156,7 @@ TFA TFA::minimize(vector<long> &times) {
     auto start = high_resolution_clock::now();
 
     createTable();
+    printTable();
     addMarksFinalStatesBegin();
     TFA oldDFA = copyDFA();
     int iteratie = 0;
@@ -164,8 +165,10 @@ TFA TFA::minimize(vector<long> &times) {
     TFA newDFA = copyDFA();
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
+    newDFA.print(cout);
 
     elemNonReachableStates(newDFA);
+    newDFA.printTable();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -731,17 +734,27 @@ void TFA::clearDubbels() {
 
 void TFA::checkDoubles(string &stateTo) {
 
-    vector<char> eachState;
+    vector<string> eachState;
     if (stateTo.size() > 1){
+        string current;
         for (int i = 0; i < stateTo.size(); ++i) {
             if (stateTo[i] != '{' && stateTo[i] != '}' && stateTo[i] != ',' && stateTo[i] != ' '){
-                eachState.push_back(stateTo[i]);
+                current += stateTo[i];
+            } else {
+                if (current != "") {
+                    eachState.push_back(current);
+                    current = "";
+                }
             }
+        }
+        if (!current.empty())
+        {
+            eachState.push_back(current);
         }
 
         sort(eachState.begin(), eachState.end());
 
-        vector<char> newStateVec;
+        vector<string> newStateVec;
 
         for (int i = 0; i < eachState.size(); ++i) {
             if (!count(newStateVec.begin(), newStateVec.end(), eachState[i])){
@@ -749,21 +762,30 @@ void TFA::checkDoubles(string &stateTo) {
             }
         }
 
-        string newState = "{";
-
-        for (int i = 0; i < newStateVec.size(); ++i) {
-
-            if (i == 0){
-                newState += newStateVec[i];
-            }
-            else{
-                newState += ", " ;
-                newState += newStateVec[i];
-            }
+        // Slechts 1 state ==> geen haakjes toevoegen
+        if (newStateVec.size() == 1)
+        {
+            stateTo = newStateVec[0];
         }
 
-        newState += '}';
-        stateTo = newState;
+        else
+        {
+            string newState = "{";
+
+            for (int i = 0; i < newStateVec.size(); ++i) {
+
+                if (i == 0){
+                    newState += newStateVec[i];
+                }
+                else{
+                    newState += ", " ;
+                    newState += newStateVec[i];
+                }
+            }
+
+            newState += '}';
+            stateTo = newState;
+        }
     }
 
 }
