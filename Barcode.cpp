@@ -291,5 +291,9 @@ void Barcode::generateBarcode(string &barcode, Code* parsedRE)
         else generateBarcode(barcode, parsedRE->getLeftAndRightOperator().second);
     }
 
-
+    //enkele string
+    else if (parsedRE->getType() == "varCode")
+    {
+        barcode.push_back(parsedRE->getName());
+    }
 }
