@@ -312,6 +312,85 @@ string Maksim::getRandomString(int nr_iterations, bool isConcatOnly) {
     return randomRegex;
 }
 
-void Maksim::createHTML(Datastructuur &datastructuur) {
+void Maksim::createHTMLFile(Datastructuur &datastructuur) {
+    vector<Bestemming*> bestemmingen;
+    datastructuur.inorderTraversal(bestemmingen);
 
+    ofstream htmlTabel;
+    htmlTabel.open("../html.html");
+    htmlTabel << "<!DOCTYPE html><html><head></head><body>";
+
+    // de opmaak voor de tabel heeft Inte gemaakt, hier is de opmaak hetzelfde als bij de andere delen van de GUI.
+    htmlTabel << "<style>";
+    htmlTabel << "th {";
+    htmlTabel << "text-align: left;";
+    htmlTabel << "}";
+
+    htmlTabel << "td {";
+    htmlTabel << "text-align: left;";
+    htmlTabel << "}";
+        htmlTabel << ".styled-table";
+            htmlTabel << "{";
+            htmlTabel << "border-collapse: collapse;";
+            htmlTabel << "margin: 25px 0;";
+            htmlTabel << "font-size: 0.9em;";
+            htmlTabel << "font-family: sans-serif;";
+            htmlTabel << "min-width: 1000px;"; // 98vw
+            htmlTabel << "background-color: #32373a;";
+            htmlTabel << "color: white;";
+            htmlTabel << "text-align: center;";
+            htmlTabel << "border-radius: 10px 10px 10px 10px;";
+            htmlTabel << "overflow: hidden;";
+            htmlTabel << "box-shadow: 0 0 20px rgba(0,0,0,0.25);";
+            htmlTabel << "}";
+        htmlTabel << ".styled-table thead tr";
+            htmlTabel << "{";
+            htmlTabel << "background-color: #32373a;";
+            htmlTabel << "color: white;";
+            htmlTabel << "text-align: center;";
+            htmlTabel << "font-weight: bold;";
+            htmlTabel << "font-size: 18px;";
+            htmlTabel << "}";
+        htmlTabel << ".styled-table th,";
+        htmlTabel << ".styled-table td";
+            htmlTabel << "{";
+            htmlTabel << "padding: 12px 15px;";
+            htmlTabel << "}";
+        htmlTabel << ".styled-table tbody tr";
+            htmlTabel << "{";
+            htmlTabel << "border-bottom: 1px solid white;";
+            htmlTabel << "}";
+
+    htmlTabel << "</style>";
+
+    htmlTabel << "<table class=\"styled-table\">";
+    htmlTabel << "<thead>";
+        htmlTabel << "<tr>";
+            htmlTabel << "<th>Bestemming</th>";
+            htmlTabel << "<th>" << "</th>";
+            htmlTabel << "<th>" << "</th>";
+            htmlTabel << "<th>" << "</th>";
+            htmlTabel << "<th>Regex</th>";
+        htmlTabel << "</tr>";
+    htmlTabel << "</thead>";
+
+    htmlTabel << "<tbody>";
+
+    for (auto i = 0; i < bestemmingen.size(); i++) {
+        htmlTabel << "<tr>";
+
+        htmlTabel << "<td>" << bestemmingen[i]->getName() << "</td>";
+        htmlTabel << "<td>" << "</td>";
+        htmlTabel << "<td>" << "</td>";
+        htmlTabel << "<td>" << "</td>";
+        htmlTabel << "<td>" << bestemmingen[i]->getRegex() << "</td>";
+
+        htmlTabel << "</tr>";
+    }
+
+    htmlTabel << "</tbody>";
+    htmlTabel << "</table>";
+
+    htmlTabel << "</body></html>";
+    htmlTabel.close();
 }
