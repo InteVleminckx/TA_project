@@ -10,12 +10,10 @@
 #include "vector"
 #include <stdlib.h>
 #include <time.h>
+#include "DFAtoRE/DFA_Inte.h"
 
 #include "Dzhem.h" //include voor controlesysteem
 #include "Datastructuur.h" //tijdelijke include, vervanging woord de dergelijke opslag van de bestemmingen.
-
-
-
 using namespace std;
 
 // Zaken die moeten gedaan worden:

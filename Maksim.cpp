@@ -418,6 +418,16 @@ string Maksim::minimizeRegex(string &regex) {
     // DFA -> RE
     ofstream json;
     json.open("regex.json");
+
+    dfa.print(json);
+    json.close();
+
+    const string file = "regex.json";
+
+    DFA_Inte dfa1 = DFA_Inte(file);
+    re = dfa1.toRE().REGEX;
+
+
 //    re =
     return re;
 }
