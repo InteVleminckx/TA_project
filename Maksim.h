@@ -43,7 +43,92 @@ public:
     string getRandomString(int nr_iterations, bool isConcatOnly);
 
     static void createHTMLFile(Datastructuur &datastructuur);
+
+    string minimizeRegex(string &str1);
+
+
+//    Node* parseRegex(string &regex);
+//
+//    static string toRegexWithDots(string &str, vector<char> &alphabet, char epsilon);
 };
+
+
+
+//enum type {tvarNode,tconcatNode,tplusNode,tstarNode};
+//
+//class _Node {
+//public:
+//    virtual type getType() const=0;
+//    virtual ~_Node() {}
+//    virtual string toString() const=0;
+//    virtual vector<_Node*> getOperands() const=0;
+//};
+//
+//class varNode:public _Node {
+//    char naam;
+//public:
+//    varNode(char x): naam(x) {}
+//
+//    type getType() const override { return tvarNode; }
+//
+//    string toString() const override {
+//        return string()+naam; // conversie van char naar string
+//    }
+//
+//    vector<_Node*> getOperands() const override {
+//        return vector<_Node*>();    // empty vector
+//    }
+//};
+//
+//class concatNode: public _Node {
+//    _Node* leftoper;
+//    _Node* rightoper;
+//public:
+//    concatNode(_Node* lo, _Node* ro): leftoper(lo), rightoper(ro) {}
+//
+//    type getType() const override { return tconcatNode; }
+//
+//    string toString() const override {
+//        return string("(")+leftoper->toString()+"&"+rightoper->toString()+")";
+//    }
+//
+//    vector<_Node*> getOperands() const override {
+//        return vector<_Node*> {leftoper, rightoper};    // vector with 2 elements; leftoper and rightoper
+//    }
+//};
+//
+//class plusNode: public _Node {
+//    _Node* leftoper;
+//    _Node* rightoper;
+//public:
+//    plusNode(_Node* lo, _Node* ro): leftoper(lo), rightoper(ro) {}
+//
+//    type getType() const override { return tplusNode; }
+//
+//    string toString() const override {
+//        return string("(")+leftoper->toString()+"|"+rightoper->toString()+")";
+//    }
+//
+//    vector<_Node*> getOperands() const override {
+//        return vector<_Node*> {leftoper, rightoper};    // vector with 2 elements; leftoper and rightoper
+//    }
+//};
+//
+//class starNode: public _Node {
+//    _Node* oper;
+//public:
+//    starNode(_Node* o): oper(o) {}
+//
+//    type getType() const override { return tstarNode; }
+//
+//    string toString() const override {
+//        return string("(-")+oper->toString()+")";
+//    }
+//
+//    vector<_Node*> getOperands() const override {
+//        return vector<_Node*> {oper};    // vector with 1 element; oper
+//    }
+//};
 
 ////// test datastructuur ////
 //bool alfabet0 = false;
