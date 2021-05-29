@@ -168,14 +168,20 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     }
     C = concatDeelRegex;
 
-
     if (!R.empty()) {
         R = R + "+";
     }
+    if (!S.empty()) {
+        string reverseR = R;
+        reverse(reverseR.begin(), reverseR.end());
+        string reverseS = S;
+        reverse(reverseS.begin(), reverseS.end());
+        if (R == S || reverseR == S || R == reverseS) {
+            S = "";
+        }
+    }
 
-    //    while (U[U.size()-1] == '*') {
-//        U = U.substr(0, U.size()-1);
-//    }
+
     string formule;
     if (S.empty() && U.empty()) {
         formule = R + S + U + T + S + U + C; // algemene vorm van formule
@@ -215,6 +221,7 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
         return generateRE(data, timeBrz, timeTFA,memoryBRZ, memoryTFA,best, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {
+        formule = minimizeRegex(formule);
         RE = formule;
     }
     return RE;
@@ -396,3 +403,119 @@ void Maksim::createHTMLFile(Datastructuur &datastructuur) {
     htmlTabel << "</body></html>";
     htmlTabel.close();
 }
+
+string Maksim::minimizeRegex(string &regex) {
+    string re;
+    RE newRE = RE(regex, 'e');
+
+    // RE -> ENFA
+    ENFA enfa = newRE.toENFA();
+    // ENFA -> DFA
+    DFA dfa = enfa.toDFA(false);
+    // DFA minimaliseren
+    long time;
+    dfa.minimize(time);
+    // DFA -> RE
+    ofstream json;
+    json.open("regex.json");
+//    re =
+    return re;
+}
+
+//Node *Maksim::parseRegex(string &formula) {
+//    bool a = true;
+//    for (auto i = 0; i < formula.size(); i++) {
+//        if (formula[i] != '0' && formula[i] != '1' && formula[i] != '(' && formula[i] != ')') {
+//            a = false;
+//            break;
+//        }
+//        if (formula[i] == '(' || formula[i] == ')') {
+//            break;
+//        }
+//    }
+//    if (a) {
+//        formula = toRegexWithDots(formula, fAlphabet, fEpsilon);
+//    }
+//    if (formula.size() == 0) { // een formule kan nooit leeg zijn
+//        cerr << "Lege formule!";
+//        return nullptr;
+//    } else if (formula.size() == 1) { //de enige geldige formules van lengte 1 zijn variabelen
+//        if (!count(fAlphabet.begin(), fAlphabet.end(), formula[0]) && formula[0] != fEpsilon) { //# enkel a, b, c zijn toegestaan als variabelen
+//            cerr << "Ongeldige variabele naam: " << formula << endl;
+//            return nullptr;
+//        }
+//        else {
+//            return new varNode(formula[0]);
+//        }
+//    } else { // samengestelde formule
+////        if (formula[0] == '-') { // unaire operator not
+////            return new starNode(parseRegex(formula.substr(1, formula.size() - 1)));
+////        } else { // binaire operator, dus formule is van de vorm oper1 operator oper2
+//        if (formula[formula.size()-1] == '*') {
+//            string gedeelteVoorStar = formula.substr(1, formula.size() - 3);
+//            return new starNode(parseRegex(gedeelteVoorStar));
+//        }
+//        if (formula[0] == '(' && formula[formula.size()-1] == ')') {
+//            bool allowedToRemoveParentheses = true;
+//            for (auto it = 1; it < formula.size()-1; it++) {
+//                if (formula[it] == '(' || formula[it] == ')') {
+//                    allowedToRemoveParentheses = false;
+//                }
+//            }
+//            if (allowedToRemoveParentheses) {
+//                formula = formula.substr(1, formula.size() - 2);
+//            }
+//        }
+//        int i = 0;
+//        int depth = 0;
+//        while (((formula[i] != '+') && (formula[i] != '.')) ||
+//               depth > 0) {    // zoek de positie van de operator
+//            // let op! er kunnen geneste haakjes zijn
+//            if (formula[i] == '(') { // een subexpressie; operatoren die hierbinnen staan negeren we
+//                depth += 1;    // dit is hoe diep we in geneste haakjes zitten
+//            } else if (formula[i] == ')') { // 1 nestingsdiepte terug omhoog
+//                depth -= 1;
+//            }
+//            i += 1;
+//        }
+//        // de operator staat op positie i
+//        string oper1 = formula.substr(0, i);
+//        char oper = formula[i];
+//        string oper2 = formula.substr(i + 1, formula.size() - i - 1);
+//        if (oper == '+') {
+//            return new plusNode(parseRegex(oper1), parseRegex(oper2));
+//        } else {
+//            return new concatNode(parseRegex(oper1), parseRegex(oper2));
+//        }
+////        }
+//    }
+//}
+//
+//string Maksim::toRegexWithDots(string &str, vector<char> &alphabet, char epsilon) {
+//    string reWithDots;
+//    for (auto i = 0; i < str.size(); i++) {
+//        if (i > 0) { // niet eerste character
+//            char prevChar = str[i-1];
+//            if (count(alphabet.begin(), alphabet.end(), prevChar) || prevChar == epsilon || prevChar == '*' || prevChar == ')') { // als het vorige character een deel is van het alfabet
+//                if (str[i] == '(') {
+//                    reWithDots += '.';
+//                    reWithDots += str[i];
+//                }
+//                else if (count(alphabet.begin(), alphabet.end(), str[i])) {
+//                    reWithDots += '.';
+//                    reWithDots += str[i];
+//                }
+//                else {
+//                    reWithDots += str[i];
+//                }
+//            }
+//            else {
+//                reWithDots += str[i];
+//            }
+//        }
+//        else {
+//            reWithDots += str[i];
+//        }
+//    }
+//    return reWithDots;
+//}
