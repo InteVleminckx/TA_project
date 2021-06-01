@@ -28,18 +28,53 @@ using namespace std;
 class Maksim {
 public:
 
-
+    /**
+     *
+     * @param str
+     */
     void stringToBarcode(string &str);
 
+    /**
+     *
+     * @param data
+     * @param timeBrz
+     * @param timeTFA
+     * @param memoryBRZ
+     * @param memoryTFA
+     * @param best
+     * @param numberOfIterations
+     * @return
+     */
     string generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, vector<long>& memoryBRZ,
                       vector<long>& memoryTFA,Bestemming& best, int numberOfIterations = 0);
 
+    /**
+     *
+     * @param isConcatOnly
+     * @return
+     */
     string chooseOperationFirstTime(bool isConcatOnly);
 
+    /**
+     *
+     * @param deelRegex
+     * @param isConcatOnly
+     * @return
+     */
     string chooseOperation(string &deelRegex, bool isConcatOnly);
 
+    /**
+     *
+     * @param nr_iterations
+     * @param isConcatOnly
+     * @return
+     */
     string getRandomString(int nr_iterations, bool isConcatOnly);
 
+    /**
+     *
+     * @param datastructuur
+     */
     static void createHTMLFile(Datastructuur &datastructuur);
 
 //    string minimizeRegex(string &str1);
