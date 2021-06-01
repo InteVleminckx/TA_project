@@ -12,9 +12,6 @@
 #include "Barcode.h"
 #include "Datastructuur.h"
 #include "Plotter.h"
-#include "Dzhem.h"
-
-//#include <windows.h>
 
 /**
  * Opmerking: de working directory staat standaard op de cmake-build-debug map, we moeten dus altijd eerst een
@@ -35,15 +32,46 @@ int main() {
 ////    cout << time << " microseconden" <<endl;
 
 
-    string re1 = "(10+(0+1)((0+1))*10)*(0+1)((0+1))*";
+//    string re1 = "(10+(0+1)((0+1))*10)*(0+1)((0+1))*";
 //    string re2 = "1001";
-//    string re3 = "(1+0+1)*";
-//    string re4 = "(1+0)(1+00)";
-//    string re5 = "1(1+0)";
-//    string re6 = "(100+0)0";
+//    string re3 = "((0+(0+00(0+1)11)00)+100(0+(0+1))11110(1+(0+(1+0))0)0)100(0+(0+1))111";
+////    string re4 = "(1+0)(1+00)";
+////    string re5 = "1(1+0)";
+////    string re6 = "(100+0)0";
+////
+////    Barcode code;
+////
+////    string barcode = code.createBarcode(re3);
 //
-    Barcode code;
+//    RE re = RE(re3, 'e');
 //
+//    DFA reDFA = re.toDFA();
+//    reDFA.renameStates();
+//
+//    ofstream json;
+//
+//    json.open("../TFA.json");
+//    reDFA.print(json);
+//    json.close();
+//
+//    TFA* tfa = new TFA("../TFA.json");
+//
+//    vector<long> times;
+//
+//    *tfa = tfa->minimize(times);
+//
+//
+//    reDFA = tfa->toDFA();
+//
+//    reDFA.renameStates();
+//
+//    reDFA.print(cout);
+//
+//    cout << "iets" << endl;
+
+//
+
+
 
 //    for (int i = 0; i < 10; ++i) {
 //        srand(time(NULL));
@@ -72,16 +100,12 @@ int main() {
 //    code.createBarcode(re6);
 //    cout << endl;
 //
-    Datastructuur datastr;
-    vector<long> timeBRZ;
-    vector<long> timeTFA;
-    vector<long> memoryBRZ;
-    vector<long> memoryTFA;
-    Maksim maksim;
-    string re = "(0+001)001";
-    Bestemming best("Antje", re);
-    bool doorsnede = controleSysteem(re, datastr, timeBRZ, timeTFA, memoryBRZ, memoryTFA, best);
-
+//    vector<long> timeBRZ;
+//    vector<long> timeTFA;
+//    vector<long> memoryBRZ;
+//    vector<long> memoryTFA;
+//    Maksim maksim;
+//
 //    Datastructuur data;
 //    vector<string> haltes = {"aaa", "bbb", "ccc" , "ddd", "eee", "fff", "ggg" , "hhh"};
 //    //srand(time(NULL));

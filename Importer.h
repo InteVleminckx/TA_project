@@ -20,6 +20,12 @@ using namespace std;
 
 class Importer {
 public:
+
+    /**
+     * Deze functie leest een XML-bestand in en voegt de bestemmingen toe aan een datastructuur.
+     * @param filename = het XML-bestand.
+     * @param datastructure = de Datastructuur waar de bestemmingen moeten worden toegevoegd.
+     */
     static void readXMLFile(const string &filename, Datastructuur &datastructure);
 };
 

@@ -42,12 +42,6 @@ public:
     static void reversal(DFA &productAutomaat, ENFA &e_nfa);
 
     /**
-     * Functie die alle niet-bereikbare states gaat elemineren
-     * @param productautomaat = automaat waarop we dit willen toepassen
-     */
-    static void elemNonReachableStates(DFA &productautomaat);
-
-    /**
      * Functie die nagaat of een bepaalde state reachable is vanuit de startstate
      * @param start_state = state die de startstate is van onze DFA
      * @param target = eindstate waarvan we willen weten of deze bereibaar is
@@ -57,6 +51,10 @@ public:
     static bool isStateReachable(State* start_state, State* current_state, State* target, vector<char> alphabet,
                                  vector<State*> &reeds_gehad);
 
+    /**
+     * Functie die states verwijderd wanneer deze niet bereikbaar zijn.
+     * @param productautomaat = een DFA waar de non reachable states verwijderd moeten worden.
+     */
     static void elemNonReachableStatesRecursively(DFA &productautomaat);
     // Extra functie van NFA naar DFA = subsetconstruction of modified toevoegen
 };

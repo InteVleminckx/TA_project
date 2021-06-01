@@ -11,41 +11,24 @@ Bestemming::Bestemming(string naam, string RegEx) {
     fRegex = std::move(RegEx);
 }
 
-void Bestemming::setName(string naam) {
-    fNaam = naam;
-}
+void Bestemming::setName(string naam) {fNaam = naam;}
 
-string Bestemming::getName() {
-    return fNaam;
-}
+string Bestemming::getName() {return fNaam;}
 
-void Bestemming::setRegex(string RegEx) {
-    fRegex = RegEx;
-}
+void Bestemming::setRegex(string RegEx) {fRegex = RegEx;}
 
-string Bestemming::getRegex() {
-    return fRegex;
-}
+string Bestemming::getRegex() {return fRegex;}
 
-void Bestemming::setDFA(DFA &dfaToCopy) {
-    dfa = DFA(dfaToCopy);
-}
+void Bestemming::setDFA(DFA &dfaToCopy) {dfa = DFA(dfaToCopy);}
 
-DFA &Bestemming::getDFA() {
-    return dfa;
-}
+DFA &Bestemming::getDFA() {return dfa;}
 
-void Bestemming::setBarcode(string &barcode) {
-
-    fBarcodes.push_back(barcode);
-
-}
+void Bestemming::setBarcode(string &barcode) {fBarcodes.push_back(barcode);}
 
 string Bestemming::getBarcode() {
 
     //Als er nog geen tickets zijn gekocht bestaat er nog geen barcode dus returnen we een lege string.
     if (fBarcodes.empty()) return "";
-
 
     int barcodeNumber = rand() % fBarcodes.size();
     //We nemen een barcode uit de vector en verwijderen deze nadien.

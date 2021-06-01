@@ -5,12 +5,6 @@
 
 #include "Maksim.h"
 
-//Maksim maksim;
-//string a = "010100";
-//maksim.stringToBarcode(a);
-//save_image("../iniFile.ini");
-
-
 void Maksim::stringToBarcode(string &str) {
 
 
@@ -110,13 +104,6 @@ void Maksim::stringToBarcode(string &str) {
     fIniFile.close();
 }
 
-//Maksim maksim;
-//srand ((int)time(NULL));
-//for (auto i = 0; i < 10; i++) {
-//string re = maksim.generateRE(2);
-//cout << re << endl;
-//cout << endl;
-//}
 string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<long>& timeTFA, vector<long>& memoryBRZ,
                           vector<long>& memoryTFA, Bestemming& best, int numberOfIterations) { // het aantal iteraties bepaalt hoeveel bewerkingen we gaan uitvoeren (per deelbewerking)
 
@@ -163,7 +150,7 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     T = randomT;
 
     string concatDeelRegex;
-    if (isConcatDeelRegex) { // in het slechtste geval => isBewerking > 5
+    if (isConcatDeelRegex) {
         concatDeelRegex = getRandomString(numberOfIterations-7, true);
     }
     C = concatDeelRegex;
@@ -180,7 +167,6 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
             S = "";
         }
     }
-
 
     string formule;
     if (S.empty() && U.empty()) {
@@ -208,8 +194,6 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
     cout << "T = " << T << endl;
     cout << "C = " << C << endl;
 
-
-
     // doorsnede checken => controlesysteem
     bool doorsnede = controleSysteem(formule, data, timeBrz, timeTFA, memoryBRZ, memoryTFA, best);
 
@@ -221,7 +205,6 @@ string Maksim::generateRE(Datastructuur& data, vector<long>& timeBrz, vector<lon
         return generateRE(data, timeBrz, timeTFA,memoryBRZ, memoryTFA,best, numberOfIterations+1); // we vergroten bij de volgende aanroep het aantal bewerkingen met 1.
     }
     else {
-        formule = minimizeRegex(formule);
         RE = formule;
         cout << formule << endl << endl;
     }

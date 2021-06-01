@@ -156,6 +156,7 @@ TFA TFA::minimize(vector<long> &times) {
     auto start = high_resolution_clock::now();
 
     createTable();
+    printTable();
     addMarksFinalStatesBegin();
     TFA oldDFA = copyDFA();
     int iteratie = 0;
@@ -164,7 +165,10 @@ TFA TFA::minimize(vector<long> &times) {
     TFA newDFA = copyDFA();
     makeMiniDFA(newDFA);
     restoreDFA(oldDFA);
+    newDFA.print(cout);
+
     elemNonReachableStates(newDFA);
+    newDFA.printTable();
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -787,21 +791,14 @@ void TFA::elemNonReachableStates(TFA &newDFA)
         string huidigeState = state.name;
 
         //als het een start state is moet deze worden toegevoegd
-        if (state.starting)
-        {
-            reachableStates.insert(huidigeState);
-        }
+        if (state.starting) reachableStates.insert(huidigeState);
 
         for (auto & transition : state.transitions)
         {
             string transToState = transition.first;
 
             //als de state een transitie heeft en deze is niet naar zijn eigen dan moet deze ook worden toegevoegd
-            if (transToState != huidigeState)
-            {
-                reachableStates.insert(transToState);
-            }
-
+            if (transToState != huidigeState) reachableStates.insert(transToState);
         }
     }
 
@@ -815,9 +812,7 @@ void TFA::elemNonReachableStates(TFA &newDFA)
         if (reachableStates.count(state.name)) reachable.push_back(state);
     }
 
-
     newDFA.states = reachable;
-
 }
 
 DFA TFA::toDFA() const {
@@ -826,8 +821,8 @@ DFA TFA::toDFA() const {
     // 2) Terug inlezen naar een DFA
 
     ofstream output_stream;
-    output_stream.open("../TFAToDFAFiles/TFA.json");
+    output_stream.open("../../TFA.json");
     print(output_stream);
-    DFA toDFA("../TFAToDFAFiles/TFA.json");
+    DFA toDFA("../../TFA.json");
     return toDFA;
 }

@@ -4,15 +4,6 @@
 
 #include "Dzhem.h"
 
-bool statechecker(DFA& dfa){
-    for (auto state:dfa.getAllStates()){
-        if(dfa.stateGoesTo(state, '1') == "none" or dfa.stateGoesTo(state, '0') == "none"){
-            return true;
-        }
-    }
-    return false;
-}
-
 bool controleSysteem(string& re, Datastructuur &bestemmingen, vector<long>& timeBrz, vector<long>& timeTFA,
                      vector<long>& memoryBrz, vector<long>& memoryTFA, Bestemming& best) {
     RE newRE = RE(re, 'e');
