@@ -24,20 +24,18 @@ void Brzozowski::brzozowskiAlgorithm(DFA &productAutomaat, vector<long> &times) 
     enfa.setAlphabet(productAutomaat.getAlphabet());
     //enfa.setStartState(const_cast<string &>(productAutomaat.getStartState()));
 
-    reversal(productAutomaat, enfa);                  // Stap 1
-    productAutomaat = enfa.toDFA(true);            // Stap 2
-     productAutomaat.renameStates();                         // Stap 3
-//    elemNonReachableStates(productAutomaat);             // Stap 4
-    elemNonReachableStatesRecursively(productAutomaat);
+    reversal(productAutomaat, enfa);                    // Stap 1
+    productAutomaat = enfa.toDFA(true);              // Stap 2
+    productAutomaat.renameStates();                           // Stap 3
+    elemNonReachableStatesRecursively(productAutomaat);    // Stap 4
     enfa = ENFA();
     enfa.setEpsilon('e');
     enfa.setAlphabet(productAutomaat.getAlphabet());
 
-    reversal(productAutomaat, enfa);              // Stap 5
-    productAutomaat = enfa.toDFA(true);       // Stap 6
-    productAutomaat.renameStates();                     // Stap 7
-//    elemNonReachableStates(productAutomaat);         // Stap 8
-    elemNonReachableStatesRecursively(productAutomaat);
+    reversal(productAutomaat, enfa);                    // Stap 5
+    productAutomaat = enfa.toDFA(true);              // Stap 6
+    productAutomaat.renameStates();                           // Stap 7
+    elemNonReachableStatesRecursively(productAutomaat);    // Stap 8
   
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
@@ -95,10 +93,7 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
     // Meerdere states
     else if (accepting_states.size() > 1)
     {
-        State_NFA* new_starting_state = new State_NFA(true,
-                                                      "q0",
-                                                      false,
-                                                      e_nfa.getEpsilon());
+        State_NFA* new_starting_state = new State_NFA(true,"q0",false, e_nfa.getEpsilon());
 
         string tempString = "q0";
         e_nfa.setStartState(tempString);
@@ -126,11 +121,7 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
         //als dit niet het geval is maken we een nieuwe state aan en voegen we deze toe.
         if (!e_nfa.getStates().count(stateDFA.second->getName()))
         {
-            State_NFA* new_NFA_state = new State_NFA(false,
-                                                     stateDFA.second->getName(),
-                                                     false,
-                                                     e_nfa.getEpsilon());
-
+            State_NFA* new_NFA_state = new State_NFA(false,stateDFA.second->getName(),false, e_nfa.getEpsilon());
             e_nfa.addToStates(new_NFA_state);
         }
     }
@@ -150,38 +141,8 @@ void Brzozowski::reversal(DFA &productAutomaat, ENFA &e_nfa) {
                 break;
             }
         }
-
         for (auto to : stateDFA.second->getTTo()) setTransitions(to, e_nfa, from);
     }
-}
-
-void Brzozowski::elemNonReachableStates(DFA &productautomaat) {
-    set<string> namen = {};
-    map<string, State*> nieuwe_states = {};
-
-    // Voor elke state in de productautomaat
-    for(auto &state : productautomaat.getStates())
-    {
-        // Voor elke transitie in deze state
-        for (auto it : state.second->getTTo())
-        {
-            // Naam van TO state toevoegen aan namen
-            if (it.second->getName() != state.second->getName()) namen.insert(it.second->getName());
-        }
-    }
-
-    // Over alle states loopen
-    for (const auto& naam : productautomaat.getAllStates())
-    {
-        //Als er wel transities zijn, voegen we deze toe aan de
-        if (namen.count(naam) || productautomaat.getStates().at(naam)->isStarting())
-        {
-            nieuwe_states[naam] = productautomaat.getStates().at(naam);
-        }
-    }
-
-    // productautomaat zijn states aanpassen zodat enkel bereikbare states erin zitten
-    productautomaat.setStates(nieuwe_states);
 }
 
 void Brzozowski::setTransitions(pair<const char, State *> &stateDFA, ENFA &e_nfa, State_NFA* from)
@@ -207,23 +168,14 @@ bool Brzozowski::isStateReachable(State *start_state, State* current_state, Stat
     // Loop om te kijken of we een state niet al zijn tegengekomen
     for (State* state : reeds_gehad)
     {
-        if (state == current_state)
-        {
-            return false;
-        }
+        if (state == current_state)  return false;
     }
 
     // We hebben state gevonden, returnen true
-    if (current_state == target)
-    {
-        return true;
-    }
+    if (current_state == target) return true;
 
     // Als deze state geen "kinderen" meer heeft, hebben we de state niet kunnen vinden dus returnen false
-    else if (current_state->getTTo().empty())
-    {
-        return false;
-    }
+    else if (current_state->getTTo().empty()) return false;
 
     // Kijken naar de "kinderen" en recursief de functie toepassen
     else

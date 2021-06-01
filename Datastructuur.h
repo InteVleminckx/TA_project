@@ -17,7 +17,6 @@ private:
     string fKey;
     Bestemming* fObject;
 
-
 public:
 
     /**
@@ -93,8 +92,6 @@ class Datastructuur {
      * @return Datastructuur: de linkerdeelboom.
      */
     Datastructuur* getLeftChild();
-
-
 
     /**
      * @functie: getRightChild
